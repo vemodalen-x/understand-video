@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tempo.local/schemas/commercial-proposal.schema.json",
+  "title": "Normalized Commercial Planning Provider Output",
+  "description": "Strict vendor-neutral proposal contract. This artifact is untrusted advisory data in proposals/ and can never serve as a warrant or signed decision.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "proposal_id",
+    "provider",
+    "provider_version",
+    "source_session",
+    "opportunity_ref",
+    "target_user",
+    "economic_buyer",
+    "job_to_be_done",
+    "problem_statement",
+    "alternatives",
+    "differentiation",
+    "value_proposition",
+    "revenue_or_roi_hypothesis",
+    "distribution_hypothesis",
+    "cost_hypothesis",
+    "ranked_hypotheses",
+    "evidence_refs",
+    "counterevidence_refs",
+    "recommended_next_experiment",
+    "proposed_mvp_scope",
+    "recommendation",
+    "confidence",
+    "rationale_summary",
+    "limitations",
+    "generated_at"
+  ],
+  "properties": {
+    "proposal_id": {"type": "string", "pattern": "^CP-[A-Z0-9][A-Z0-9._-]{2,63}$"},
+    "provider": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]{1,127}$"},
+    "provider_version": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._+-]{0,63}$"},
+    "source_session": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]{2,255}$"},
+    "opportunity_ref": {"type": "string", "pattern": "^O-[A-Z0-9][A-Z0-9._-]{2,63}$"},
+    "target_user": {"$ref": "#/$defs/party"},
+    "economic_buyer": {"$ref": "#/$defs/party"},
+    "job_to_be_done": {"type": "string", "minLength": 12, "maxLength": 2000},
+    "problem_statement": {"type": "string", "minLength": 12, "maxLength": 3000},
+    "alternatives": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1, "maxLength": 1000}
+    },
+    "differentiation": {"type": "string", "minLength": 1, "maxLength": 2500},
+    "value_proposition": {"type": "string", "minLength": 12, "maxLength": 2500},
+    "revenue_or_roi_hypothesis": {"type": "string", "minLength": 12, "maxLength": 2000},
+    "distribution_hypothesis": {"type": "string", "minLength": 12, "maxLength": 2000},
+    "cost_hypothesis": {"type": "string", "minLength": 12, "maxLength": 2000},
+    "ranked_hypotheses": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "hypotheses.schema.json#/$defs/hypothesis"},
+      "contains": {
+        "type": "object",
+        "required": ["rank"],
+        "properties": {"rank": {"const": 1}}
+      },
+      "minContains": 1,
+      "maxContains": 1
+    },
+    "evidence_refs": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/evidenceRef"}},
+    "counterevidence_refs": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/evidenceRef"}},
+    "recommended_next_experiment": {"$ref": "#/$defs/experiment"},
+    "proposed_mvp_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision_to_unlock", "in_scope", "out_of_scope", "d0_user_journey", "budget_cap", "deadline"],
+      "properties": {
+        "decision_to_unlock": {"type": "string", "minLength": 12, "maxLength": 2000},
+        "in_scope": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+        "out_of_scope": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+        "d0_user_journey": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1, "maxLength": 1000}},
+        "budget_cap": {"$ref": "#/$defs/money"},
+        "deadline": {"type": "string", "format": "date-time"}
+      }
+    },
+    "recommendation": {"type": "string", "enum": ["AUTHORIZE", "EXPERIMENT_REQUIRED", "PIVOT", "KILL"]},
+    "confidence": {"$ref": "#/$defs/confidence"},
+    "rationale_summary": {"type": "string", "minLength": 1, "maxLength": 2000},
+    "limitations": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1, "maxLength": 1000}},
+    "generated_at": {"type": "string", "format": "date-time"}
+  },
+  "$defs": {
+    "evidenceRef": {"type": "string", "pattern": "^E-[A-Z0-9][A-Z0-9._-]{2,63}$"},
+    "party": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "need_or_value"],
+      "properties": {
+        "description": {"type": "string", "minLength": 1, "maxLength": 1500},
+        "need_or_value": {"type": "string", "minLength": 1, "maxLength": 1500}
+      }
+    },
+    "money": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["amount", "currency"],
+      "properties": {
+        "amount": {"type": "number", "minimum": 0},
+        "currency": {"type": "string", "pattern": "^[A-Z]{3}$"}
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score", "scale", "rationale"],
+      "properties": {
+        "score": {"type": "integer", "minimum": 0, "maximum": 100},
+        "scale": {"const": "0-100"},
+        "rationale": {"type": "string", "minLength": 1, "maxLength": 1000}
+      }
+    },
+    "experiment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["experiment_id", "type", "decision_to_unlock", "procedure", "success_condition", "failure_condition", "estimated_cost", "deadline"],
+      "properties": {
+        "experiment_id": {"type": "string", "pattern": "^X-[A-Z0-9][A-Z0-9._-]{2,63}$"},
+        "type": {"type": "string", "enum": ["interview", "landing_page_test", "concierge_workflow", "manual_service", "clickable_prototype", "api_feasibility_spike", "benchmark", "pricing_test", "data_availability_check", "mvp"]},
+        "decision_to_unlock": {"type": "string", "minLength": 12, "maxLength": 2000},
+        "procedure": {"type": "string", "minLength": 1, "maxLength": 3000},
+        "success_condition": {"type": "string", "minLength": 12, "maxLength": 2000},
+        "failure_condition": {"type": "string", "minLength": 12, "maxLength": 2000},
+        "estimated_cost": {"$ref": "#/$defs/money"},
+        "deadline": {"type": "string", "format": "date-time"}
+      }
+    }
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tempo.local/schemas/receipt.schema.json",
+  "title": "TEMPO Machine Verification Receipt",
+  "description": "Tool-generated evidence of an executed check. A narrative pass, model assertion, or manually typed status is not a receipt.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "receipt_id",
+    "receipt_type",
+    "subject_ref",
+    "session",
+    "generated_at",
+    "started_at",
+    "finished_at",
+    "generator",
+    "command",
+    "exit_code",
+    "outcome",
+    "checks",
+    "input_hashes",
+    "artifacts",
+    "environment",
+    "provenance",
+    "receipt_hash"
+  ],
+  "properties": {
+    "receipt_id": {"type": "string", "pattern": "^R-[A-Z0-9][A-Z0-9._-]{2,63}$"},
+    "receipt_type": {
+      "type": "string",
+      "enum": [
+        "schema_validation",
+        "evidence_validation",
+        "readiness_assessment",
+        "authorization_validation",
+        "mvp_start",
+        "focused_tests",
+        "whole_suite",
+        "judge_demo",
+        "readme_literal",
+        "selfcheck",
+        "submit_check"
+      ]
+    },
+    "subject_ref": {
+      "type": "string",
+      "pattern": "^(?:[A-Z][A-Z0-9]{0,7}-[A-Z0-9][A-Z0-9._-]{2,127}|repository:[A-Za-z0-9][A-Za-z0-9._/-]{1,255})$"
+    },
+    "session": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]{2,255}$"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "started_at": {"type": "string", "format": "date-time"},
+    "finished_at": {"type": "string", "format": "date-time"},
+    "generator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "actor"],
+      "properties": {
+        "name": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]{1,127}$"},
+        "version": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._+-]{0,63}$"},
+        "actor": {"$ref": "#/$defs/actorRef"}
+      }
+    },
+    "command": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["argv", "cwd", "timeout_seconds"],
+      "properties": {
+        "argv": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1, "maxLength": 2000}
+        },
+        "cwd": {"$ref": "#/$defs/repoPath"},
+        "timeout_seconds": {"type": "integer", "minimum": 1, "maximum": 86400}
+      }
+    },
+    "exit_code": {"type": "integer", "enum": [0, 2, 3, 4]},
+    "outcome": {"type": "string", "enum": ["passed", "policy_block", "checker_failure", "warning"]},
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["check_id", "name", "status", "duration_ms", "details"],
+        "properties": {
+          "check_id": {"type": "string", "pattern": "^CHK-[A-Z0-9][A-Z0-9._-]{2,63}$"},
+          "name": {"type": "string", "minLength": 1, "maxLength": 500},
+          "status": {"type": "string", "enum": ["passed", "failed", "blocked", "warning", "skipped"]},
+          "duration_ms": {"type": "integer", "minimum": 0},
+          "details": {"type": "string", "minLength": 1, "maxLength": 4000}
+        }
+      }
+    },
+    "input_hashes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/hashBinding"}
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "hash", "media_type", "size_bytes"],
+        "properties": {
+          "path": {"$ref": "#/$defs/repoPath"},
+          "hash": {"$ref": "#/$defs/hash"},
+          "media_type": {"type": "string", "pattern": "^[a-z0-9][a-z0-9!#$&^_.+-]+/[a-z0-9][a-z0-9!#$&^_.+-]+$"},
+          "size_bytes": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["os", "python_version", "container_image", "uid", "network"],
+      "properties": {
+        "os": {"type": "string", "minLength": 1, "maxLength": 255},
+        "python_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+(?:\\.[0-9]+)?$"},
+        "container_image": {
+          "type": ["string", "null"],
+          "pattern": "^[a-z0-9][a-z0-9._/-]*:[A-Za-z0-9._-]+@sha256:[a-f0-9]{64}$"
+        },
+        "uid": {"type": ["integer", "null"], "minimum": 1},
+        "network": {"type": "string", "enum": ["none", "isolated", "default", "unknown"]}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "trust", "authoritative", "attestation_ref"],
+      "properties": {
+        "kind": {"type": "string", "enum": ["local_tool", "container", "ci", "platform", "external_verifier"]},
+        "trust": {"type": "string", "enum": ["local_integrity_only", "isolated_execution", "platform_attested", "external_signed"]},
+        "authoritative": {"type": "boolean"},
+        "attestation_ref": {"type": ["string", "null"], "maxLength": 2048}
+      }
+    },
+    "receipt_hash": {"$ref": "#/$defs/hash"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"outcome": {"const": "passed"}}, "required": ["outcome"]},
+      "then": {"properties": {"exit_code": {"const": 0}}}
+    },
+    {
+      "if": {"properties": {"outcome": {"const": "policy_block"}}, "required": ["outcome"]},
+      "then": {"properties": {"exit_code": {"const": 2}}}
+    },
+    {
+      "if": {"properties": {"outcome": {"const": "checker_failure"}}, "required": ["outcome"]},
+      "then": {"properties": {"exit_code": {"const": 3}}}
+    },
+    {
+      "if": {"properties": {"outcome": {"const": "warning"}}, "required": ["outcome"]},
+      "then": {"properties": {"exit_code": {"const": 4}}}
+    }
+  ],
+  "$defs": {
+    "actorRef": {"type": "string", "pattern": "^(human|agent|kernel|verifier|platform):[A-Za-z0-9][A-Za-z0-9._@+:/-]{1,127}$"},
+    "hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "repoPath": {"type": "string", "pattern": "^(?![A-Za-z]:)(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\\\\\u0000]+$", "maxLength": 500},
+    "hashBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_ref", "hash"],
+      "properties": {
+        "artifact_ref": {"type": "string", "minLength": 1, "maxLength": 500},
+        "hash": {"$ref": "#/$defs/hash"}
+      }
+    }
+  }
+}

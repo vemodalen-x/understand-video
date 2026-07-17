@@ -1,0 +1,47 @@
+{
+  "status": "draft_not_submitted",
+  "hackathon": {
+    "name": "OpenAI Build Week",
+    "url": "https://openai.devpost.com/",
+    "deadline_utc": "2026-07-22T00:00:00Z"
+  },
+  "project": {
+    "name": "TEMPO",
+    "tagline": "Turn should-we-build into a testable, human-authorized workflow before coding agents spend the budget.",
+    "category": "Work & Productivity",
+    "description_file": "submission/project-description.md",
+    "repository_url": "https://github.com/vemodalen-x/TEMPO",
+    "repository_visibility": "public",
+    "judge_access_confirmed": true,
+    "license": "MIT",
+    "video_url": null,
+    "video_visibility": "not_uploaded",
+    "video_has_audio": false,
+    "video_duration_seconds": null
+  },
+  "openai_usage": {
+    "codex_primary_build_environment": true,
+    "gpt_5_6_usage_confirmed": true,
+    "gpt_5_6_use_mode": "material_build_time_use_inside_primary_codex_task",
+    "usage_evidence_file": "submission/ai-usage.json",
+    "live_openai_api_runtime": false,
+    "truth_boundary": "The current runtime normalizes recorded JSON and uses fixtures in the demo; it does not call the OpenAI API."
+  },
+  "feedback_session": {
+    "candidate_task_id": "019f6fc9-488b-7be0-9cff-2e9bfbd7a19f",
+    "feedback_value": null,
+    "confirmed": false
+  },
+  "external_actions": {
+    "repository_published": true,
+    "video_uploaded": false,
+    "devpost_submitted": false,
+    "submission_authorized": false
+  },
+  "blockers": [
+    "clean-clone and CI verification",
+    "public YouTube video under three minutes with audio",
+    "confirmed /feedback session value",
+    "human owner review and submission authority"
+  ]
+}

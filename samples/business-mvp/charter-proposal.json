@@ -1,0 +1,48 @@
+{
+  "mvp_id": "M-DEMO-001",
+  "version": 1,
+  "state": "draft",
+  "opportunity_ref": "O-DEMO-001",
+  "decision_question_ref": "O-DEMO-001#/decision_question",
+  "decision_to_unlock": "Determine whether a repository-local gate makes agentic MVP authorization faster and more trustworthy for product leads.",
+  "hypothesis_refs": ["H-PROBLEM-001"],
+  "d0_user_journey": [
+    {"step_id": "J-DEMO-001", "order": 1, "actor": "Product lead", "action": "Imports a commercial planning proposal", "observable_result": "The proposal is stored as advisory, untrusted data."},
+    {"step_id": "J-DEMO-002", "order": 2, "actor": "Product lead", "action": "Runs readiness assessment", "observable_result": "Hard blockers and the cheapest next action appear before any score."},
+    {"step_id": "J-DEMO-003", "order": 3, "actor": "Human signer", "action": "Reviews charter and issues a bounded warrant", "observable_result": "Only declared actions, lanes, paths, budget, and deadline become executable."}
+  ],
+  "in_scope": ["src/**", "tests/**", "docs/**"],
+  "out_of_scope": ["Production deployment", "External communication", "Real customer claims", "Credential access"],
+  "success_metrics": [
+    {"metric_id": "SM-DEMO-001", "name": "Blocked unauthorized start", "operator": "==", "threshold": true, "unit": "boolean", "measurement_method": "Run start before warrant issuance and inspect the stable reason code."},
+    {"metric_id": "SM-DEMO-002", "name": "Authorized happy path", "operator": "==", "threshold": true, "unit": "boolean", "measurement_method": "Issue the demo-only local-integrity warrant and start one in-scope task."}
+  ],
+  "kill_and_pivot_triggers": [
+    {"trigger_id": "KP-DEMO-001", "action": "pivot", "condition": "Judges cannot run the credential-free workflow from the README in under five minutes.", "reason_code": "JUDGE_PATH_TOO_COMPLEX"}
+  ],
+  "budget_cap": {"amount": 1000, "currency": "USD"},
+  "deadline": "2030-07-21T16:00:00Z",
+  "owner": "human:product-lead",
+  "technical_boundaries": ["Python standard library only", "Repository-local files", "No network required for core workflow"],
+  "data_boundaries": ["Only synthetic fixtures in the judge scenario", "No credentials or personal data"],
+  "supported_audience": ["Product leads", "Innovation leads", "Engineering leads"],
+  "supported_environment": ["Windows PowerShell", "macOS or Linux shell", "Python 3.10+"],
+  "implementation_risk_tier": "R1",
+  "allowed_lanes": ["kernel", "verification", "documentation"],
+  "demo_beats": [
+    {"beat_id": "B-DEMO-001", "order": 1, "demo_tier": "D0", "description": "Model-only evidence blocks", "acceptance": "The assessment returns EXPERIMENT_REQUIRED with build_allowed false."},
+    {"beat_id": "B-DEMO-002", "order": 2, "demo_tier": "D1", "description": "Bounded authorization succeeds", "acceptance": "A local-integrity fixture warrant permits exactly one in-scope start."},
+    {"beat_id": "B-DEMO-003", "order": 3, "demo_tier": "D2", "description": "Protected drift invalidates", "acceptance": "Changing the signed charter permanently blocks the existing warrant."}
+  ],
+  "post_mvp_decision_meeting": {
+    "scheduled_at": "2030-07-21T17:00:00Z",
+    "owner": "human:product-lead",
+    "required_participants": ["human:product-lead", "human:engineering-lead"],
+    "decision_question": "Should the team pilot TEMPO with real discovery evidence and its existing coding-agent workflow?"
+  },
+  "rollback_or_disposal_plan": "Delete the generated demo workspace; retain only the repository fixtures and explicitly selected receipts.",
+  "created_at": "2026-07-17T12:00:00Z",
+  "updated_at": "2026-07-17T12:00:00Z",
+  "signed_by": null,
+  "signed_at": null
+}

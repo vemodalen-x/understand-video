@@ -1,0 +1,19 @@
+{
+  "evidence_id": "E-MODEL-001",
+  "source_type": "model_generated_synthesis",
+  "source_reference": "fixture://recorded-gpt-5.6-commercial-proposal",
+  "captured_at": "2026-07-17T12:00:00Z",
+  "freshness": {"policy": "default", "expires_at": "2030-12-31T23:59:59Z"},
+  "content_hash": null,
+  "claim_tested": "Product leads need an auditable handoff between business discovery and coding-agent implementation.",
+  "stance": "supports",
+  "directness": "synthesis",
+  "sample_context": {"description": "Recorded model-generated demo synthesis", "sample_size": null, "population": "No human population"},
+  "collector": "agent:commercial-planner",
+  "limitations": ["Model output is not external evidence", "Recorded fixture; no live API call is claimed"],
+  "hypothesis_refs": ["H-PROBLEM-001"],
+  "measurements": [
+    {"metric": "Target users reporting both a recent failure and intent to use the workflow", "value": 0, "unit": "of 5 interviews"}
+  ],
+  "provenance": {"kind": "model_generated", "collection_method": "Recorded GPT-5.6-shaped proposal fixture", "is_fixture": true, "untrusted_input": true}
+}

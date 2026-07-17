@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tempo.local/schemas/evidence.schema.json",
+  "title": "TEMPO Evidence Item",
+  "description": "One immutable evidence observation. Negative and contradictory evidence is retained. Fixture and model-generated material is explicitly labeled.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evidence_id",
+    "source_type",
+    "source_reference",
+    "captured_at",
+    "freshness",
+    "content_hash",
+    "claim_tested",
+    "stance",
+    "directness",
+    "sample_context",
+    "collector",
+    "limitations",
+    "hypothesis_refs",
+    "measurements",
+    "provenance"
+  ],
+  "properties": {
+    "evidence_id": {"type": "string", "pattern": "^E-[A-Z0-9][A-Z0-9._-]{2,63}$"},
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "customer_interview",
+        "observed_user_behavior",
+        "demand_or_conversion_signal",
+        "market_or_competitor_research",
+        "technical_benchmark",
+        "cost_measurement",
+        "regulatory_or_policy_source",
+        "internal_operational_data",
+        "experiment_result",
+        "model_generated_synthesis"
+      ]
+    },
+    "source_reference": {"type": "string", "format": "uri-reference", "minLength": 1, "maxLength": 2048},
+    "captured_at": {"type": "string", "format": "date-time"},
+    "freshness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy", "expires_at"],
+      "properties": {
+        "policy": {"type": "string", "enum": ["default", "source_specific", "never_expires_by_policy"]},
+        "expires_at": {"type": ["string", "null"], "format": "date-time"}
+      }
+    },
+    "content_hash": {"type": ["string", "null"], "pattern": "^sha256:[a-f0-9]{64}$"},
+    "claim_tested": {"type": "string", "minLength": 1, "maxLength": 2000},
+    "stance": {"type": "string", "enum": ["supports", "contradicts", "neutral"]},
+    "directness": {"type": "string", "enum": ["direct", "indirect", "synthesis"]},
+    "sample_context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "sample_size", "population"],
+      "properties": {
+        "description": {"type": "string", "minLength": 1, "maxLength": 2000},
+        "sample_size": {"type": ["integer", "null"], "minimum": 0},
+        "population": {"type": "string", "minLength": 1, "maxLength": 1000}
+      }
+    },
+    "collector": {"$ref": "#/$defs/actorRef"},
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1, "maxLength": 1000}
+    },
+    "hypothesis_refs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^H-[A-Z0-9][A-Z0-9._-]{2,63}$"}
+    },
+    "measurements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["metric", "value", "unit"],
+        "properties": {
+          "metric": {"type": "string", "minLength": 1, "maxLength": 500},
+          "value": {"type": ["string", "number", "integer", "boolean"]},
+          "unit": {"type": "string", "minLength": 1, "maxLength": 100}
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "collection_method", "is_fixture", "untrusted_input"],
+      "properties": {
+        "kind": {"type": "string", "enum": ["external", "internal", "model_generated", "fixture"]},
+        "collection_method": {"type": "string", "minLength": 1, "maxLength": 1000},
+        "is_fixture": {"type": "boolean"},
+        "untrusted_input": {"type": "boolean"}
+      }
+    }
+  },
+  "$defs": {
+    "actorRef": {"type": "string", "pattern": "^(human|agent|kernel|verifier|platform):[A-Za-z0-9][A-Za-z0-9._@+:/-]{1,127}$"}
+  }
+}

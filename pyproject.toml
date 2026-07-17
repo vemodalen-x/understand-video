@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tempo-governance"
+version = "0.1.0"
+description = "Business-gated governance for bounded agentic MVP delivery"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "The TEMPO Authors" }]
+dependencies = []
+
+[project.scripts]
+tempo = "tempo.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]

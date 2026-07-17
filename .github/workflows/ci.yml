@@ -1,0 +1,49 @@
+name: TEMPO conformance
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tempo-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  host-conformance:
+    name: Host conformance (${{ matrix.os }}, Python ${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ["3.10"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Compile
+        run: python -m compileall -q src bin enforcement
+      - name: Test
+        run: python -m unittest discover -s tests -p "test_*.py"
+      - name: Selfcheck
+        run: python bin/tempo selfcheck
+      - name: Credential-free demo
+        run: python bin/tempo demo
+
+  judge-container:
+    name: Network-disabled judge container
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Verify the whole suite in the pinned profile
+        run: python bin/tempo verify --level all --require-container

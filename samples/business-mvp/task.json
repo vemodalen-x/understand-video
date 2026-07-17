@@ -1,0 +1,12 @@
+{
+  "task_id": "T-DEMO-BUILD",
+  "title": "Exercise the bounded implementation start",
+  "lane": "kernel",
+  "scope_in": ["src/**"],
+  "scope_out": ["plan/**", "submission/**"],
+  "opportunity_ref": "O-DEMO-001",
+  "charter_ref": "M-DEMO-001",
+  "hypothesis_refs": ["H-PROBLEM-001"],
+  "budget": {"amount": 100, "currency": "USD"},
+  "deadline": "2030-07-21T16:00:00Z"
+}
