@@ -1,0 +1,109 @@
+{
+  "business_model_id": "BM-UNDERSTAND-VIDEO-001",
+  "version": 1,
+  "opportunity_ref": "O-UNDERSTAND-VIDEO-001",
+  "state": "validating",
+  "value_proposition": "Compile an existing repository knowledge graph into a concise English learning video with deterministic scenes, source grounding, strict duration, subtitles, and verifiable provenance.",
+  "target_segment": "Developer teams and open-source maintainers already using or able to generate Understand-Anything graphs",
+  "target_user": {
+    "description": "A developer or technical collaborator learning an unfamiliar repository.",
+    "value_or_need": "A short replayable mental-model primer with links back to the exact source snapshot."
+  },
+  "economic_buyer": {
+    "description": "An engineering, developer-experience, or open-source lead responsible for onboarding and explanation quality.",
+    "value_or_need": "Reusable onboarding output that can be regenerated when source changes and independently checked for provenance."
+  },
+  "willingness_to_pay_or_internal_roi_hypothesis": "A team will adopt the workflow if a sub-three-minute grounded walkthrough improves the first architecture task without more than ten minutes of operator setup after graph generation.",
+  "revenue_or_economic_value_model": "Potential value comes from reduced repeated explanation effort and faster repository orientation; no saved-time or willingness-to-pay claim is made before user evidence exists.",
+  "acquisition_distribution_hypothesis": "Developers will discover the tool through a Codex-compatible skill, a pnpm CLI, the Understand-Anything ecosystem, and a credential-free sample video run.",
+  "adoption_friction": [
+    "The target repository must have a valid and sufficiently fresh Understand-Anything graph",
+    "Strict provenance may block convenient but stale or dirty runs",
+    "Production English speech may require an authorized paid provider",
+    "Teams must trust a programmatic visual style rather than a hand-edited video"
+  ],
+  "key_partners_or_dependencies": [
+    "Understand-Anything graph output",
+    "Git",
+    "Node.js and pnpm",
+    "FFmpeg and ffprobe",
+    "A configured speech provider for final narration",
+    "TEMPO governance kernel"
+  ],
+  "rough_cost_drivers": [
+    {
+      "driver": "Engineering and verification",
+      "basis": "TypeScript graph, storyboard, caption, renderer, and verifier implementation plus tests",
+      "uncertainty": "high"
+    },
+    {
+      "driver": "Synthetic speech",
+      "basis": "Narration characters multiplied by the configured provider price; capped per run",
+      "uncertainty": "medium"
+    },
+    {
+      "driver": "Local media rendering",
+      "basis": "CPU time, temporary frames, and final 1080p H.264 output",
+      "uncertainty": "medium"
+    }
+  ],
+  "alternatives_and_differentiation": [
+    {
+      "alternative": "Understand-Anything interactive dashboard",
+      "differentiation": "The proposed extension compiles the graph into a bounded, narrated, subtitled, reproducible artifact instead of replacing exploration."
+    },
+    {
+      "alternative": "Manual screen recording and editing",
+      "differentiation": "The compiler binds scenes and claims to a Git snapshot and can regenerate receipts when inputs change."
+    },
+    {
+      "alternative": "Prompt-only AI script generation",
+      "differentiation": "Deterministic validation restricts references, scene types, duration, subtitles, and output provenance."
+    }
+  ],
+  "defensibility_hypothesis": "The durable advantage would be the combination of graph-native source grounding, deterministic media compilation, and governance-bound receipts rather than a proprietary prompt.",
+  "material_risks": [
+    {
+      "risk_id": "BR-VIDEO-001",
+      "category": "trust",
+      "description": "A fluent narration may make a weak or unrelated source reference look authoritative.",
+      "resolution_status": "mitigated"
+    },
+    {
+      "risk_id": "BR-VIDEO-002",
+      "category": "security",
+      "description": "Untrusted repository content may attempt prompt, path, subtitle, shell, or renderer injection.",
+      "resolution_status": "mitigated"
+    },
+    {
+      "risk_id": "BR-VIDEO-003",
+      "category": "legal",
+      "description": "Upstream open-source capability could be misrepresented as new work or used without notice.",
+      "resolution_status": "mitigated"
+    },
+    {
+      "risk_id": "BR-VIDEO-004",
+      "category": "technical",
+      "description": "Measured narration and deterministic 1080p rendering may not fit the D0 deadline.",
+      "resolution_status": "mitigated"
+    },
+    {
+      "risk_id": "BR-VIDEO-005",
+      "category": "market",
+      "description": "The video may be polished without improving a developer's learning outcome.",
+      "resolution_status": "mitigated"
+    }
+  ],
+  "hypothesis_refs": [
+    "H-LEARNING-001",
+    "H-FEASIBILITY-001",
+    "H-ADOPTION-001"
+  ],
+  "evidence_refs": [
+    "E-MODEL-VIDEO-001",
+    "E-EXPERIMENT-VIDEO-001"
+  ],
+  "owner": "human:repository-owner",
+  "created_at": "2026-07-17T14:22:50Z",
+  "updated_at": "2026-07-17T14:22:50Z"
+}

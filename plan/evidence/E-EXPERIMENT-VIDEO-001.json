@@ -1,0 +1,53 @@
+{
+  "captured_at": "2026-07-17T14:29:34Z",
+  "claim_tested": "A committed Understand-Anything graph contains enough structured evidence to create one coherent narrated, subtitled, deterministic proof video.",
+  "collector": "verifier:local-media-spike",
+  "content_hash": "sha256:038eb1d5f86324d296ce4fc3f2269ae7fd9458c6e5d543c64b7519c83dad9fa5",
+  "directness": "direct",
+  "evidence_id": "E-EXPERIMENT-VIDEO-001",
+  "freshness": {
+    "expires_at": "2026-08-16T14:29:34Z",
+    "policy": "source_specific"
+  },
+  "hypothesis_refs": [
+    "H-FEASIBILITY-001"
+  ],
+  "limitations": [
+    "Internal technical experiment, not external customer or learner evidence",
+    "The source graph is stale relative to the selected upstream implementation commit",
+    "The 56.592-second proof uses 1280x720 rather than the target 1920x1080 output",
+    "The proof subtitle cue can render beyond the production two-line limit",
+    "The proof does not exercise GPT-5.6 runtime planning or an external production speech provider"
+  ],
+  "measurements": [
+    {
+      "metric": "Grounded proof videos produced from a validated graph",
+      "unit": "proof videos",
+      "value": 1
+    },
+    {
+      "metric": "Actual proof duration",
+      "unit": "milliseconds",
+      "value": 56592
+    },
+    {
+      "metric": "Spoken scene subtitle coverage",
+      "unit": "percent",
+      "value": 100
+    }
+  ],
+  "provenance": {
+    "collection_method": "System.Speech synthesis, deterministic FFmpeg render, ffprobe stream inspection, and SHA-256 hashing",
+    "is_fixture": false,
+    "kind": "internal",
+    "untrusted_input": true
+  },
+  "sample_context": {
+    "description": "One bounded local graph-to-video feasibility spike using the upstream dashboard sample graph and offline English system speech",
+    "population": "One stale sample graph; no learner population",
+    "sample_size": 1
+  },
+  "source_reference": "experiment://local/graph-video-spike/verification.json",
+  "source_type": "experiment_result",
+  "stance": "supports"
+}

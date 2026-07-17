@@ -1,0 +1,223 @@
+{
+  "allowed_lanes": [
+    "video-core",
+    "media",
+    "verification",
+    "documentation"
+  ],
+  "budget_cap": {
+    "amount": 25,
+    "currency": "USD"
+  },
+  "created_at": "2026-07-17T14:22:50Z",
+  "d0_user_journey": [
+    {
+      "action": "Selects a local Git repository with a valid Understand-Anything graph and the architecture or Hackathon profile.",
+      "actor": "Developer",
+      "observable_result": "The CLI reports the exact source commit, graph hash, freshness state, planned files, external actions, and duration budget.",
+      "order": 1,
+      "step_id": "J-VIDEO-001"
+    },
+    {
+      "action": "Slices the graph and obtains a schema-valid, source-grounded English storyboard from the configured GPT-5.6 planning boundary.",
+      "actor": "Video compiler",
+      "observable_result": "Every material narration segment references an allowed graph or source artifact and passes independent review.",
+      "order": 2,
+      "step_id": "J-VIDEO-002"
+    },
+    {
+      "action": "Synthesizes measured English speech, compiles SRT and WebVTT captions, and renders deterministic visual scenes.",
+      "actor": "Video compiler",
+      "observable_result": "A local MP4 with synchronized narration and captions is produced without executing repository content.",
+      "order": 3,
+      "step_id": "J-VIDEO-003"
+    },
+    {
+      "action": "Checks graph/source identity, grounding, duration, subtitles, A/V streams, hashes, and governance provenance.",
+      "actor": "Independent verifier",
+      "observable_result": "A machine-readable pass or fail receipt and source-linked transcript are produced.",
+      "order": 4,
+      "step_id": "J-VIDEO-004"
+    }
+  ],
+  "data_boundaries": [
+    "Only graph-selected, repository-contained, allowlisted source paths may be read",
+    "Credential paths and secret-like excerpts are blocked or redacted without recording secret values",
+    "External speech receives narration text and voice settings only, never raw repository source",
+    "Private repository data combined with untrusted content and external network calls is not auto-approved"
+  ],
+  "deadline": "2026-07-21T08:00:00Z",
+  "decision_question_ref": "O-UNDERSTAND-VIDEO-001#/decision_question",
+  "decision_to_unlock": "Determine whether a graph-native compiler can reliably produce a grounded, narrated, verified code-learning video and support a subsequent learner-value pilot.",
+  "demo_beats": [
+    {
+      "acceptance": "The demo identifies the graph hash and source commit and blocks stale, unknown, dirty, or escaping inputs.",
+      "beat_id": "B-VIDEO-001",
+      "demo_tier": "D0",
+      "description": "Strict graph and source snapshot validation",
+      "order": 1
+    },
+    {
+      "acceptance": "Architecture and Hackathon profiles produce schema-valid scenes whose required claims retain source references through duration compression.",
+      "beat_id": "B-VIDEO-002",
+      "demo_tier": "D0",
+      "description": "Grounded storyboard and duration compilation",
+      "order": 2
+    },
+    {
+      "acceptance": "Measured English narration, SRT, WebVTT, optional burn-in, and deterministic visuals produce a decodable MP4 below the hard duration.",
+      "beat_id": "B-VIDEO-003",
+      "demo_tier": "D0",
+      "description": "Narrated and subtitled deterministic MP4",
+      "order": 3
+    },
+    {
+      "acceptance": "The TEMPO repository is explained by a local video whose receipt binds source, storyboard, narration, captions, media, governance, Codex, and GPT-5.6 provenance.",
+      "beat_id": "B-VIDEO-004",
+      "demo_tier": "D0",
+      "description": "Machine verification and dogfood receipt",
+      "order": 4
+    }
+  ],
+  "evidence_baseline": {
+    "captured_at": "2026-07-17T14:31:37Z",
+    "evidence_refs": [
+      "E-MODEL-VIDEO-001",
+      "E-EXPERIMENT-VIDEO-001"
+    ],
+    "manifest_hash": "sha256:86f8a344997741ef11fad075ef534d4fa371bfae4482a5c74d29f02ecef88dd2",
+    "manifest_ref": "plan/evidence/manifest.jsonl"
+  },
+  "hypothesis_refs": [
+    "H-LEARNING-001",
+    "H-FEASIBILITY-001",
+    "H-ADOPTION-001"
+  ],
+  "implementation_risk_tier": "R2",
+  "in_scope": [
+    "packages/**",
+    "skills/**",
+    "agents/**",
+    "tests/video/**",
+    "samples/governed-framework-video/**",
+    "submission/**",
+    "docs/**",
+    "README.md",
+    "NOTICE",
+    "UPSTREAM_BASELINE.json",
+    "package.json",
+    "pnpm-workspace.yaml",
+    "pnpm-lock.yaml",
+    ".gitignore",
+    ".github/**",
+    "tasks/**"
+  ],
+  "kill_and_pivot_triggers": [
+    {
+      "action": "pivot",
+      "condition": "A bounded graph feasibility spike cannot produce a coherent grounded proof video.",
+      "reason_code": "GRAPH_INPUT_INSUFFICIENT",
+      "trigger_id": "KP-VIDEO-001"
+    },
+    {
+      "action": "pivot",
+      "condition": "Required narration cannot fit naturally below the strict 180-second limit after optional content is removed.",
+      "reason_code": "DURATION_INVARIANT_UNMET",
+      "trigger_id": "KP-VIDEO-002"
+    },
+    {
+      "action": "kill",
+      "condition": "The implementation requires executing untrusted repository code or transmitting raw source to an external speech provider.",
+      "reason_code": "SECURITY_BOUNDARY_UNACCEPTABLE",
+      "trigger_id": "KP-VIDEO-003"
+    }
+  ],
+  "mvp_id": "M-UNDERSTAND-VIDEO-001",
+  "opportunity_ref": "O-UNDERSTAND-VIDEO-001",
+  "out_of_scope": [
+    "Replacing or modifying the Understand-Anything analyzer",
+    "A nonlinear video editor or drag-and-drop timeline",
+    "Avatars, lip synchronization, background music, or generative B-roll",
+    "Multilingual narration",
+    "Cloud rendering or multi-tenant SaaS",
+    "Automatic YouTube upload or Devpost submission",
+    "External speech calls without a valid warrant, declared provider, data boundary, and cost cap",
+    "Claims of measured learning improvement without observed user evidence"
+  ],
+  "owner": "human:repository-owner",
+  "post_mvp_decision_meeting": {
+    "decision_question": "Should the verified vertical slice be submitted and should a five-developer learning comparison be run after Build Week?",
+    "owner": "human:repository-owner",
+    "required_participants": [
+      "human:repository-owner",
+      "human:engineering-reviewer"
+    ],
+    "scheduled_at": "2026-07-21T10:00:00Z"
+  },
+  "rollback_or_disposal_plan": "Keep source and machine receipts, remove generated temporary frames and unauthorized external-provider outputs, and never publish the video or submit to Devpost without a separate human action.",
+  "signed_at": null,
+  "signed_by": null,
+  "state": "draft",
+  "success_metrics": [
+    {
+      "measurement_method": "The independent validator checks every material narration segment against existing graph/source references.",
+      "metric_id": "SM-VIDEO-001",
+      "name": "Grounded required narration",
+      "operator": "==",
+      "threshold": 100,
+      "unit": "percent"
+    },
+    {
+      "measurement_method": "ffprobe media duration recorded by the independent verifier.",
+      "metric_id": "SM-VIDEO-002",
+      "name": "Hackathon hard duration",
+      "operator": "<",
+      "threshold": 180000,
+      "unit": "milliseconds"
+    },
+    {
+      "measurement_method": "Caption verifier matches monotonic SRT and VTT cues to every measured speech segment.",
+      "metric_id": "SM-VIDEO-003",
+      "name": "Spoken scene subtitle coverage",
+      "operator": "==",
+      "threshold": 100,
+      "unit": "percent"
+    },
+    {
+      "measurement_method": "Automated test inventory and complete suite receipt.",
+      "metric_id": "SM-VIDEO-004",
+      "name": "Required acceptance-test cases implemented",
+      "operator": "==",
+      "threshold": 50,
+      "unit": "tests"
+    },
+    {
+      "measurement_method": "Timed clean-clone judge-path run after a graph is available.",
+      "metric_id": "SM-VIDEO-005",
+      "name": "Operator setup after graph generation",
+      "operator": "<",
+      "threshold": 10,
+      "unit": "minutes"
+    }
+  ],
+  "supported_audience": [
+    "Developers onboarding to unfamiliar repositories",
+    "Maintainers and technical leads",
+    "AI engineers auditing agent-generated repositories",
+    "Hackathon judges testing a Developer Tool"
+  ],
+  "supported_environment": [
+    "Windows PowerShell with Node.js 22+, pnpm 10+, Git, FFmpeg, and ffprobe",
+    "macOS or Linux shell with Node.js 22+, pnpm 10+, Git, FFmpeg, and ffprobe",
+    "Credential-free fixture test path"
+  ],
+  "technical_boundaries": [
+    "Consume the pinned Understand-Anything graph contract; do not replace its analyzer",
+    "Model output is declarative schema-valid JSON and is never executed",
+    "The core remains independent of one speech provider and one renderer",
+    "FFmpeg-based media work is invoked through argument arrays with bounded inputs",
+    "Hackathon runs require a fresh graph, a known commit, and a clean source tree"
+  ],
+  "updated_at": "2026-07-17T14:31:37Z",
+  "version": 1
+}

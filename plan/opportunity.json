@@ -1,0 +1,59 @@
+{
+  "opportunity_id": "O-UNDERSTAND-VIDEO-001",
+  "version": 1,
+  "state": "VALIDATING",
+  "decision_question": "Can an existing Understand-Anything graph be converted into a useful, source-grounded English code walkthrough video of less than three minutes, with less than ten minutes of operator setup after graph generation?",
+  "decision_owner": "human:repository-owner",
+  "decision_at": "2026-07-20T12:00:00Z",
+  "initiating_context": "Developers entering an unfamiliar repository must actively inspect many files or manually record explanations; static graphs help exploration but do not create a concise, replayable learning artifact.",
+  "target_user": {
+    "segment": "Developers onboarding to unfamiliar repositories",
+    "description": "Developers, maintainers, technical leads, and AI engineers who need a fast high-level mental model of a codebase.",
+    "usage_context": "After an Understand-Anything knowledge graph has been generated and before deep file-by-file exploration."
+  },
+  "economic_buyer": {
+    "same_as_target_user": false,
+    "description": "An engineering or open-source lead accountable for onboarding quality and developer time.",
+    "value_recipient": "The developer receives a reusable explanation while the team receives reproducible, source-linked onboarding material."
+  },
+  "job_to_be_done": "Turn an exact repository snapshot and its knowledge graph into a short narrated walkthrough whose material claims can be traced back to source evidence.",
+  "observed_problem": "Existing graph exploration still requires active navigation, manual screen recordings become stale, and fluent AI summaries may lack mechanical source grounding or duration guarantees.",
+  "current_alternatives": [
+    "Unguided file-by-file repository exploration",
+    "Interactive use of the existing Understand-Anything dashboard",
+    "Manually authored documentation or onboarding calls",
+    "Manually edited screen recordings",
+    "Ungrounded AI-generated narration scripts"
+  ],
+  "expected_value": "A concise, replayable, provenance-bound learning artifact and a faster path to the first correct architecture discussion; learning improvement remains unproven until observed with users.",
+  "strategic_context": "The project is a Developer Tools submission that must meaningfully use Codex and GPT-5.6 while clearly separating pre-existing graph analysis from the new video compilation pipeline.",
+  "constraints": [
+    {
+      "constraint_id": "C-VIDEO-001",
+      "type": "deadline",
+      "description": "The Build Week submission deadline is 2026-07-21 17:00 PT; the internal build deadline is earlier."
+    },
+    {
+      "constraint_id": "C-VIDEO-002",
+      "type": "technical",
+      "description": "The Hackathon video must be strictly less than 180 seconds and target approximately 165 seconds."
+    },
+    {
+      "constraint_id": "C-VIDEO-003",
+      "type": "security",
+      "description": "Repository content and graph summaries are untrusted; source access, rendering, and outbound speech must be bounded."
+    },
+    {
+      "constraint_id": "C-VIDEO-004",
+      "type": "legal",
+      "description": "Understand-Anything is pre-existing MIT-licensed work and must be attributed without implying affiliation or trademark rights."
+    },
+    {
+      "constraint_id": "C-VIDEO-005",
+      "type": "budget",
+      "description": "External service spend for the vertical slice may not exceed USD 25; any TTS call requires a narrower declared cap and human authorization."
+    }
+  ],
+  "created_at": "2026-07-17T14:22:50Z",
+  "updated_at": "2026-07-17T14:22:50Z"
+}

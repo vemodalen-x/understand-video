@@ -1,0 +1,112 @@
+{
+  "hypothesis_set_id": "HS-UNDERSTAND-VIDEO-001",
+  "version": 1,
+  "opportunity_ref": "O-UNDERSTAND-VIDEO-001",
+  "owner": "human:repository-owner",
+  "review_at": "2026-07-20T12:00:00Z",
+  "hypotheses": [
+    {
+      "hypothesis_id": "H-LEARNING-001",
+      "rank": 1,
+      "type": "desirability",
+      "statement": "A developer can obtain a correct high-level mental model of an unfamiliar repository faster from a concise, source-linked video than from unguided file-by-file exploration.",
+      "why_it_matters": "If the video does not improve correct orientation, the media pipeline adds production complexity without user value.",
+      "falsification_condition": "Fewer than three of five target developers complete a repository architecture task correctly and faster with the source-linked video than with unguided exploration.",
+      "evidence_threshold": {
+        "metric": "Developers completing the architecture task correctly and faster with video",
+        "aggregation": "sum",
+        "operator": ">=",
+        "target": 3,
+        "unit": "of 5 observed comparisons",
+        "minimum_evidence_items": 2,
+        "required_source_types": [
+          "observed_user_behavior"
+        ]
+      },
+      "kill_or_pivot_trigger": {
+        "action": "pivot",
+        "condition": "The threshold is missed after five independent observed developer comparisons.",
+        "reason_code": "LEARNING_ADVANTAGE_NOT_SUPPORTED"
+      },
+      "status": "untested",
+      "evidence_refs": [],
+      "confidence": {
+        "score": 30,
+        "scale": "0-100",
+        "rationale": "The product thesis is plausible but no learner comparison has been observed."
+      },
+      "owner": "human:repository-owner",
+      "review_at": "2026-07-20T12:00:00Z"
+    },
+    {
+      "hypothesis_id": "H-FEASIBILITY-001",
+      "rank": 2,
+      "type": "technical_feasibility",
+      "statement": "A validated Understand-Anything graph contains enough grounded structure to produce one coherent narrated storyboard and deterministic proof video.",
+      "why_it_matters": "Graph-to-video feasibility is a prerequisite for testing the learner-value hypothesis.",
+      "falsification_condition": "A bounded manual spike cannot create a coherent storyboard, synthetic English audio, subtitles, and a decodable proof video from the graph.",
+      "evidence_threshold": {
+        "metric": "Grounded proof videos produced from a validated graph",
+        "aggregation": "sum",
+        "operator": ">=",
+        "target": 1,
+        "unit": "proof videos",
+        "minimum_evidence_items": 1,
+        "required_source_types": [
+          "experiment_result"
+        ]
+      },
+      "kill_or_pivot_trigger": {
+        "action": "pivot",
+        "condition": "The graph lacks enough structure for a coherent proof after one bounded feasibility spike.",
+        "reason_code": "GRAPH_INPUT_INSUFFICIENT"
+      },
+      "status": "supported",
+      "evidence_refs": [
+        "E-EXPERIMENT-VIDEO-001"
+      ],
+      "confidence": {
+        "score": 70,
+        "scale": "0-100",
+        "rationale": "One internal local experiment produced a 56.592-second H.264/AAC proof with offline English narration, SRT/VTT, valid graph references, and a machine verification artifact."
+      },
+      "owner": "human:repository-owner",
+      "review_at": "2026-07-18T12:00:00Z"
+    },
+    {
+      "hypothesis_id": "H-ADOPTION-001",
+      "rank": 3,
+      "type": "adoption",
+      "statement": "A developer can start video generation in less than ten minutes after a valid graph already exists.",
+      "why_it_matters": "A complicated setup would erase the convenience of a generated learning artifact.",
+      "falsification_condition": "Median observed operator setup exceeds ten minutes across three clean-clone runs.",
+      "evidence_threshold": {
+        "metric": "Clean-clone setup duration after graph generation",
+        "aggregation": "mean",
+        "operator": "<",
+        "target": 10,
+        "unit": "minutes",
+        "minimum_evidence_items": 3,
+        "required_source_types": [
+          "observed_user_behavior"
+        ]
+      },
+      "kill_or_pivot_trigger": {
+        "action": "pivot",
+        "condition": "Observed setup remains at or above ten minutes after the documented judge path is finalized.",
+        "reason_code": "SETUP_TOO_COMPLEX"
+      },
+      "status": "untested",
+      "evidence_refs": [],
+      "confidence": {
+        "score": 35,
+        "scale": "0-100",
+        "rationale": "The intended CLI is simple, but clean-clone operator timing has not been measured."
+      },
+      "owner": "human:repository-owner",
+      "review_at": "2026-07-20T12:00:00Z"
+    }
+  ],
+  "created_at": "2026-07-17T14:22:50Z",
+  "updated_at": "2026-07-17T14:22:50Z"
+}

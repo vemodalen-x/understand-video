@@ -1,0 +1,151 @@
+{
+  "aggregate_threshold": 70,
+  "approved_at": null,
+  "approved_by": null,
+  "cheaper_experiment_types": [
+    "interview",
+    "landing_page_test",
+    "concierge_workflow",
+    "manual_service",
+    "clickable_prototype",
+    "api_feasibility_spike",
+    "benchmark",
+    "pricing_test",
+    "data_availability_check"
+  ],
+  "effective_at": "2026-07-17T14:21:44Z",
+  "external_evidence": {
+    "minimum_items": 1,
+    "model_generated_counts_as_external": false,
+    "require_contradictions_acknowledged": true
+  },
+  "floors": {
+    "desirability": 50,
+    "differentiation": 35,
+    "distribution_feasibility": 40,
+    "economic_value": 45,
+    "evidence_quality": 60,
+    "expected_decision_value": 50,
+    "implementation_cost": 40,
+    "problem_evidence": 60,
+    "risk_exposure": 50,
+    "strategic_fit": 35,
+    "target_segment_clarity": 50,
+    "technical_feasibility": 50
+  },
+  "hard_blockers": [
+    {
+      "blocker_id": "B01",
+      "description": "Decision question, owner, and date are mandatory.",
+      "reason_code": "DECISION_OWNER_REQUIRED"
+    },
+    {
+      "blocker_id": "B02",
+      "description": "Target user must be explicit.",
+      "reason_code": "TARGET_USER_REQUIRED"
+    },
+    {
+      "blocker_id": "B03",
+      "description": "Economic buyer and value recipient must be explicit.",
+      "reason_code": "ECONOMIC_BUYER_REQUIRED"
+    },
+    {
+      "blocker_id": "B04",
+      "description": "Concrete non-model evidence is required.",
+      "reason_code": "EXTERNAL_EVIDENCE_REQUIRED"
+    },
+    {
+      "blocker_id": "B05",
+      "description": "Exactly one falsifiable rank-1 hypothesis is required.",
+      "reason_code": "RANK_1_REQUIRED"
+    },
+    {
+      "blocker_id": "B06",
+      "description": "Evidence threshold and kill or pivot trigger are required.",
+      "reason_code": "THRESHOLD_REQUIRED"
+    },
+    {
+      "blocker_id": "B07",
+      "description": "Stale and model-only evidence cannot pass.",
+      "reason_code": "FRESH_EVIDENCE_REQUIRED"
+    },
+    {
+      "blocker_id": "B08",
+      "description": "Contradictory evidence must be acknowledged.",
+      "reason_code": "COUNTEREVIDENCE_ACK_REQUIRED"
+    },
+    {
+      "blocker_id": "B09",
+      "description": "Alternatives and differentiation must be considered.",
+      "reason_code": "ALTERNATIVES_REQUIRED"
+    },
+    {
+      "blocker_id": "B10",
+      "description": "An economic value or ROI path is required.",
+      "reason_code": "VALUE_PATH_REQUIRED"
+    },
+    {
+      "blocker_id": "B11",
+      "description": "Distribution or adoption must be hypothesized.",
+      "reason_code": "DISTRIBUTION_REQUIRED"
+    },
+    {
+      "blocker_id": "B12",
+      "description": "Technical feasibility must be bounded.",
+      "reason_code": "TECHNICAL_BOUNDARY_REQUIRED"
+    },
+    {
+      "blocker_id": "B13",
+      "description": "Material risks must be resolved, mitigated, or human-accepted.",
+      "reason_code": "MATERIAL_RISK_CLOSED"
+    },
+    {
+      "blocker_id": "B14",
+      "description": "The MVP must name the decision it unlocks.",
+      "reason_code": "DECISION_UNLOCK_REQUIRED"
+    },
+    {
+      "blocker_id": "B15",
+      "description": "Scope, success, budget, deadline, and exclusions are mandatory.",
+      "reason_code": "CHARTER_COMPLETE"
+    },
+    {
+      "blocker_id": "B16",
+      "description": "A cheaper sufficient experiment blocks an MVP.",
+      "reason_code": "CHEAPEST_EXPERIMENT_REQUIRED"
+    },
+    {
+      "blocker_id": "B17",
+      "description": "Projected cost must remain within budget.",
+      "reason_code": "BUDGET_CAP_REQUIRED"
+    },
+    {
+      "blocker_id": "B18",
+      "description": "All authoritative inputs must be schema-valid.",
+      "reason_code": "SCHEMA_VALIDATION_REQUIRED"
+    },
+    {
+      "blocker_id": "B19",
+      "description": "Signer-approved policy and decision brief are mandatory.",
+      "reason_code": "HUMAN_DECISION_REQUIRED"
+    }
+  ],
+  "owner": "human:local-operator",
+  "policy_id": "RP-LOCAL-DRAFT",
+  "state": "draft",
+  "version": 1,
+  "weights": {
+    "desirability": 10,
+    "differentiation": 7,
+    "distribution_feasibility": 8,
+    "economic_value": 10,
+    "evidence_quality": 12,
+    "expected_decision_value": 8,
+    "implementation_cost": 5,
+    "problem_evidence": 14,
+    "risk_exposure": 5,
+    "strategic_fit": 5,
+    "target_segment_clarity": 8,
+    "technical_feasibility": 8
+  }
+}

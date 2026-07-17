@@ -1,0 +1,43 @@
+{
+  "captured_at": "2026-07-17T14:22:50Z",
+  "claim_tested": "A source-grounded graph-to-video compiler is a coherent Developer Tools opportunity worth evaluating.",
+  "collector": "agent:codex",
+  "content_hash": null,
+  "directness": "synthesis",
+  "evidence_id": "E-MODEL-VIDEO-001",
+  "freshness": {
+    "expires_at": "2026-10-15T14:22:50Z",
+    "policy": "default"
+  },
+  "hypothesis_refs": [
+    "H-LEARNING-001",
+    "H-FEASIBILITY-001",
+    "H-ADOPTION-001"
+  ],
+  "limitations": [
+    "Model synthesis is not external evidence",
+    "No learner outcome or willingness-to-pay claim is validated",
+    "The direct human brief authorizes evaluation but does not authorize its own MVP warrant"
+  ],
+  "measurements": [
+    {
+      "metric": "Developers completing the architecture task correctly and faster with video",
+      "unit": "of 5 observed comparisons",
+      "value": 0
+    }
+  ],
+  "provenance": {
+    "collection_method": "Codex task analysis of the human-provided specification and inspected source baselines",
+    "is_fixture": false,
+    "kind": "model_generated",
+    "untrusted_input": true
+  },
+  "sample_context": {
+    "description": "GPT-5.6 task analysis and product brief synthesis",
+    "population": "No observed user population",
+    "sample_size": null
+  },
+  "source_reference": "attachment://93e9e4e1-20fd-4b0c-a44c-f1f100a74e76/pasted-text.txt",
+  "source_type": "model_generated_synthesis",
+  "stance": "supports"
+}

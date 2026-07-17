@@ -1,0 +1,13 @@
+This project is based on the MIT-licensed TEMPO governance framework:
+https://github.com/vemodalen-x/TEMPO
+
+It integrates with the graph output of the MIT-licensed Understand-Anything
+project:
+https://github.com/Egonex-AI/Understand-Anything
+
+Understand-Anything copyright (c) 2026 Yuxiang Lin and
+Infinite Universe, Inc.
+
+This project is independent. It is not affiliated with, endorsed by, or
+sponsored by Egonex, Yuxiang Lin, Infinite Universe, Inc., OpenAI, or Devpost.
+Open-source licenses do not grant trademark rights.
