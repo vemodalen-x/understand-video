@@ -4,13 +4,14 @@
   "active": true,
   "release": "0.1.0",
   "frozen_at": "2026-07-17T13:56:42Z",
-  "release_candidate_commit": "3616c6902a69deba4b3b0ab4d5a7997dc981dfe6",
+  "last_verified_at": "2026-07-17T14:00:38Z",
+  "release_candidate_commit": "d536d5ed5b69c29745c73f61456b83125e84cdef",
   "basis": {
     "public_repository": "https://github.com/vemodalen-x/TEMPO",
     "clean_clone_verified": true,
     "clean_clone_tests": 86,
     "github_actions_conclusion": "success",
-    "github_actions_run": "https://github.com/vemodalen-x/TEMPO/actions/runs/29585804719",
+    "github_actions_run": "https://github.com/vemodalen-x/TEMPO/actions/runs/29586113000",
     "host_matrix": ["ubuntu-latest", "windows-latest", "macos-latest"],
     "network_disabled_pinned_container": true
   },
