@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Anonymous learning comparison observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "experiment_id",
+    "participant_id",
+    "is_real_observation",
+    "consent_confirmed",
+    "unfamiliar_with_target_repository",
+    "ai_assistance_used",
+    "source_snapshot_confirmed",
+    "assignment",
+    "conditions",
+    "captured_at",
+    "observer_ref",
+    "protocol_deviations"
+  ],
+  "properties": {
+    "experiment_id": {"const": "X-LEARNING-COMPARISON-001"},
+    "participant_id": {"type": "string", "pattern": "^P-00[1-5]$"},
+    "is_real_observation": {"type": "boolean"},
+    "consent_confirmed": {"type": "boolean"},
+    "unfamiliar_with_target_repository": {"type": "boolean"},
+    "ai_assistance_used": {"type": "boolean"},
+    "source_snapshot_confirmed": {"type": "boolean"},
+    "assignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["first_condition", "video_module", "unguided_module"],
+      "properties": {
+        "first_condition": {"enum": ["video", "unguided"]},
+        "video_module": {"enum": ["A", "B"]},
+        "unguided_module": {"enum": ["A", "B"]}
+      }
+    },
+    "conditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["video", "unguided"],
+      "properties": {
+        "video": {"$ref": "#/$defs/result"},
+        "unguided": {"$ref": "#/$defs/result"}
+      }
+    },
+    "captured_at": {"type": "string", "format": "date-time"},
+    "observer_ref": {"type": "string", "pattern": "^human:[A-Za-z0-9][A-Za-z0-9._@+:/-]{1,127}$"},
+    "protocol_deviations": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1, "maxLength": 500}
+    }
+  },
+  "$defs": {
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["module", "duration_seconds", "answers"],
+      "properties": {
+        "module": {"enum": ["A", "B"]},
+        "duration_seconds": {"type": "number", "exclusiveMinimum": 0, "maximum": 360},
+        "answers": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {"enum": ["A", "B", "C", "D"]}
+        }
+      }
+    }
+  }
+}

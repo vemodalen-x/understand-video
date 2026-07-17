@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "experiment_id": "X-LEARNING-COMPARISON-001",
+  "source_commit": "58cfb20ac8f3f98cd7dede428d147dbe9cdc94b2",
+  "modules": {
+    "A": ["B", "A", "C", "D"],
+    "B": ["A", "B", "C", "D"]
+  },
+  "video_win_rule": {
+    "minimum_video_score": 3,
+    "video_score_must_be_at_least_unguided_score": true,
+    "video_duration_must_be_less_than_unguided_duration": true
+  },
+  "rank_one_threshold": {
+    "metric": "Developers completing the architecture task correctly and faster with video",
+    "aggregation": "sum",
+    "operator": ">=",
+    "target": 3,
+    "unit": "of 5 observed comparisons"
+  }
+}

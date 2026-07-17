@@ -1,0 +1,17 @@
+{
+  "experiment_id": "X-LEARNING-COMPARISON-001",
+  "participant_id": "P-005",
+  "is_real_observation": false,
+  "consent_confirmed": true,
+  "unfamiliar_with_target_repository": true,
+  "ai_assistance_used": false,
+  "source_snapshot_confirmed": true,
+  "assignment": {"first_condition": "video", "video_module": "A", "unguided_module": "B"},
+  "conditions": {
+    "video": {"module": "A", "duration_seconds": 90, "answers": ["B", "A", "A", "A"]},
+    "unguided": {"module": "B", "duration_seconds": 180, "answers": ["A", "B", "C", "D"]}
+  },
+  "captured_at": "2026-07-17T00:05:00Z",
+  "observer_ref": "human:fixture-observer",
+  "protocol_deviations": []
+}
