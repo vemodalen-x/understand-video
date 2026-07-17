@@ -33,13 +33,13 @@
     "confirmed": false
   },
   "release_verification": {
-    "release_candidate_commit": "d536d5ed5b69c29745c73f61456b83125e84cdef",
+    "release_candidate_commit": "40c7fde58c5f90d3b2920957a1129223739a6db4",
     "public_repository_verified": true,
     "clean_clone_verified": true,
-    "clean_clone_tests": 86,
+    "clean_clone_tests": 87,
     "github_actions_conclusion": "success",
-    "github_actions_run": "https://github.com/vemodalen-x/TEMPO/actions/runs/29586113000",
-    "verified_at": "2026-07-17T14:00:38Z"
+    "github_actions_run": "https://github.com/vemodalen-x/TEMPO/actions/runs/29586896319",
+    "verified_at": "2026-07-17T14:11:19Z"
   },
   "external_actions": {
     "repository_published": true,

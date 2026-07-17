@@ -4,18 +4,23 @@
   "active": true,
   "release": "0.1.0",
   "frozen_at": "2026-07-17T13:56:42Z",
-  "last_verified_at": "2026-07-17T14:00:38Z",
-  "release_candidate_commit": "d536d5ed5b69c29745c73f61456b83125e84cdef",
+  "last_verified_at": "2026-07-17T14:11:19Z",
+  "release_candidate_commit": "40c7fde58c5f90d3b2920957a1129223739a6db4",
   "basis": {
     "public_repository": "https://github.com/vemodalen-x/TEMPO",
     "clean_clone_verified": true,
-    "clean_clone_tests": 86,
+    "clean_clone_tests": 87,
     "github_actions_conclusion": "success",
-    "github_actions_run": "https://github.com/vemodalen-x/TEMPO/actions/runs/29586113000",
+    "github_actions_run": "https://github.com/vemodalen-x/TEMPO/actions/runs/29586896319",
     "host_matrix": ["ubuntu-latest", "windows-latest", "macos-latest"],
     "network_disabled_pinned_container": true
   },
   "claim_boundary": "The clean-clone observation is local integrity evidence; the linked public CI run is independently inspectable but not a signed platform attestation.",
+  "critical_release_fix": {
+    "reason": "Hook read decisions now enforce the same repository containment contract as write decisions.",
+    "changed_paths": ["src/tempo/guards.py", "tests/test_guards.py"],
+    "verified_commit": "40c7fde58c5f90d3b2920957a1129223739a6db4"
+  },
   "post_freeze_scope": [
     "documentation corrections",
     "submission metadata",

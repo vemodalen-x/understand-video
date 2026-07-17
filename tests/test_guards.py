@@ -63,6 +63,10 @@ class GuardRegressionTests(WorkspaceCase):
                 "session": SESSION,
             },
         )
+        self.assert_policy_code(
+            "PATH_OUTSIDE_REPOSITORY",
+            {"tool": "read", "input": {"path": "linked-outside/escape.py"}},
+        )
 
     def test_planning_write_is_allowed_before_warrant(self) -> None:
         result = evaluate_event(
@@ -168,6 +172,26 @@ class GuardRegressionTests(WorkspaceCase):
         ):
             with self.subTest(tool=event["tool"]):
                 self.assert_policy_code("CREDENTIAL_PATH_BLOCKED", event)
+
+    def test_read_paths_use_the_same_repository_containment_as_writes(self) -> None:
+        for raw in (
+            "../outside.txt",
+            "plan/../../outside.txt",
+            "C:\\Windows\\System32\\config",
+            "/etc/passwd",
+        ):
+            with self.subTest(raw=raw):
+                self.assert_policy_code(
+                    "PATH_OUTSIDE_REPOSITORY",
+                    {"tool": "read", "input": {"path": raw}},
+                )
+
+        allowed = evaluate_event(
+            self.workspace,
+            {"tool": "read", "input": {"path": "README.md"}},
+        )
+        self.assertTrue(allowed["allowed"])
+        self.assertEqual(allowed["path"], "README.md")
 
     def test_destructive_and_gate_evasion_commands_are_blocked(self) -> None:
         commands = (

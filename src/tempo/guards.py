@@ -206,6 +206,12 @@ def evaluate_event(workspace: Workspace, event: dict[str, Any]) -> dict[str, Any
         credential = _credential_reference(raw_path, credential_paths)
         if credential:
             raise PolicyBlock("CREDENTIAL_PATH_BLOCKED", f"Read references protected credential root: {credential}")
-        return {"ok": True, "allowed": True, "tool": tool}
+        # The hook does not perform reads itself, but its decision must still
+        # use the same repository-bound path contract as writes. Otherwise a
+        # downstream adapter could treat this allow decision as permission to
+        # read an absolute, traversal, or escaping-symlink path.
+        path = canonical_relpath(raw_path)
+        workspace.path(path)
+        return {"ok": True, "allowed": True, "tool": tool, "path": path}
 
     raise CheckerFailure("HOOK_TOOL_UNSUPPORTED", f"Unsupported hook tool: {tool}")
