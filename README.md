@@ -1,4 +1,29 @@
-# TEMPO
+# Understand Video
+
+Governed planning repository for a compiler that turns an
+[Understand-Anything](https://github.com/Egonex-AI/Understand-Anything)
+knowledge graph into a source-grounded, duration-bounded, narrated and
+subtitled code-learning video.
+
+Current status: **experiment required; product implementation is not
+authorized**. TEMPO assessment
+`A-3C58C21A3ABD4829` returned `build_allowed: false` because the Rank-1 learner
+outcome has no observed external evidence, the human-owned decision records are
+unsigned, and no warrant exists. The zero-cost graph-to-media spike passed for
+technical feasibility only; see
+[`docs/source-analysis/graph-video-spike.md`](docs/source-analysis/graph-video-spike.md).
+
+- Product opportunity and hypotheses: [`plan/`](plan/)
+- Proposed MVP charter: [`plan/mvp-charter.json`](plan/mvp-charter.json)
+- Understand-Anything pin: [`UPSTREAM_BASELINE.json`](UPSTREAM_BASELINE.json)
+- Prior-work boundary: [`docs/HACKATHON_DELTA.md`](docs/HACKATHON_DELTA.md)
+- TEMPO control status:
+  [`docs/source-analysis/tempo-implementation-status.md`](docs/source-analysis/tempo-implementation-status.md)
+
+This repository is private while the governed decision cycle is incomplete.
+No final video has been uploaded and no Devpost submission has been made.
+
+## TEMPO governance kernel
 
 [![TEMPO conformance](https://github.com/vemodalen-x/TEMPO/actions/workflows/ci.yml/badge.svg)](https://github.com/vemodalen-x/TEMPO/actions/workflows/ci.yml)
 
