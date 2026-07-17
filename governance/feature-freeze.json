@@ -1,0 +1,24 @@
+{
+  "kind": "tempo_feature_freeze",
+  "version": 1,
+  "active": true,
+  "release": "0.1.0",
+  "frozen_at": "2026-07-17T13:56:42Z",
+  "release_candidate_commit": "3616c6902a69deba4b3b0ab4d5a7997dc981dfe6",
+  "basis": {
+    "public_repository": "https://github.com/vemodalen-x/TEMPO",
+    "clean_clone_verified": true,
+    "clean_clone_tests": 86,
+    "github_actions_conclusion": "success",
+    "github_actions_run": "https://github.com/vemodalen-x/TEMPO/actions/runs/29585804719",
+    "host_matrix": ["ubuntu-latest", "windows-latest", "macos-latest"],
+    "network_disabled_pinned_container": true
+  },
+  "claim_boundary": "The clean-clone observation is local integrity evidence; the linked public CI run is independently inspectable but not a signed platform attestation.",
+  "post_freeze_scope": [
+    "documentation corrections",
+    "submission metadata",
+    "video URL and confirmed feedback session value",
+    "critical release fixes followed by a new verification cycle"
+  ]
+}

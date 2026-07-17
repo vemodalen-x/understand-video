@@ -16,15 +16,15 @@ Deadline recorded on 2026-07-17: **2026-07-22 00:00 UTC / 2026-07-21 17:00 PT /
 
 - [x] Create the standalone remote repository and replace every
   `<repository-url>` placeholder.
-- [ ] Push the intended release commit and verify the public remote contents.
-- [ ] Make the repository public with `LICENSE`, or, if intentionally private,
+- [x] Push the intended release commit and verify the public remote contents.
+- [x] Make the repository public with `LICENSE`, or, if intentionally private,
   share it with `testing@devpost.com` and `build-week-event@openai.com` as
   specified by the current official FAQ.
-- [ ] Confirm clean-clone setup and the one-command demo on an environment that
+- [x] Confirm clean-clone setup and the one-command demo on an environment that
   did not build the project.
-- [ ] Run the complete test/verification suite and inspect tool-generated
+- [x] Run the complete test/verification suite and inspect tool-generated
   receipts; do not type a receipt or passing status manually.
-- [ ] Confirm the CI judge-container job passes with the configured digest,
+- [x] Confirm the CI judge-container job passes with the configured digest,
   unprivileged UID, and network disabled.
 - [ ] Run `/feedback` in the primary Codex task. Confirm the returned value,
   then update `submission/session.json` and the Devpost field. Candidate task:
@@ -66,10 +66,10 @@ Deadline recorded on 2026-07-17: **2026-07-22 00:00 UTC / 2026-07-21 17:00 PT /
 - [x] Work & Productivity and judging alignment documented.
 - [x] Credential-free demo instructions present.
 - [x] Security, sandbox, and traceability documents present.
-- [ ] All automated tests pass on supported host platforms.
-- [ ] No secrets, credential paths, private course material, source archives,
+- [x] All automated tests pass on supported host platforms.
+- [x] No secrets, credential paths, private course material, source archives,
   build caches, or generated demo workspaces are committed.
-- [ ] `git status`, tracked-file list, and public remote contents match the
+- [x] `git status`, tracked-file list, and public remote contents match the
   intended submission scope.
 - [ ] Replace the remaining video placeholder and remove no longer relevant
   draft notes.

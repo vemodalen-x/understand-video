@@ -1,6 +1,6 @@
 ---
 id: T-20260717-business-gated-mvp
-state: building
+state: feature_frozen
 risk: R2
 demo_tier: D0
 owner: human_business_owner

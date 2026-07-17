@@ -1,5 +1,7 @@
 # TEMPO
 
+[![TEMPO conformance](https://github.com/vemodalen-x/TEMPO/actions/workflows/ci.yml/badge.svg)](https://github.com/vemodalen-x/TEMPO/actions/workflows/ci.yml)
+
 **Stop coding agents from spending the build budget before the business case is
 ready and a human has authorized the work.**
 
@@ -231,7 +233,8 @@ Requirement-to-code-to-proof links are in
 
 ## Submission status
 
-This working tree has not been deployed, uploaded as a video, or submitted to
-Devpost. Public YouTube URL, `/feedback` confirmation, successful remote CI,
-and final owner review remain explicit blockers in
+This project has not been deployed, uploaded as a video, or submitted to
+Devpost. The public repository, clean-clone journey, and cross-platform CI are
+verified. Public YouTube URL, `/feedback` confirmation, and final owner review
+remain explicit blockers in
 [submission/checklist.md](submission/checklist.md).
