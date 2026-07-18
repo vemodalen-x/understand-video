@@ -1,0 +1,42 @@
+{
+  "captured_at": "2026-07-17T15:04:12Z",
+  "claim_tested": "Developers believe a concise repository video would be better than source-only review for understanding code during code review.",
+  "collector": "human:repository-owner",
+  "content_hash": null,
+  "directness": "indirect",
+  "evidence_id": "E-PREFERENCE-CODE-REVIEW-001",
+  "freshness": {
+    "expires_at": "2026-10-15T15:04:12Z",
+    "policy": "source_specific"
+  },
+  "hypothesis_refs": [
+    "H-LEARNING-001"
+  ],
+  "limitations": [
+    "Aggregate second-hand report with no individual response records or collection protocol.",
+    "Expressed preference is not observed correctness or completion-time behavior.",
+    "Code-review preference is adjacent to, but not identical with, unfamiliar-repository orientation.",
+    "This evidence cannot satisfy the observed-user-behavior threshold for H-LEARNING-001."
+  ],
+  "measurements": [
+    {
+      "metric": "Developers reportedly believing video would be better for code review",
+      "unit": "developers (user-reported aggregate)",
+      "value": 5
+    }
+  ],
+  "provenance": {
+    "collection_method": "Repository-owner statement in the active Codex conversation; no individual records supplied.",
+    "is_fixture": false,
+    "kind": "external",
+    "untrusted_input": true
+  },
+  "sample_context": {
+    "description": "Repository owner reported an aggregate preference from five developers; no individual response records were supplied.",
+    "population": "Developers reported by the repository owner; individual eligibility and experience are unknown",
+    "sample_size": 5
+  },
+  "source_reference": "conversation://repository-owner/2026-07-17/five-developer-code-review-preference",
+  "source_type": "customer_interview",
+  "stance": "neutral"
+}

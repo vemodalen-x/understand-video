@@ -24,12 +24,48 @@ Generated participant ZIPs and an observer ZIP are written under the ignored
 clips are derived from the already verified feasibility proof and are not final
 submission media.
 
-## Run the five observations
+## Run the five post-MVP observations
 
 Follow [`protocol.md`](protocol.md) exactly. Use the predetermined assignments
 in [`assignments.csv`](assignments.csv), give each condition ZIP only when that
-condition starts, and record one JSON observation per participant using
+condition starts, and, after the MVP is distributed to external developers,
+record one JSON observation per participant using
 [`observation.example.json`](observation.example.json) as the shape.
+
+### Use the local form instead of writing JSON by hand
+
+Open [`observation-form.html`](observation-form.html) in a modern browser. It
+is a standalone local page: it makes no network request, stores no identities,
+and produces only the exact observation JSON consumed by the existing compiler.
+It locks the committed counterbalanced assignment for each participant ID,
+requires the protocol fields, records both conditions, and previews the exact
+file before it is saved.
+
+The right-hand media panel loads the verified local proof segment for the
+participant's assigned video module. If the ignored local proof artifact is not
+present, choose the `video.mp4` from that participant's extracted video-condition
+bundle. Raw JSON and the five-observation compilation instructions are kept in
+the collapsed **Developer debug data** disclosure rather than the participant's
+primary workflow.
+
+Only the participant's current condition is visible. The second condition is
+locked until all four first-condition answers and its duration are complete.
+For counterbalanced participants whose unguided condition is first, the media
+panel explicitly withholds video until the video condition is unlocked.
+
+In Chromium-based browsers, click **Save to observations folder** and choose
+`.tempo/experiments/learning-comparison/observations/`. Otherwise click
+**Download JSON** and move the downloaded `P-001.json` through `P-005.json`
+files into that directory. The form allows a deviation or ineligible result to
+be preserved truthfully, but marks it as non-compilable; it does not erase or
+relabel unfavorable observations.
+
+This is a **post-MVP learning validation**. One founder/developer building the
+MVP must not use this form as a substitute for five independent developer
+comparisons. The proposed staged route for a one-person founder MVP is recorded
+in [`../../../plan/proposals/founder-mvp-staging.md`](../../../plan/proposals/founder-mvp-staging.md);
+it becomes effective only after the required human-signed policy, decision
+brief, charter, and warrant changes are valid.
 
 Do not record names, email addresses, employers, repository credentials, or any
 other identifying data. Use only participant IDs `P-001` through `P-005`.
