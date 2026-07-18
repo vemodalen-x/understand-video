@@ -46,7 +46,7 @@ workspace layout.
   proposed machine task:
   [`plan/proposals/founder-mvp-authorization-packet.md`](plan/proposals/founder-mvp-authorization-packet.md),
   [`plan/assessments/A-6539C42FED42417C.json`](plan/assessments/A-6539C42FED42417C.json), and
-  [`tasks/T-20260718-understand-video-founder-mvp.json`](tasks/T-20260718-understand-video-founder-mvp.json)
+  [`tasks/T-20260718-UNDERSTAND-VIDEO-FOUNDER-MVP.json`](tasks/T-20260718-UNDERSTAND-VIDEO-FOUNDER-MVP.json)
 - Understand-Anything source pin: [`UPSTREAM_BASELINE.json`](UPSTREAM_BASELINE.json)
 - Prior-work boundary: [`docs/HACKATHON_DELTA.md`](docs/HACKATHON_DELTA.md)
 

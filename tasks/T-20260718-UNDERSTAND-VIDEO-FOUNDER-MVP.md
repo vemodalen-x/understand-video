@@ -1,5 +1,5 @@
 ---
-id: T-20260718-understand-video-founder-mvp
+id: T-20260718-UNDERSTAND-VIDEO-FOUNDER-MVP
 state: proposed
 risk: R2
 demo_tier: D0

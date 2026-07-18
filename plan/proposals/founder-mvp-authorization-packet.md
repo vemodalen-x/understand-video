@@ -28,7 +28,7 @@ provider and data boundary.
 
 ## Proposed build boundary
 
-- Task: `T-20260718-understand-video-founder-mvp`.
+- Task: `T-20260718-UNDERSTAND-VIDEO-FOUNDER-MVP`.
 - Risk: R2.
 - Lane: `video-core` for the one-developer vertical slice; media,
   verification, and documentation remain modules inside that single task lane.
