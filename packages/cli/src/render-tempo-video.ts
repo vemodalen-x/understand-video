@@ -38,8 +38,8 @@ function parseOptions(argv: readonly string[]): Options {
       "--tempo",
       process.env["TEMPO_CHECKOUT"] ?? join(".understand-video", "inputs", "tempo-checkout"),
     ),
-    graphDirectory: option(argv, "--graph", join(".understand-video", "inputs", "tempo-4afc6a3")),
-    outputDirectory: option(argv, "--output", join(".understand-video", "runs", "tempo-4afc6a3", "devpost-draft")),
+    graphDirectory: option(argv, "--graph", join(".understand-video", "inputs", "tempo-4a73350")),
+    outputDirectory: option(argv, "--output", join(".understand-video", "runs", "tempo-4a73350", "devpost-draft")),
     edgePython: option(argv, "--edge-python", edgePython),
   };
 }
@@ -153,7 +153,7 @@ function analyzeAudio(path: string, durationMs: number): AudioQuality {
   };
 }
 
-function visual(scene: StoryboardScene): {
+function visual(scene: StoryboardScene, judgeLines: readonly string[]): {
   kind: "title" | "architecture" | "code" | "workflow" | "evidence" | "summary";
   body?: readonly string[];
   code?: readonly string[];
@@ -161,7 +161,7 @@ function visual(scene: StoryboardScene): {
 } {
   switch (scene.id) {
     case "SCENE-OPENING":
-      return { kind: "title", body: ["Pinned commit 4afc6a3", "188 graph nodes", "97 inspected files"], accent: "#6ee7d8" };
+      return { kind: "title", body: ["Pinned commit 4a73350", "211 graph nodes", "116 inspected files"], accent: "#6ee7d8" };
     case "SCENE-ARCHITECTURE":
       return { kind: "architecture", body: ["Evidence", "Readiness", "Human warrant", "Bounded build"], accent: "#6ee7d8" };
     case "SCENE-ADVICE":
@@ -171,21 +171,23 @@ function visual(scene: StoryboardScene): {
     case "SCENE-DEMO":
       return { kind: "code", code: ["$ python bin/tempo demo", "WARRANT_MISSING", "VALID_WARRANT_AND_SCOPE", "SCOPE_NOT_AUTHORIZED", "JUDGE_DEMO_PASSED"], accent: "#66d9a7" };
     case "SCENE-INTEGRITY":
-      return { kind: "workflow", body: ["Hash inputs", "Validate start", "Detect drift", "Invalidate warrant"], accent: "#ff8a8a" };
+      return { kind: "workflow", body: ["Validate lease", "Rotate atomically", "Receipt uniquely", "Fail closed"], accent: "#ff8a8a" };
     case "SCENE-AUDIT":
       return { kind: "architecture", body: ["Event", "Hash chain", "Head checkpoint", "Receipt"], accent: "#c4a7ff" };
+    case "SCENE-CLOSE":
+      return { kind: "code", code: judgeLines, accent: "#6ee7d8" };
     default:
       return { kind: "summary", body: ["Exact source links", "Readable captions", "Verified MP4", "Honest provenance"], accent: "#6ee7d8" };
   }
 }
 
-function renderPng(scene: StoryboardScene, caption: string, path: string): void {
+function renderPng(scene: StoryboardScene, caption: string, path: string, judgeLines: readonly string[]): void {
   const frame = renderFrame({
     id: scene.id,
     title: scene.title,
     eyebrow: "SOURCE-GROUNDED TEMPO WALKTHROUGH",
     burnedCaption: caption,
-    ...visual(scene),
+    ...visual(scene, judgeLines),
   });
   const png = new Resvg(frame.svg, { fitTo: { mode: "width", value: 1920 } }).render().asPng();
   writeFileSync(path, png);
@@ -209,14 +211,28 @@ async function main(): Promise<void> {
     upstreamRepository: "https://github.com/Egonex-AI/Understand-Anything",
     upstreamCommit: "b9ac6be178b2fbc68ae45456cd9a902bdcac6dac",
     hashes: {
-      "knowledge-graph.json": "sha256:39167ad858811f5b7109572bbf9ba8ed63f0ed9c31cbf82301c4cb0cc14fce99",
-      "meta.json": "sha256:fb02c3f8923405bec73d0044420e378c08838990b91376af1a681914226e7509",
-      "fingerprints.json": "sha256:4e9197bb12cada7cfb2bed56705ab53a85ac31f19a2d704ac4bd5e3cc15aa461",
-      "provenance.json": "sha256:b24d051058faf2571b0d8ca130b14f1b7c020fb91e43003ee0dc08749540c906",
-      "config.json": "sha256:cccb1d2ad9ba819dd7bb50824e575d18a531857d3039d0224f2ca200631d4f9e",
-      "review.json": "sha256:3f78fb1da47dc32a64592ee49d8c56b2ca0499d95aa473467ab4974d2422149c",
+      "knowledge-graph.json": "sha256:7162b4e024a8b191494bb16bb8413f6ff86180503c981edf1785faae3e04b416",
+      "meta.json": "sha256:f8ee9e01c445787a630efca2b06d97beec2504530aeab424feed930369e82570",
+      "fingerprints.json": "sha256:7e3c4edebcfaf0baf83f3d569aedc2163357f3cdbdab9259c900e67d98f22b84",
+      "provenance.json": "sha256:17cf417c37b315c796204e0347239caa0628e9b8902fdac98089b918aaeba175",
+      "config.json": "sha256:616d8b71db92f5937bc6a20a39187d7c998b32679a65f1c8a929671c82cbd069",
+      "review.json": "sha256:a1fab96189f45299d5b732174c8ae0104d68c4efc85aced97934d87d975f0eeb",
     },
   });
+
+  const judgeCommand = "node submission/judge-bundle/understand-video-demo.mjs demo --offline";
+  const judgeOutput = run(process.execPath, [
+    resolve("submission", "judge-bundle", "understand-video-demo.mjs"),
+    "demo", "--offline", "--workdir", join(output, "judge-demo"),
+  ]).trim();
+  const successSentinel = "UNDERSTAND_VIDEO_DEMO_PASSED";
+  if (judgeOutput.split(successSentinel).length !== 2) {
+    throw new Error("credential-free product demo did not emit exactly one success sentinel");
+  }
+  const judgeLines = [
+    `$ ${judgeCommand}`,
+    ...judgeOutput.split(/\r?\n/gu).filter((line) => /^\[(?:inspect|plan|render|verify)\]|^UNDERSTAND_/u.test(line)),
+  ];
 
   const audioPaths: string[] = [];
   const durations: number[] = [];
@@ -244,7 +260,7 @@ async function main(): Promise<void> {
       const stem = `${String(segmentIndex).padStart(3, "0")}-${scene.id}`;
       const pngPath = join(frameDirectory, `${stem}.png`);
       const segmentPath = join(segmentDirectory, `${stem}.mp4`);
-      renderPng(scene, cue.text.replace(/\n/gu, " "), pngPath);
+      renderPng(scene, cue.text.replace(/\n/gu, " "), pngPath, judgeLines);
       run("ffmpeg", [
         "-hide_banner", "-loglevel", "error", "-y", "-loop", "1", "-i", pngPath,
         "-t", ((cue.endMs - cue.startMs) / 1_000).toFixed(3), "-r", "30", "-an",
@@ -297,6 +313,11 @@ async function main(): Promise<void> {
     },
     media,
     audio,
+    productDemo: {
+      command: judgeCommand,
+      successSentinel,
+      output: sha256Bytes(judgeOutput),
+    },
     captionCueCount: cues.length,
     zeroContentCaptionOverlapByLayoutContract: true,
     graphSummary: { nodes: ua.nodeCount, edges: ua.edgeCount, layers: ua.layerCount, tour: ua.tourCount, files: ua.fileCount },

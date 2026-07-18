@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 import { snapshotGitRepository } from "../../packages/core/src/git-snapshot.js";
 import { compileTempoVideoPlan, TEMPO_NARRATION, TEMPO_STORY_REVISION } from "../../packages/core/src/tempo-story.js";
 
-const tempoCheckout = "C:\\Users\\User\\Documents\\OPENAI_MVP\\tempo-source-pristine-4afc6a3";
+const tempoCheckout = "C:\\Users\\User\\Documents\\OPENAI_MVP\\tempo-source-pristine-4a73350";
 
 describe("authored TEMPO story specification", () => {
   it.runIf(existsSync(tempoCheckout))("grounds every exact narration scene in the pinned snapshot", () => {

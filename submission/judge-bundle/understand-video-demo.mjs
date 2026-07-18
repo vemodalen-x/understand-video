@@ -156,7 +156,7 @@ function bindArtifact(path, bytes) {
 
 // packages/cli/src/judge.ts
 var FIXTURE_REVISION = "1111111111111111111111111111111111111111";
-var TEMPO_BASELINE_COMMIT = "4afc6a3f5ceba0240f7fdd2eece96241253d6e60";
+var TEMPO_BASELINE_COMMIT = "4a73350f6eefff80b11d862a5ac65b7194530442";
 function writeUtf8(path, value) {
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, value, "utf8");

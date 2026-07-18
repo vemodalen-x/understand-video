@@ -29,7 +29,7 @@ workspace layout.
 - MVP product plan: [`plan/interpreter-mvp.md`](plan/interpreter-mvp.md)
 - Devpost delivery profile: [`docs/DEVPOST_DELIVERY_PROFILE.md`](docs/DEVPOST_DELIVERY_PROFILE.md)
 - Pinned TEMPO explanation map:
-  [`docs/source-analysis/tempo-4afc6a3-video-map.md`](docs/source-analysis/tempo-4afc6a3-video-map.md)
+  [`docs/source-analysis/tempo-4a73350-video-map.md`](docs/source-analysis/tempo-4a73350-video-map.md)
 - Fresh TEMPO graph-generation and provenance contract:
   [`docs/source-analysis/tempo-graph-generation.md`](docs/source-analysis/tempo-graph-generation.md)
 - Proposed judge path and product architecture:
@@ -60,7 +60,7 @@ draft until its public video URL, `/feedback` session ID, country, and final
 submission fields are supplied.
 
 The latest practiced TEMPO baseline is
-`4afc6a3f5ceba0240f7fdd2eece96241253d6e60`. The product treats it as an
+`4a73350f6eefff80b11d862a5ac65b7194530442`. The product treats it as an
 external dependency and validates its origin, clean checkout, revision, and
 governance lease before a production run.
 
@@ -86,7 +86,7 @@ pipeline stages pass.
 
 Clone TEMPO at the exact revision named above into an independent directory.
 Place the reviewed Understand-Anything export in
-`.understand-video/inputs/tempo-4afc6a3/`. Then create an isolated Edge TTS
+`.understand-video/inputs/tempo-4a73350/`. Then create an isolated Edge TTS
 environment:
 
 ```text
@@ -102,8 +102,8 @@ Render with an explicit independent checkout (PowerShell example):
 ```powershell
 pnpm render:tempo -- `
   --tempo "C:\path\to\independent\TEMPO" `
-  --graph ".understand-video\inputs\tempo-4afc6a3" `
-  --output ".understand-video\runs\tempo-4afc6a3\devpost-draft"
+  --graph ".understand-video\inputs\tempo-4a73350" `
+  --output ".understand-video\runs\tempo-4a73350\devpost-draft"
 ```
 
 On macOS or Linux, use the same options with POSIX paths. `TEMPO_CHECKOUT` can

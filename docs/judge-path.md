@@ -1,7 +1,7 @@
-# Proposed credential-free judge path
+# Credential-free judge path
 
-Status: target behavior; commands become valid only after the implementation is
-authorized and completed.
+Status: implemented and acceptance-tested. The included bundle remains
+non-authoritative and uses only synthetic fixture input.
 
 ## Prepared bundle
 
@@ -53,10 +53,10 @@ repository or the offline fixture bundle.
 $tempoCliCheckout = 'C:\path\to\TEMPO'
 $governanceRoot = 'C:\path\to\understand-video-governance'
 $targetRepo = $tempoCliCheckout
-$tempoGraph = 'C:\path\to\tempo-4afc6a3-knowledge-graph.json'
+$tempoGraph = 'C:\path\to\tempo-4a73350-graph-bundle'
 
 pnpm uv doctor --tempo-cli-checkout $tempoCliCheckout --governance-root $governanceRoot --repo $targetRepo --graph $tempoGraph
-pnpm uv inspect --repo $targetRepo --graph $tempoGraph --rev 4afc6a3f5ceba0240f7fdd2eece96241253d6e60
+pnpm uv inspect --repo $targetRepo --graph $tempoGraph --rev 4a73350f6eefff80b11d862a5ac65b7194530442
 pnpm uv plan --profile devpost --planner fixture
 pnpm uv render --voice fixture
 pnpm uv verify --profile devpost
