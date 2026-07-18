@@ -1,0 +1,115 @@
+{
+  "assessed_at": "2026-07-18T14:41:58Z",
+  "assessment_hash": "sha256:6d48a5f15605c6ad7a2fc7b3256d772563f27a7a9ab151a302946ef56383bbde",
+  "assessment_id": "A-24F38384E89B4594",
+  "assessor": "kernel:readiness",
+  "authorization_ceiling": "human_warrant",
+  "authorization_valid": false,
+  "build_allowed": false,
+  "business_model_ref": "BM-UNDERSTAND-VIDEO-001",
+  "charter_ref": "M-UNDERSTAND-VIDEO-001",
+  "cheapest_next_action": {
+    "action_id": "X-682DAB0F7B50",
+    "deadline": "2026-07-25T14:41:58Z",
+    "decision_to_unlock": "Can an existing Understand-Anything graph be converted into a useful, source-grounded English code walkthrough video of less than three minutes, with less than ten minutes of operator setup after graph generation?",
+    "description": "Run a small customer interview test against the rank-1 hypothesis.",
+    "estimated_cost": {
+      "amount": 0,
+      "currency": "USD"
+    },
+    "type": "interview"
+  },
+  "contradictory_evidence_refs": [],
+  "dimension_scores": {
+    "desirability": 80.0,
+    "differentiation": 75.0,
+    "distribution_feasibility": 70.0,
+    "economic_value": 75.0,
+    "evidence_quality": 96.0,
+    "expected_decision_value": 85.0,
+    "implementation_cost": 60.0,
+    "problem_evidence": 85.0,
+    "risk_exposure": 85.0,
+    "strategic_fit": 80.0,
+    "target_segment_clarity": 90.0,
+    "technical_feasibility": 85.0
+  },
+  "eligible_for_authorization": false,
+  "engine_version": "0.1.0",
+  "evaluation_mode": "standard",
+  "evidence_manifest_ref": "plan/evidence/manifest.jsonl",
+  "floor_failures": [],
+  "hard_blockers": [
+    {
+      "artifact_ref": "plan/readiness-policy.json",
+      "blocker_id": "B19",
+      "message": "A human/signer-approved readiness policy is required",
+      "reason_code": "READINESS_POLICY_UNSIGNED"
+    },
+    {
+      "artifact_ref": "plan/decision-brief.json",
+      "blocker_id": "B19",
+      "message": "A human/signer-approved decision brief is required",
+      "reason_code": "DECISION_BRIEF_UNSIGNED"
+    }
+  ],
+  "hypothesis_set_ref": "HS-UNDERSTAND-VIDEO-001",
+  "input_hashes": [
+    {
+      "artifact_ref": "plan/opportunity.json",
+      "hash": "sha256:9b6990fcfe1917859cabf04a9dc43b73ab51dcb7c9e3ccf9b99bee448d9efef3"
+    },
+    {
+      "artifact_ref": "plan/business-model.json",
+      "hash": "sha256:02b5bd429c19c986554a01baeab96401cded158c194af77e9b9c8fb8c430155f"
+    },
+    {
+      "artifact_ref": "plan/hypotheses.json",
+      "hash": "sha256:7062d73c56f94cd5e9af48db7a0ea06f404b2e19854225097e18863d5fea6926"
+    },
+    {
+      "artifact_ref": "plan/evidence/manifest.jsonl",
+      "hash": "sha256:6c85608339e9d7af7ad689770a4bc4e88acfed35c0c50242ab2e9147e4d68109"
+    },
+    {
+      "artifact_ref": "plan/readiness-policy.json",
+      "hash": "sha256:e6a26db232cfcc1b047d5f843cad3d0003e9315a772d9638f3006a9a528d3e5c"
+    },
+    {
+      "artifact_ref": "plan/mvp-charter.json",
+      "hash": "sha256:842e8274a3375a4d450a6506695b4c27a743323d76f46ef26b950f3859ef7d82"
+    },
+    {
+      "artifact_ref": "plan/decision-brief.json",
+      "hash": "sha256:629d2249dc17a238228f24d4c9edaed1eea0532c73847e62eb7dbc54400c5deb"
+    },
+    {
+      "artifact_ref": "config/tempo.config.json",
+      "hash": "sha256:028da8421e6a0e7ceb8a8f9d34ae18e11ce8447490df93c0d70df6c8a33e234a"
+    }
+  ],
+  "opportunity_ref": "O-UNDERSTAND-VIDEO-001",
+  "policy_ref": "RP-UNDERSTAND-VIDEO-FOUNDER-002",
+  "primary_outcome": "BLOCKED_INVALID_INPUT",
+  "rank_one_threshold": {
+    "aggregation": "sum",
+    "hypothesis_ref": "H-FEASIBILITY-001",
+    "matching_evidence_refs": [
+      "E-HUMAN-MEDIA-REVIEW-001"
+    ],
+    "metric": "Grounded proof videos produced from a validated graph",
+    "minimum_evidence_items": 1,
+    "missing_source_types": [],
+    "observed": 1,
+    "operator": ">=",
+    "status": "passed",
+    "target": 1,
+    "unit": "proof videos"
+  },
+  "reasons": [
+    "DECISION_BRIEF_UNSIGNED",
+    "READINESS_POLICY_UNSIGNED"
+  ],
+  "resulting_business_state": "EXPERIMENT_REQUIRED",
+  "weighted_score": 81.82
+}

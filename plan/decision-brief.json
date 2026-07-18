@@ -1,30 +1,25 @@
 {
-  "decision_brief_id": "DB-UNDERSTAND-VIDEO-001",
-  "version": 1,
+  "decision_brief_id": "DB-UNDERSTAND-VIDEO-002",
+  "version": 2,
   "opportunity_ref": "O-UNDERSTAND-VIDEO-001",
   "state": "draft",
-  "recommendation": "EXPERIMENT",
-  "rationale": "The graph-to-media feasibility spike passed, but the Rank-1 learner outcome still has no observed evidence. A small developer comparison remains cheaper and more decision-relevant than authorizing the complete product MVP.",
-  "acknowledged_counterevidence_refs": [],
+  "recommendation": "MVP",
+  "rationale": "Sequence a one-developer technical Stage A before external distribution. The existing feasibility experiment and repository-owner review support a narrowly bounded local build, while the observed electronic-voice and caption-overlap defects must be fixed before delivery. Independent learner value remains explicitly unproven and moves to Stage B.",
+  "acknowledged_counterevidence_refs": [
+    "E-PREFERENCE-CODE-REVIEW-001",
+    "E-REPORTED-LEARNING-COMPARISON-001",
+    "E-HUMAN-MEDIA-REVIEW-001",
+    "E-HUMAN-MEDIA-DEFECTS-001"
+  ],
   "projected_experiment_cost": {
-    "amount": 0,
+    "amount": 25,
     "currency": "USD"
   },
-  "cheaper_sufficient_experiment": {
-    "action_id": "X-LEARNING-COMPARISON-001",
-    "type": "benchmark",
-    "description": "Run five observed developer comparisons using the verified proof-video concept and an unfamiliar repository architecture task; preserve correct answers, completion times, and contradictory observations.",
-    "decision_to_unlock": "Determine whether the source-linked video improves correct high-level repository orientation enough to justify the complete MVP.",
-    "estimated_cost": {
-      "amount": 0,
-      "currency": "USD"
-    },
-    "deadline": "2026-07-20T12:00:00Z"
-  },
+  "cheaper_sufficient_experiment": null,
   "owner": "human:repository-owner",
   "approved_by": null,
   "approved_at": null,
   "signing_provenance": null,
   "created_at": "2026-07-17T14:22:50Z",
-  "updated_at": "2026-07-17T14:22:50Z"
+  "updated_at": "2026-07-18T14:46:00Z"
 }

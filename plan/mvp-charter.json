@@ -1,9 +1,6 @@
 {
   "allowed_lanes": [
-    "video-core",
-    "media",
-    "verification",
-    "documentation"
+    "video-core"
   ],
   "budget_cap": {
     "amount": 25,
@@ -12,7 +9,7 @@
   "created_at": "2026-07-17T14:22:50Z",
   "d0_user_journey": [
     {
-      "action": "Selects a local Git repository with a valid Understand-Anything graph and the architecture or Hackathon profile.",
+      "action": "Selects a local Git repository, an Understand-Anything graph bound to the same exact revision, and the architecture or Hackathon profile.",
       "actor": "Developer",
       "observable_result": "The CLI reports the exact source commit, graph hash, freshness state, planned files, external actions, and duration budget.",
       "order": 1,
@@ -80,12 +77,16 @@
     }
   ],
   "evidence_baseline": {
-    "captured_at": "2026-07-17T14:31:37Z",
+    "captured_at": "2026-07-18T14:48:51Z",
     "evidence_refs": [
       "E-MODEL-VIDEO-001",
-      "E-EXPERIMENT-VIDEO-001"
+      "E-EXPERIMENT-VIDEO-001",
+      "E-PREFERENCE-CODE-REVIEW-001",
+      "E-REPORTED-LEARNING-COMPARISON-001",
+      "E-HUMAN-MEDIA-REVIEW-001",
+      "E-HUMAN-MEDIA-DEFECTS-001"
     ],
-    "manifest_hash": "sha256:86f8a344997741ef11fad075ef534d4fa371bfae4482a5c74d29f02ecef88dd2",
+    "manifest_hash": "sha256:83e46a590a1a3bc9b824a4e0c77182b95b26f0509b58341e369e40a6027108cb",
     "manifest_ref": "plan/evidence/manifest.jsonl"
   },
   "hypothesis_refs": [
@@ -96,19 +97,20 @@
   "implementation_risk_tier": "R2",
   "in_scope": [
     "packages/**",
-    "skills/**",
-    "agents/**",
     "tests/video/**",
     "samples/governed-framework-video/**",
     "submission/**",
     "docs/**",
     "README.md",
     "NOTICE",
+    "TEMPO_BASELINE.json",
     "UPSTREAM_BASELINE.json",
     "package.json",
     "pnpm-workspace.yaml",
     "pnpm-lock.yaml",
+    "tsconfig.base.json",
     ".gitignore",
+    ".gitattributes",
     ".github/**",
     "tasks/**"
   ],
@@ -146,11 +148,10 @@
   ],
   "owner": "human:repository-owner",
   "post_mvp_decision_meeting": {
-    "decision_question": "Should the verified vertical slice be submitted and should a five-developer learning comparison be run after Build Week?",
+    "decision_question": "Should the verified vertical slice be submitted and then distributed for a multi-developer learning comparison after Build Week?",
     "owner": "human:repository-owner",
     "required_participants": [
-      "human:repository-owner",
-      "human:engineering-reviewer"
+      "human:repository-owner"
     ],
     "scheduled_at": "2026-07-21T10:00:00Z"
   },
@@ -207,9 +208,9 @@
     "Hackathon judges testing a Developer Tool"
   ],
   "supported_environment": [
-    "Windows PowerShell with Node.js 22+, pnpm 10+, Git, FFmpeg, and ffprobe",
-    "macOS or Linux shell with Node.js 22+, pnpm 10+, Git, FFmpeg, and ffprobe",
-    "Credential-free fixture test path"
+    "Development on Windows, macOS, or Linux with Node.js 22+, pnpm 10+, Git, FFmpeg, and ffprobe",
+    "Prepared judge bundle on Windows, macOS, or Linux with Node.js 22+, Git, FFmpeg, and ffprobe; no pnpm or source rebuild",
+    "Credential-free synthetic fixture test path plus a separate real TEMPO checkout and graph dogfood path"
   ],
   "technical_boundaries": [
     "Consume the pinned Understand-Anything graph contract; do not replace its analyzer",
@@ -218,6 +219,6 @@
     "FFmpeg-based media work is invoked through argument arrays with bounded inputs",
     "Hackathon runs require a fresh graph, a known commit, and a clean source tree"
   ],
-  "updated_at": "2026-07-17T14:31:37Z",
-  "version": 1
+  "updated_at": "2026-07-18T14:48:51Z",
+  "version": 2
 }

@@ -13,7 +13,7 @@
     "pricing_test",
     "data_availability_check"
   ],
-  "effective_at": "2026-07-17T14:21:44Z",
+  "effective_at": "2026-07-18T14:00:00Z",
   "external_evidence": {
     "minimum_items": 1,
     "model_generated_counts_as_external": false,
@@ -130,10 +130,10 @@
       "reason_code": "HUMAN_DECISION_REQUIRED"
     }
   ],
-  "owner": "human:local-operator",
-  "policy_id": "RP-LOCAL-DRAFT",
+  "owner": "human:repository-owner",
+  "policy_id": "RP-UNDERSTAND-VIDEO-FOUNDER-002",
   "state": "draft",
-  "version": 1,
+  "version": 2,
   "weights": {
     "desirability": 10,
     "differentiation": 7,

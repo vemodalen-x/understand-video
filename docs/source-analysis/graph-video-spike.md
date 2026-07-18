@@ -25,6 +25,10 @@ The graph commit resolves but is stale relative to the selected upstream
 implementation snapshot. The proof is 720p, a long subtitle cue can exceed two
 rendered lines, no GPT-5.6 runtime planner was called, and the voice is an
 offline system adapter rather than the final configured production provider.
+The repository owner directly reported a severe electronic voice character and
+captions obscuring diagrams. Those defects are preserved as counterevidence;
+the delivery build must pass a natural-voice sample review and the fixed
+caption-safe layout contract before a full render.
 The experiment therefore does not satisfy the strict Hackathon profile and
 does not validate the Rank-1 learner outcome.
 

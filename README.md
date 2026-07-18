@@ -27,10 +27,26 @@ workspace layout.
 
 - Product opportunity, hypotheses, charter proposal, and evidence: [`plan/`](plan/)
 - MVP product plan: [`plan/interpreter-mvp.md`](plan/interpreter-mvp.md)
+- Devpost delivery profile: [`docs/DEVPOST_DELIVERY_PROFILE.md`](docs/DEVPOST_DELIVERY_PROFILE.md)
+- Pinned TEMPO explanation map:
+  [`docs/source-analysis/tempo-4afc6a3-video-map.md`](docs/source-analysis/tempo-4afc6a3-video-map.md)
+- Fresh TEMPO graph-generation and provenance contract:
+  [`docs/source-analysis/tempo-graph-generation.md`](docs/source-analysis/tempo-graph-generation.md)
+- Proposed judge path and product architecture:
+  [`docs/judge-path.md`](docs/judge-path.md) and
+  [`docs/architecture.md`](docs/architecture.md)
+- Devpost video plan and exact 50-case acceptance contract:
+  [`docs/devpost-video-script.md`](docs/devpost-video-script.md) and
+  [`docs/test-plan.md`](docs/test-plan.md)
 - Five-person post-MVP learning comparison and bilingual form:
   [`docs/experiments/learning-comparison/`](docs/experiments/learning-comparison/)
 - One-person founder-MVP staging proposal:
   [`plan/proposals/founder-mvp-staging.md`](plan/proposals/founder-mvp-staging.md)
+- Unsigned founder authorization packet, external assessment snapshot, and
+  proposed machine task:
+  [`plan/proposals/founder-mvp-authorization-packet.md`](plan/proposals/founder-mvp-authorization-packet.md),
+  [`plan/assessments/A-5D9CD4780724426B.json`](plan/assessments/A-5D9CD4780724426B.json), and
+  [`tasks/T-20260718-understand-video-founder-mvp.json`](tasks/T-20260718-understand-video-founder-mvp.json)
 - Understand-Anything source pin: [`UPSTREAM_BASELINE.json`](UPSTREAM_BASELINE.json)
 - Prior-work boundary: [`docs/HACKATHON_DELTA.md`](docs/HACKATHON_DELTA.md)
 
@@ -40,6 +56,12 @@ The checked-in work remains planning, documentation, fixtures, and evidence.
 It does not claim that the translator MVP is implemented, deployed, uploaded,
 or submitted. Product implementation starts only after the external TEMPO
 workspace reports a current, scoped human warrant for this repository.
+
+The latest practiced TEMPO baseline is
+`4afc6a3f5ceba0240f7fdd2eece96241253d6e60`. Its full verification, judge
+demo, audit projection validator, and Edge desktop/compact browser checks pass.
+That verification proves the framework behavior; it does not authorize this
+product build.
 
 The learning-comparison compiler can be exercised independently on fixtures:
 

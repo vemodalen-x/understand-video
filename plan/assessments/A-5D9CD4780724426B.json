@@ -1,0 +1,117 @@
+{
+  "assessed_at": "2026-07-18T14:48:51Z",
+  "assessment_hash": "sha256:6632cfa3dfbb69781af1bca737226fa1d6ec32b13bd536628fa54004b8f6b0e1",
+  "assessment_id": "A-5D9CD4780724426B",
+  "assessor": "kernel:readiness",
+  "authorization_ceiling": "human_warrant",
+  "authorization_valid": false,
+  "build_allowed": false,
+  "business_model_ref": "BM-UNDERSTAND-VIDEO-001",
+  "charter_ref": "M-UNDERSTAND-VIDEO-001",
+  "cheapest_next_action": {
+    "action_id": "X-A51742FAAE14",
+    "deadline": "2026-07-25T14:48:51Z",
+    "decision_to_unlock": "Can an existing Understand-Anything graph be converted into a useful, source-grounded English code walkthrough video of less than three minutes, with less than ten minutes of operator setup after graph generation?",
+    "description": "Run a small customer interview test against the rank-1 hypothesis.",
+    "estimated_cost": {
+      "amount": 0,
+      "currency": "USD"
+    },
+    "type": "interview"
+  },
+  "contradictory_evidence_refs": [
+    "E-HUMAN-MEDIA-DEFECTS-001"
+  ],
+  "dimension_scores": {
+    "desirability": 80.0,
+    "differentiation": 75.0,
+    "distribution_feasibility": 70.0,
+    "economic_value": 75.0,
+    "evidence_quality": 100.0,
+    "expected_decision_value": 85.0,
+    "implementation_cost": 60.0,
+    "problem_evidence": 85.0,
+    "risk_exposure": 85.0,
+    "strategic_fit": 80.0,
+    "target_segment_clarity": 90.0,
+    "technical_feasibility": 85.0
+  },
+  "eligible_for_authorization": false,
+  "engine_version": "0.1.0",
+  "evaluation_mode": "standard",
+  "evidence_manifest_ref": "plan/evidence/manifest.jsonl",
+  "floor_failures": [],
+  "hard_blockers": [
+    {
+      "artifact_ref": "plan/readiness-policy.json",
+      "blocker_id": "B19",
+      "message": "A human/signer-approved readiness policy is required",
+      "reason_code": "READINESS_POLICY_UNSIGNED"
+    },
+    {
+      "artifact_ref": "plan/decision-brief.json",
+      "blocker_id": "B19",
+      "message": "A human/signer-approved decision brief is required",
+      "reason_code": "DECISION_BRIEF_UNSIGNED"
+    }
+  ],
+  "hypothesis_set_ref": "HS-UNDERSTAND-VIDEO-001",
+  "input_hashes": [
+    {
+      "artifact_ref": "plan/opportunity.json",
+      "hash": "sha256:9b6990fcfe1917859cabf04a9dc43b73ab51dcb7c9e3ccf9b99bee448d9efef3"
+    },
+    {
+      "artifact_ref": "plan/business-model.json",
+      "hash": "sha256:02b5bd429c19c986554a01baeab96401cded158c194af77e9b9c8fb8c430155f"
+    },
+    {
+      "artifact_ref": "plan/hypotheses.json",
+      "hash": "sha256:cd9289c75c360c70d7fe19fdfcf6504da48cee6031fd56d680a981952afa58d8"
+    },
+    {
+      "artifact_ref": "plan/evidence/manifest.jsonl",
+      "hash": "sha256:83e46a590a1a3bc9b824a4e0c77182b95b26f0509b58341e369e40a6027108cb"
+    },
+    {
+      "artifact_ref": "plan/readiness-policy.json",
+      "hash": "sha256:e6a26db232cfcc1b047d5f843cad3d0003e9315a772d9638f3006a9a528d3e5c"
+    },
+    {
+      "artifact_ref": "plan/mvp-charter.json",
+      "hash": "sha256:5d9178d3ae23940b5462db0f387f5cdda6e80e1902a34acc694dc53cbd8c892d"
+    },
+    {
+      "artifact_ref": "plan/decision-brief.json",
+      "hash": "sha256:a27f00490fd94560a946efdfa5c3fc038c59112686e3d9d7dbaa9b980b45bb40"
+    },
+    {
+      "artifact_ref": "config/tempo.config.json",
+      "hash": "sha256:028da8421e6a0e7ceb8a8f9d34ae18e11ce8447490df93c0d70df6c8a33e234a"
+    }
+  ],
+  "opportunity_ref": "O-UNDERSTAND-VIDEO-001",
+  "policy_ref": "RP-UNDERSTAND-VIDEO-FOUNDER-002",
+  "primary_outcome": "BLOCKED_INVALID_INPUT",
+  "rank_one_threshold": {
+    "aggregation": "sum",
+    "hypothesis_ref": "H-FEASIBILITY-001",
+    "matching_evidence_refs": [
+      "E-HUMAN-MEDIA-REVIEW-001"
+    ],
+    "metric": "Grounded proof videos produced from a validated graph",
+    "minimum_evidence_items": 1,
+    "missing_source_types": [],
+    "observed": 1,
+    "operator": ">=",
+    "status": "passed",
+    "target": 1,
+    "unit": "proof videos"
+  },
+  "reasons": [
+    "DECISION_BRIEF_UNSIGNED",
+    "READINESS_POLICY_UNSIGNED"
+  ],
+  "resulting_business_state": "EXPERIMENT_REQUIRED",
+  "weighted_score": 82.3
+}

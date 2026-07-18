@@ -1,9 +1,18 @@
 {
   "repository": "https://github.com/vemodalen-x/TEMPO",
   "branch": "main",
-  "commit": "40ad40f639fff09f433ced9ac22f1ad236b22a0b",
+  "commit": "4afc6a3f5ceba0240f7fdd2eece96241253d6e60",
+  "retrieved_at": "2026-07-18T13:53:23Z",
+  "verified_commands": [
+    "python bin/tempo verify --level all",
+    "python bin/tempo demo",
+    "python demo/verify-audit-console.py",
+    "python demo/verify-audit-console-browser.py"
+  ],
   "relationship": "external_governance_dependency",
   "vendored_files": [],
-  "local_workspace_required": false,
-  "integration_rule": "Run governance checks in a separate TEMPO checkout; never copy the TEMPO kernel into this repository."
+  "vendored_runtime_required": false,
+  "governance_checkout_required_for_build": true,
+  "fixture_bundle_requires_checkout": false,
+  "integration_rule": "Run governance checks in a separate TEMPO checkout at this exact commit; never copy the TEMPO kernel into this repository."
 }
