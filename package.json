@@ -12,12 +12,14 @@
     "typecheck": "tsc -p tsconfig.base.json --noEmit",
     "test": "vitest run",
     "test:acceptance": "vitest run tests/video --reporter=verbose",
-    "build:judge": "tsx packages/cli/src/build-judge.ts"
+    "build:judge": "tsx packages/cli/src/build-judge.ts",
+    "render:tempo": "tsx packages/cli/src/render-tempo-video.ts"
   },
   "dependencies": {
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "2.6.2",
     "@types/node": "^22.15.30",
     "esbuild": "^0.25.5",
     "tsx": "^4.20.3",
@@ -25,4 +27,3 @@
     "vitest": "^3.2.3"
   }
 }
-

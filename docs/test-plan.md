@@ -1,7 +1,9 @@
 # Founder MVP acceptance-test inventory
 
-Status: pre-implementation contract. The charter target is exactly 50 declared
-cases. A case counts only when executable, deterministic, and passing in CI.
+Status: implemented core contract plus delivery extensions. The charter target
+remains exactly 50 declared core cases. A case counts only when executable,
+deterministic, and passing in CI. Four source-integration and delivery cases are
+tracked separately as post-charter extensions.
 
 ## Snapshot and security — 10
 
@@ -83,3 +85,12 @@ cases. A case counts only when executable, deterministic, and passing in CI.
 Voice naturalness, pronunciation, visual hierarchy, code readability, pacing,
 and final narrative coherence remain explicit human reviews. They complement
 the 50 machine cases and are never converted into fabricated automated passes.
+
+## Post-charter delivery extensions — 4
+
+| ID | Required behavior |
+| --- | --- |
+| UV-051 | Bind the reviewed Understand-Anything graph, metadata, fingerprints, provenance, configuration, and review record to exact hashes. |
+| UV-052 | Ground every authored TEMPO narration scene in exact lines from the pinned clean snapshot. |
+| UV-053 | Render explicit readable typography and a dedicated caption band without CSS font shorthand ambiguity. |
+| UV-054 | Record the natural-voice development candidate without granting publication authority. |

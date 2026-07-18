@@ -64,6 +64,55 @@ The latest practiced TEMPO baseline is
 external dependency and validates its origin, clean checkout, revision, and
 governance lease before a production run.
 
+## Install and verify
+
+Supported development platforms are Windows, macOS, and Linux with Node.js
+22+, pnpm 11, Python 3.10+, Git, FFmpeg, and FFprobe on `PATH`.
+
+```text
+pnpm install --frozen-lockfile
+pnpm typecheck
+pnpm test:acceptance
+pnpm build:judge
+node submission/judge-bundle/understand-video-demo.mjs demo --offline
+```
+
+The final command is the credential-free judge path. It uses bundled fixtures,
+does not require `node_modules` or a source rebuild after the bundle has been
+prepared, and ends with `UNDERSTAND_VIDEO_DEMO_PASSED` only after all required
+pipeline stages pass.
+
+## Reproduce the TEMPO video draft
+
+Clone TEMPO at the exact revision named above into an independent directory.
+Place the reviewed Understand-Anything export in
+`.understand-video/inputs/tempo-4afc6a3/`. Then create an isolated Edge TTS
+environment:
+
+```text
+python -m venv .understand-video/tools/edge-tts
+# Windows
+.understand-video/tools/edge-tts/Scripts/python.exe -m pip install edge-tts==7.2.8
+# macOS or Linux
+.understand-video/tools/edge-tts/bin/python -m pip install edge-tts==7.2.8
+```
+
+Render with an explicit independent checkout (PowerShell example):
+
+```powershell
+pnpm render:tempo -- `
+  --tempo "C:\path\to\independent\TEMPO" `
+  --graph ".understand-video\inputs\tempo-4afc6a3" `
+  --output ".understand-video\runs\tempo-4afc6a3\devpost-draft"
+```
+
+On macOS or Linux, use the same options with POSIX paths. `TEMPO_CHECKOUT` can
+replace `--tempo`. The render performs a real network call to Microsoft Edge
+Speech containing only approved narration, voice ID, rate, and pitch; it does
+not transmit repository source. It emits MP4, SRT, WebVTT, claims, storyboard,
+and a verification report. A passing report is technical evidence only: the
+draft stays non-authoritative and publication remains human-controlled.
+
 The learning-comparison compiler can be exercised independently on fixtures:
 
 ```powershell

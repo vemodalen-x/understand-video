@@ -3,7 +3,7 @@
   "provider_id": "microsoft-edge-speech",
   "adapter": "edge-tts",
   "adapter_version": "7.2.8",
-  "voice_id": "en-US-AndrewMultilingualNeural",
+  "voice_id": "en-US-BrianMultilingualNeural",
   "network_call": true,
   "data_sent": [
     "approved narration text",
@@ -17,7 +17,6 @@
     "amount": 0,
     "currency": "USD"
   },
-  "voice_sample_checkpoint": "pending_human_review",
+  "voice_sample_checkpoint": "development_quality_check_passed_publication_review_pending",
   "publication_authorized": false
 }
-
