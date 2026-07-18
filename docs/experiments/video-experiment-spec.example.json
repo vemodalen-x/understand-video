@@ -1,0 +1,142 @@
+{
+  "spec_version": "0.1-proposal",
+  "experiment_id": "X-VIDEO-UX-002",
+  "status": "proposal_only",
+  "authority": {
+    "grants_product_build": false,
+    "grants_deployment": false,
+    "grants_publication": false,
+    "grants_upload": false,
+    "requires_interactive_human_approval": true
+  },
+  "decision_to_unlock": "Determine whether the revised narration and caption layout are suitable for a source-grounded code-explanation MVP.",
+  "hypothesis_refs": [
+    "H-LEARNING-001",
+    "H-FEASIBILITY-001"
+  ],
+  "source_snapshots": [
+    {
+      "repository": "vemodalen-x/TEMPO",
+      "revision": "40ad40f639fff09f433ced9ac22f1ad236b22a0b",
+      "role": "framework_under_explanation"
+    }
+  ],
+  "constraint_snapshots": [
+    {
+      "name": "devpost-openai-build-week-video-rules",
+      "captured_at": "2026-07-18T02:13:53Z",
+      "trust": "untrusted_external_constraint",
+      "requirements": [
+        "Video duration is under 180 seconds.",
+        "A working project is shown.",
+        "Voiceover explains what was built and how Codex and GPT-5.6 were used.",
+        "Any eventual submission video is publicly accessible on YouTube."
+      ],
+      "authorization_effect": "none"
+    }
+  ],
+  "scope": {
+    "allowed_paths": [
+      ".understand-video/experiments/video-ux/**",
+      "docs/experiments/**",
+      "plan/evidence/**"
+    ],
+    "forbidden_paths": [
+      "src/**",
+      "plan/authorization-warrant.json"
+    ],
+    "allowed_actions": [
+      "fixture_generation",
+      "local_render",
+      "local_verification",
+      "evidence_proposal"
+    ],
+    "forbidden_actions": [
+      "product_implementation_write",
+      "deploy",
+      "upload",
+      "publish",
+      "submit",
+      "sign_human_decision"
+    ]
+  },
+  "budgets": {
+    "currency": "USD",
+    "maximum_cost": 0,
+    "maximum_wall_clock_minutes": 45,
+    "maximum_full_renders": 2,
+    "network": "deny_except_declared_speech_service"
+  },
+  "data_policy": {
+    "participant_data_allowed": false,
+    "secrets_allowed": false,
+    "source_credentials_allowed": false,
+    "transmitted_content": [
+      "approved narration text only"
+    ],
+    "retention": "delete transient speech requests after the experiment; preserve only generated local media and machine receipts"
+  },
+  "checkpoints": [
+    {
+      "stage": "voice_sample",
+      "machine_checks": [
+        "audio_stream_present",
+        "no_clipping",
+        "sample_duration_between_10_and_15_seconds"
+      ],
+      "human_checks": [
+        "naturalness",
+        "pronunciation",
+        "absence_of_electronic_timbre"
+      ]
+    },
+    {
+      "stage": "keyframes",
+      "machine_checks": [
+        "caption_safe_zone_does_not_intersect_content_regions",
+        "all_source_links_resolve_to_pinned_snapshot"
+      ],
+      "human_checks": [
+        "diagram_readability",
+        "code_readability",
+        "visual_hierarchy"
+      ]
+    },
+    {
+      "stage": "draft",
+      "machine_checks": [
+        "duration_under_180_seconds",
+        "caption_sidecars_parse",
+        "working_demo_segment_present"
+      ],
+      "human_checks": [
+        "pacing",
+        "narrative_completeness"
+      ]
+    },
+    {
+      "stage": "final",
+      "machine_checks": [
+        "h264_video",
+        "aac_audio",
+        "integrated_loudness_in_declared_range",
+        "verification_receipt_generated"
+      ],
+      "human_checks": [
+        "final_preview_pass"
+      ]
+    }
+  ],
+  "stop_conditions": [
+    "Any requested write is outside allowed_paths.",
+    "Any forbidden action is requested.",
+    "A secret, credential, or participant identifier is detected.",
+    "The cost, time, network, or render budget would be exceeded.",
+    "A required human checkpoint is not approved."
+  ],
+  "evidence_policy": {
+    "preserve_counterevidence": true,
+    "fixture_is_external_validation": false,
+    "experiment_result_can_authorize_product_build": false
+  }
+}

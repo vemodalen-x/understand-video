@@ -1,1 +1,0 @@
-"""TEMPO kernel verification suite."""

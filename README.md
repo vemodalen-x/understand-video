@@ -1,265 +1,56 @@
 # Understand Video
 
-Governed planning repository for a compiler that turns an
-[Understand-Anything](https://github.com/Egonex-AI/Understand-Anything)
-knowledge graph into a source-grounded, duration-bounded, narrated and
-subtitled code-learning video.
+Understand Video is a code-explanation product that turns a pinned repository
+snapshot into a source-grounded, narrated, caption-safe learning video. The
+first demo target is [`vemodalen-x/TEMPO`](https://github.com/vemodalen-x/TEMPO).
 
-Current status: **experiment required; product implementation is not
-authorized**. TEMPO assessment
-`A-3C58C21A3ABD4829` returned `build_allowed: false` because the Rank-1 learner
-outcome has no observed external evidence, the human-owned decision records are
-unsigned, and no warrant exists. The zero-cost graph-to-media spike passed for
-technical feasibility only; see
-[`docs/source-analysis/graph-video-spike.md`](docs/source-analysis/graph-video-spike.md).
+This repository contains only Understand Video product material: product
+plans, source analysis, experiment fixtures, the bilingual observation UI, and
+future translator implementation. It does **not** vendor TEMPO's CLI, schemas,
+enforcement hooks, tests, governance records, or submission package.
 
-- Product opportunity and hypotheses: [`plan/`](plan/)
-- Proposed MVP charter: [`plan/mvp-charter.json`](plan/mvp-charter.json)
-- Understand-Anything pin: [`UPSTREAM_BASELINE.json`](UPSTREAM_BASELINE.json)
-- Prior-work boundary: [`docs/HACKATHON_DELTA.md`](docs/HACKATHON_DELTA.md)
-- TEMPO control status:
-  [`docs/source-analysis/tempo-implementation-status.md`](docs/source-analysis/tempo-implementation-status.md)
+## Repository boundary
 
-This repository is private while the governed decision cycle is incomplete.
-No final video has been uploaded and no Devpost submission has been made.
-
-## TEMPO governance kernel
-
-[![TEMPO conformance](https://github.com/vemodalen-x/TEMPO/actions/workflows/ci.yml/badge.svg)](https://github.com/vemodalen-x/TEMPO/actions/workflows/ci.yml)
-
-**Stop coding agents from spending the build budget before the business case is
-ready and a human has authorized the work.**
-
-TEMPO is a Work & Productivity workflow for product and innovation leads who
-supervise coding-agent work. It turns “should we build this?” into one of two
-useful outcomes: the cheapest next experiment, or a bounded MVP charter that
-can receive a separate human warrant. Research, finance, engineering, founders,
-and agencies participate as secondary workflow roles.
-
-This repository is a hackathon vertical slice, not a production authorization
-service. It is local-first, dependency-light, and designed to be inspected by a
-judge from a clean clone without credentials.
-
-## Why it exists
-
-Coding agents can make implementation fast enough that teams start building
-before they agree on the decision, target user, evidence threshold, economics,
-budget, deadline, or kill condition. That is a work-management problem, not
-only a code-safety problem.
-
-TEMPO moves the control boundary upstream:
-
-```mermaid
-flowchart LR
-    Q["Business question"] --> P["Untrusted planning proposal"]
-    P --> E["Evidence + rank-1 hypothesis"]
-    E --> R{"Deterministic readiness"}
-    R -->|"Not ready"| X["Cheapest next experiment"]
-    X --> E
-    R -->|"Eligible"| H["Human authorization"]
-    H --> W["Hash-bound warrant"]
-    W --> B["Bounded build"]
-    B --> V["Machine receipt"]
-    V --> D["Human verdict"]
-```
-
-A planning model may propose and summarize. Output entering through the
-provider adapter is always normalized as model synthesis, so correctly labeled
-model output and fixtures cannot satisfy the external-evidence gate, authorize
-a build, manufacture a passing receipt, or fill the human verdict. TEMPO
-validates declared provenance and freshness; this local slice does not
-authenticate whether a user-supplied source record is genuine.
-
-## What the demo proves
-
-The one-command scenario shows the complete control boundary:
-
-1. a model-shaped planning proposal is normalized as untrusted input;
-2. insufficient evidence yields `EXPERIMENT_REQUIRED` with a concrete next
-   action;
-3. explicit fixture measurements satisfy the rank-1 hypothesis threshold and
-   make the sample eligible for authorization;
-4. implementation still stops because no warrant exists;
-5. a demo-only, local-integrity warrant permits one in-scope start; and
-6. protected charter drift invalidates that warrant.
-
-The fixture is deliberately labeled. It proves the workflow, not market demand
-or production-grade signing.
-
-## Sample data
-
-`samples/business-mvp/` contains the complete credential-free scenario:
-opportunity and business-model records, one rank-1 hypothesis, a readiness
-policy, initial/ready decision briefs, a charter proposal, a model-synthesis
-fixture, supporting and contradictory interview fixtures, and a bounded task.
-Every synthetic record says that it is a fixture. The demo copies these inputs
-to an ignored workspace; it does not rewrite the checked-in samples.
-
-## Setup
-
-Prerequisites: Git and Python 3.10 or later. Runtime dependencies are from the
-Python standard library; Docker is only needed to reproduce the isolated CI
-profile.
-
-Supported hosts are Windows, macOS, and Linux with Python 3.10+.
-
-From a clean clone:
-
-```bash
-git clone https://github.com/vemodalen-x/TEMPO.git
-cd TEMPO
-python --version
-python bin/tempo context
-python bin/tempo selfcheck
-```
-
-The submission repository is public at
-[github.com/vemodalen-x/TEMPO](https://github.com/vemodalen-x/TEMPO).
-
-On systems where Python is installed as `python3`, substitute `python3` in the
-commands. An editable install is optional:
-
-```bash
-python -m pip install -e .
-tempo --help
-```
-
-## Run
-
-Run the credential-free judge path:
-
-```bash
-python bin/tempo demo
-```
-
-Run the complete local verification and inspect the ledger:
-
-```bash
-python bin/tempo verify --level all
-python bin/tempo ledger verify
-```
-
-Machine-readable output is available by placing global `--json` before the
-command, for example `python bin/tempo --json demo`. The CLI uses stable exit
-codes: `0` pass, `2` policy block, `3` checker failure, and `4` warning.
-
-For the manual workflow and all options:
-
-```bash
-python bin/tempo --help
-python bin/tempo business --help
-python bin/tempo evidence --help
-python bin/tempo mvp --help
-```
-
-Core commands cover business initialization/import/status, hypothesis and
-evidence inspection, readiness assessment, charter creation/signing, warrant
-authorization/revocation/status, gated MVP start, verdict compilation,
-verification, and submission checks.
-
-## Read the result
-
-Human-readable commands use one order throughout:
-**Outcome → Why → Evidence → Next action**. The two states that matter most are
-kept separate:
-
-- `MVP_AUTHORIZED` from readiness means *eligible for a human authorization
-  decision*.
-- `build_allowed: true` appears only after an independently valid warrant and
-  start-gate check.
-
-Generated artifacts live under `plan/`; the append-only ledger API, durable
-head checkpoint, and receipts live under `.tempo/`. The checkpoint detects a
-missing or truncated ledger tail, but remains local-integrity evidence rather
-than an external notarization. JSON schemas live under `schemas/`.
-
-## Architecture
-
-| Layer | Responsibility | Authority |
+| Repository | Owns | Does not own |
 | --- | --- | --- |
-| Commercial planning provider | Propose normalized opportunity, model, hypotheses, and experiments | Suggestion only |
-| Evidence/readiness kernel | Validate provenance and freshness, run blockers, score deterministically | Eligibility decision |
-| Human warrant boundary | Bind signer, scope, budget, deadline, and protected hashes | Implementation authority |
-| Start/guard layer | Revalidate authority for each declared task/action/lane | Allow or deny work |
-| Ledger/verification/verdict | Preserve events, generate receipts, compile a human-owned memo | Evidence, not self-approval |
+| [`vemodalen-x/TEMPO`](https://github.com/vemodalen-x/TEMPO) | Governance framework, authorization gates, schemas, experiment-lane proposals | Understand Video product code or product evidence |
+| `vemodalen-x/understand-video` | Code-to-video translator, product plans, media UX, and product experiments | A fork or embedded copy of TEMPO |
 
-The code is intentionally vendor neutral. The current provider path normalizes
-JSON fixtures and does not call the OpenAI API. See
-[docs/openai-provider.md](docs/openai-provider.md) for the exact Codex/GPT-5.6
-claim boundary.
+TEMPO is an external governance dependency pinned in
+[`TEMPO_BASELINE.json`](TEMPO_BASELINE.json). TEMPO-generated decision and
+evidence records may be checked in as product provenance, but the framework
+source stays in its own repository. Runtime artifacts use the ignored
+`.understand-video/` directory so the product does not depend on TEMPO's local
+workspace layout.
 
-## Work & Productivity fit
+## Current contents
 
-TEMPO is not presented as a generic developer guardrail. Its unit of value is a
-faster, clearer team decision: research knows the evidence gap, product knows
-the next experiment, finance sees the cap, engineering sees authorized scope,
-and the business owner gets a reviewable verdict memo. No measured savings are
-claimed in this release; time and avoided-cost impact remain hypotheses for a
-real pilot.
+- Product opportunity, hypotheses, charter proposal, and evidence: [`plan/`](plan/)
+- MVP product plan: [`plan/interpreter-mvp.md`](plan/interpreter-mvp.md)
+- Five-person post-MVP learning comparison and bilingual form:
+  [`docs/experiments/learning-comparison/`](docs/experiments/learning-comparison/)
+- One-person founder-MVP staging proposal:
+  [`plan/proposals/founder-mvp-staging.md`](plan/proposals/founder-mvp-staging.md)
+- Understand-Anything source pin: [`UPSTREAM_BASELINE.json`](UPSTREAM_BASELINE.json)
+- Prior-work boundary: [`docs/HACKATHON_DELTA.md`](docs/HACKATHON_DELTA.md)
 
-See [docs/judging-alignment.md](docs/judging-alignment.md) for the official
-criteria mapping and the explicit boundary between published guidance and
-inferred OpenAI UX sensibilities.
+## Status
 
-The maintained recording plan is [demo/video-script.md](demo/video-script.md).
+The checked-in work remains planning, documentation, fixtures, and evidence.
+It does not claim that the translator MVP is implemented, deployed, uploaded,
+or submitted. Product implementation starts only after the external TEMPO
+workspace reports a current, scoped human warrant for this repository.
 
-## Codex and GPT-5.6
+The learning-comparison compiler can be exercised independently on fixtures:
 
-Codex Desktop with GPT-5.6 in the user-selected Sol Ultra mode is the primary
-build environment used to create and test this repository under `AGENTS.md`.
-This is meaningful **build-time** model use, not a decorative label: GPT-5.6
-materially contributed to source reconciliation, the readiness/authority
-architecture, deterministic contracts, adversarial cases, the fixture journey,
-and the submission narrative. The artifact-level map is recorded in
-`submission/ai-usage.json`.
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File `
+  docs/experiments/learning-comparison/tools/compile-evidence.ps1 `
+  -InputDirectory docs/experiments/learning-comparison/fixtures `
+  -OutputDirectory .understand-video/experiments/learning-comparison/fixture-check `
+  -FixtureMode
+```
 
-The submission must still use the exact session ID returned by `/feedback`;
-`submission/session.json` currently contains only the candidate primary task
-and requires that confirmation. The product runtime does not make a live
-GPT-5.6 call, and the recorded commercial proposal fixture is not presented as
-API evidence.
-
-Codex accelerated four inspectable decisions in the primary build task:
-
-- reconciled the supplied TEMPO specification, pinned VEMO mechanisms, and the
-  earlier commercial-agent contract without copying private course content;
-- identified the circularity between readiness and authorization and captured
-  the two-stage resolution in ADR 0001;
-- changed the product framing and config to Work & Productivity after the owner
-  selected that track, captured in ADR 0002; and
-- implemented the vertical slice and adversarial conformance cases in parallel,
-  then used executable checks instead of narrative completion claims.
-
-### What is new for Build Week
-
-The standalone repository, schemas, deterministic readiness kernel, warrant
-boundary, ledger/receipts, fixture demo, tests, and submission package were
-created during the 2026 Build Week submission period. The TEMPO v1.3 archive,
-VEMO repository, and earlier commercial workflow predate this entry and are
-credited as design sources. Source pins and the adaptation boundary are
-recorded in `MANIFEST.json`, `THIRD_PARTY_NOTICES.md`, and
-`docs/source-analysis/`.
-
-## Security and verification
-
-Start with [SECURITY.md](SECURITY.md) and
-[SANDBOX_CONTRACT.md](SANDBOX_CONTRACT.md). Local runs provide deterministic
-checks and local integrity, not hostile-code isolation. CI adds a digest-pinned,
-unprivileged, network-disabled container profile. Receipts record which profile
-actually ran.
-
-If Docker or Podman is available, reproduce that profile with
-`python bin/tempo verify --level all --require-container`. Missing container
-tooling is a checker failure, never a simulated pass.
-
-Requirement-to-code-to-proof links are in
-[TRACEABILITY.md](TRACEABILITY.md). Third-party lineage and licenses are in
-`THIRD_PARTY_NOTICES.md` and `LICENSE`.
-
-## Submission status
-
-This project has not been deployed, uploaded as a video, or submitted to
-Devpost. The public repository, clean-clone journey, and cross-platform CI are
-verified. Public YouTube URL, `/feedback` confirmation, and final owner review
-remain explicit blockers in
-[submission/checklist.md](submission/checklist.md).
+See [`NOTICE`](NOTICE) and
+[`docs/THIRD_PARTY_LICENSES.md`](docs/THIRD_PARTY_LICENSES.md) for lineage and
+license boundaries.

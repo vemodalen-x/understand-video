@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Understand Video Learning Comparison · 学习对照记录器</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #152238;
+      --muted: #5d6c80;
+      --line: #d8e0ea;
+      --panel: #ffffff;
+      --canvas: #f4f7fb;
+      --accent: #165dff;
+      --accent-soft: #e9f0ff;
+      --good: #087a4b;
+      --good-soft: #e7f8ef;
+      --warn: #9a5b00;
+      --warn-soft: #fff3db;
+      --bad: #b42318;
+      --bad-soft: #ffebe9;
+      font-family: Inter, "Microsoft YaHei UI", "Microsoft YaHei", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--canvas); color: var(--ink); line-height: 1.55; }
+    main { max-width: 1120px; margin: 0 auto; padding: 32px 20px 56px; }
+    header { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; margin-bottom: 24px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 8px; font-size: clamp(1.75rem, 4vw, 2.6rem); letter-spacing: -0.035em; }
+    h2 { font-size: 1.1rem; margin-bottom: 16px; }
+    h3 { font-size: .95rem; margin-bottom: 8px; }
+    .eyebrow { margin-bottom: 6px; color: var(--accent); font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .lede { max-width: 740px; margin-bottom: 0; color: var(--muted); }
+    .badge { padding: 7px 11px; border: 1px solid #b9cdfd; border-radius: 999px; background: var(--accent-soft); color: #17479f; font-size: .82rem; font-weight: 700; white-space: nowrap; }
+    .notice { margin-bottom: 20px; padding: 13px 15px; border-left: 4px solid var(--accent); border-radius: 8px; background: var(--accent-soft); color: #244373; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(320px, .88fr); gap: 20px; align-items: start; }
+    .card { padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); box-shadow: 0 12px 28px rgba(42, 68, 111, .06); }
+    .form-card { display: grid; gap: 20px; }
+    fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+    legend { margin-bottom: 10px; font-weight: 800; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .field { display: grid; gap: 5px; }
+    .field > span, label > span { font-size: .86rem; color: var(--muted); font-weight: 650; }
+    input, select, textarea, button { font: inherit; }
+    input, select, textarea { width: 100%; min-height: 42px; padding: 9px 10px; border: 1px solid #bfcbda; border-radius: 8px; color: var(--ink); background: #fff; }
+    input:focus, select:focus, textarea:focus { outline: 3px solid rgba(22, 93, 255, .16); border-color: var(--accent); }
+    input[readonly] { color: #526277; background: #f3f6fa; }
+    textarea { min-height: 76px; resize: vertical; }
+    .check { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px; cursor: pointer; }
+    .check input { width: auto; min-height: auto; margin-top: 4px; accent-color: var(--accent); }
+    .check strong { display: block; font-size: .92rem; }
+    .check small { display: block; color: var(--muted); }
+    .assignment { padding: 12px; border-radius: 10px; background: #f3f6fa; color: #31445e; font-size: .9rem; }
+    .assignment b { color: var(--ink); }
+    .condition { padding: 16px; border: 1px solid var(--line); border-radius: 11px; }
+    .condition + .condition { margin-top: 12px; }
+    .condition-meta { margin-bottom: 12px; color: var(--muted); font-size: .88rem; }
+    .question-list { display: grid; gap: 12px; margin-top: 14px; }
+    .question-card { padding: 14px; border: 1px solid #d7e2f4; border-radius: 10px; background: #f9fbff; }
+    .question-index { margin-bottom: 7px; color: var(--accent); font-size: .76rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+    .question-en, .question-zh { margin: 0; }
+    .question-en { font-weight: 750; }
+    .question-zh { margin-top: 3px; color: var(--muted); font-size: .9rem; }
+    .option-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 11px; }
+    .answer-option { display: flex; gap: 8px; min-height: 54px; padding: 8px; border: 1px solid #cbd8eb; border-radius: 8px; background: #fff; cursor: pointer; }
+    .answer-option:hover { border-color: #8eb0ff; background: #f4f8ff; }
+    .answer-option:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); box-shadow: inset 0 0 0 1px var(--accent); }
+    .answer-option input { width: auto; min-height: auto; margin-top: 4px; accent-color: var(--accent); }
+    .option-letter { display: grid; place-items: center; flex: 0 0 22px; height: 22px; border-radius: 50%; background: #e7edf7; color: #31445e; font-size: .76rem; font-weight: 800; }
+    .option-copy { min-width: 0; }
+    .option-en, .option-zh { display: block; font-size: .82rem; line-height: 1.35; }
+    .option-en { color: var(--ink); font-weight: 700; }
+    .option-zh { margin-top: 2px; color: var(--muted); }
+    .tiny { color: var(--muted); font-size: .8rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 2px; }
+    button { min-height: 42px; padding: 9px 13px; border: 1px solid transparent; border-radius: 8px; cursor: pointer; font-weight: 750; }
+    button.primary { background: var(--accent); color: #fff; }
+    button.secondary { border-color: #adc3f5; background: #fff; color: #17479f; }
+    button.ghost { border-color: var(--line); background: #fff; color: #33465d; }
+    button:hover { filter: brightness(.98); }
+    button:focus-visible { outline: 3px solid rgba(22, 93, 255, .28); outline-offset: 2px; }
+    .status { margin: 0; padding: 12px; border-radius: 9px; font-size: .9rem; }
+    .status:empty { display: none; }
+    .status.good { background: var(--good-soft); color: var(--good); }
+    .status.warn { background: var(--warn-soft); color: var(--warn); }
+    .status.bad { background: var(--bad-soft); color: var(--bad); }
+    .preview { position: sticky; top: 16px; }
+    .media-kicker { margin-bottom: 4px; color: var(--accent); font-size: .76rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+    .video-shell { overflow: hidden; aspect-ratio: 16 / 9; border-radius: 11px; background: #09111f; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08); }
+    .video-shell video { display: block; width: 100%; height: 100%; background: #09111f; object-fit: contain; }
+    .media-meta { margin: 12px 0 0; color: var(--muted); font-size: .86rem; white-space: pre-line; }
+    .no-video { display: grid; place-items: center; min-height: 240px; padding: 24px; border: 1px dashed #aebed2; border-radius: 11px; background: #f7f9fc; text-align: center; }
+    .no-video[hidden], #video-panel[hidden], .condition[hidden] { display: none; }
+    .no-video strong { display: block; margin-bottom: 7px; color: var(--ink); }
+    .no-video p { margin: 0; color: var(--muted); font-size: .88rem; }
+    .video-error { display: none; margin-top: 10px; padding: 10px; border-radius: 8px; background: var(--warn-soft); color: var(--warn); font-size: .84rem; }
+    .video-error.visible { display: block; }
+    .local-video { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; padding: 10px 12px; border: 1px dashed #aabbd2; border-radius: 9px; color: #31445e; font-size: .84rem; cursor: pointer; }
+    .local-video input { width: auto; min-height: auto; max-width: 180px; padding: 0; border: 0; font-size: .76rem; }
+    .debug-tools { margin-top: 18px; border-top: 1px solid var(--line); }
+    .debug-tools summary { padding: 15px 2px 0; color: var(--muted); cursor: pointer; font-size: .84rem; font-weight: 750; }
+    .debug-tools[open] summary { margin-bottom: 12px; color: var(--ink); }
+    .debug-tools pre { min-height: 220px; max-height: 420px; }
+    pre { overflow: auto; min-height: 345px; margin: 12px 0 0; padding: 15px; border-radius: 10px; background: #101a2b; color: #dfe9fb; font: 12px/1.55 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre-wrap; word-break: break-word; }
+    code { padding: 2px 4px; border-radius: 4px; background: #edf2f8; color: #28415e; }
+    .steps { margin: 0; padding-left: 20px; color: var(--muted); }
+    .steps li + li { margin-top: 7px; }
+    .rule { height: 1px; margin: 18px 0; background: var(--line); }
+    @media (max-width: 880px) { .layout { grid-template-columns: 1fr; } .preview { position: static; } }
+    @media (max-width: 560px) { main { padding: 20px 14px 42px; } header { grid-template-columns: 1fr; gap: 12px; } .grid, .grid-4, .option-grid { grid-template-columns: 1fr; } .card { padding: 16px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <div class="eyebrow">Understand Video · Stage B / 阶段 B · X-LEARNING-COMPARISON-001</div>
+        <h1>Learning Comparison Recorder<br>学习对照记录器</h1>
+        <p class="lede">Use this anonymous form after the MVP is distributed to external developers. It creates one compiler-compatible JSON record per participant, stores nothing remotely, is not a human signature, and cannot authorize a product build.<br>此匿名表单用于 MVP 完成并分发给外部开发者后；它为每位参与者生成一份兼容既有编译器的 JSON，不上传数据、不代表人类签名，也不能授权产品构建。</p>
+      </div>
+      <div class="badge">Local only / 本地离线 · No identities / 不收集身份信息</div>
+    </header>
+
+    <div class="notice">
+      <b>The observer completes eligibility setup first, then hands the current condition to the participant.</b> The second condition stays locked until the first is complete. Record only <b>P-001 through P-005</b>, answers, durations, and protocol flags; never enter identities or credentials. Preserve deviations and unfavorable results truthfully.<br><b>观察员先完成资格设置，再把当前条件交给参与者。</b> 第一条件完成前，第二条件保持锁定。仅记录 <b>P-001 至 P-005</b>、答案、时长和协议标志；不得填写身份信息或凭据，偏差和不利结果必须如实保存。
+    </div>
+
+    <div class="layout">
+      <form class="card form-card" id="observation-form" novalidate>
+        <fieldset>
+          <legend>1. Anonymous ID & fixed assignment / 匿名编号与固定分配</legend>
+          <div class="grid">
+            <label class="field">
+              <span>Participant ID / 参与者编号</span>
+              <select id="participant-id" required>
+                <option value="P-001">P-001</option>
+                <option value="P-002">P-002</option>
+                <option value="P-003">P-003</option>
+                <option value="P-004">P-004</option>
+                <option value="P-005">P-005</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Anonymous observer reference / 观察员匿名标识</span>
+              <input id="observer-ref" value="human:experiment-observer" autocomplete="off" spellcheck="false" required>
+            </label>
+          </div>
+          <div class="assignment" id="assignment-summary" aria-live="polite"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>2. Eligibility & protocol / 资格与协议确认</legend>
+          <div class="grid">
+            <label class="check"><input id="real-observation" type="checkbox"><span><strong>Real human observation / 真实人工观察</strong><small>Never label a demo, model output, or fixture as real. / 不得把演示、模型输出或夹具数据标为真实。</small></span></label>
+            <label class="check"><input id="consent-confirmed" type="checkbox"><span><strong>Anonymous consent confirmed / 匿名参与同意已确认</strong><small>Only answers, timing, and protocol flags are recorded. / 仅记录答案、计时和协议标志。</small></span></label>
+            <label class="check"><input id="unfamiliar" type="checkbox"><span><strong>Participant is unfamiliar with the target repository / 参与者不熟悉目标仓库</strong><small>Prior study or exposure to the questions/video makes the result ineligible. / 曾研究仓库或看过题目/视频即不符合资格。</small></span></label>
+            <label class="check"><input id="source-snapshot" type="checkbox"><span><strong>Pinned source snapshot confirmed / 固定源码快照已确认</strong><small>Understand-Anything @ 58cfb20ac8f3f98cd7dede428d147dbe9cdc94b2。</small></span></label>
+          </div>
+          <div style="margin-top:13px" class="grid">
+            <label class="check"><input id="no-ai" type="checkbox"><span><strong>No AI, search, or external materials used / 未使用 AI、搜索或外部材料</strong><small>Leave unchecked if used; the JSON will truthfully set <code>ai_assistance_used: true</code>。/ 若使用，请不要勾选。</small></span></label>
+            <label class="check"><input id="no-deviations" type="checkbox" checked><span><strong>No protocol deviations / 没有协议偏差</strong><small>Uncheck and describe any deviation. The record can be saved but the compiler will reject it as eligible evidence. / 取消勾选并填写偏差。</small></span></label>
+          </div>
+          <label class="field" style="margin-top:13px">
+            <span>Protocol deviations (only if present) / 协议偏差（仅在存在偏差时填写）</span>
+            <textarea id="deviations" disabled placeholder="Example / 例如：The participant saw the second-condition instructions before the first condition began. / 参与者在第一个条件开始前看到了第二个条件的说明。"></textarea>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>3. Questions, answers & duration / 题干、答案与总时长</legend>
+          <p class="tiny">Duration includes video playback, from opening the condition instructions to submitting all four answers; each condition must be more than 0 and no more than 360 seconds.<br>时长包含视频播放时间，从打开条件说明到提交四题答案为止；每个条件必须大于 0 且不超过 360 秒。</p>
+          <div id="condition-fields"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>4. Record completion time / 记录完成时间</legend>
+          <div class="grid">
+            <label class="field">
+              <span>UTC timestamp / UTC 时间</span>
+              <input id="captured-at" readonly aria-describedby="captured-help">
+              <small id="captured-help" class="tiny">Click the button when observation ends so the page-open time is not used as observation time. / 在观察结束时点击右侧按钮，避免把表单打开时间误写为观察时间。</small>
+            </label>
+            <div class="field">
+              <span>&nbsp;</span>
+              <button class="ghost" type="button" id="timestamp-now">Record current UTC / 记录当前 UTC 时间</button>
+            </div>
+          </div>
+        </fieldset>
+
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+        <div class="actions">
+          <button class="primary" type="button" id="save-folder">Save to observations folder / 保存到 observations 文件夹</button>
+          <button class="secondary" type="button" id="download-json">Download JSON / 下载 JSON</button>
+          <button class="ghost" type="button" id="copy-json">Copy JSON / 复制 JSON</button>
+          <button class="ghost" type="button" id="validate">Check record / 检查记录</button>
+        </div>
+        <p class="tiny">“Save to folder / 保存到文件夹” requires Chromium directory selection. Otherwise use “Download JSON / 下载 JSON”, then move the five files into <code>.understand-video/experiments/learning-comparison/observations/</code>。</p>
+      </form>
+
+      <aside class="card preview" aria-label="Experiment video / 实验视频">
+        <div class="media-kicker" id="media-kicker">Video condition / 视频条件</div>
+        <h2 id="media-title">Module A explainer<br>模块 A 讲解视频</h2>
+        <div id="video-panel">
+          <div class="video-shell">
+            <video id="condition-video" controls playsinline preload="metadata" aria-describedby="media-description">
+              Your browser does not support HTML video. / 当前浏览器不支持 HTML 视频。
+            </video>
+          </div>
+          <p class="media-meta" id="media-description">The selected participant uses Module A for the video condition. Playback counts toward the condition timer.<br>当前参与者的视频条件使用模块 A；播放时间计入条件总时长。</p>
+          <p class="video-error" id="video-error">The verified local proof clip could not be loaded. Choose the condition's <code>video.mp4</code> below.<br>无法加载已验证的本地证明视频，请在下方选择该条件中的 <code>video.mp4</code>。</p>
+          <label class="local-video">
+            <span>Choose local condition video / 选择本地条件视频</span>
+            <input id="local-video" type="file" accept="video/mp4,video/webm,video/quicktime">
+          </label>
+        </div>
+        <div class="no-video" id="unguided-panel" hidden>
+          <div><strong>No video in this condition / 本条件不提供视频</strong><p>Explore only the supplied source extracts, then answer the four questions.<br>请仅探索提供的源码摘录，然后回答四道题。</p></div>
+        </div>
+
+        <details class="debug-tools">
+          <summary>Developer debug data / 开发调试数据</summary>
+          <h3>Raw record preview / 原始记录预览</h3>
+          <p class="tiny">The preview follows the compiler's exact property contract and writes nothing to the TEMPO evidence ledger.<br>预览采用既有编译器要求的严格属性结构，不写入任何 TEMPO evidence ledger。</p>
+          <pre id="json-preview">Complete the form / 请填写表单。</pre>
+          <div class="rule"></div>
+          <h3>After five observations / 完成五人观察后</h3>
+          <ol class="steps">
+            <li>Confirm the directory contains exactly <code>P-001.json</code> through <code>P-005.json</code>。/ 确认目录中恰好有这五个文件。</li>
+            <li>Run the existing <code>compile-evidence.ps1</code>。/ 运行既有编译器。</li>
+            <li>Human-review supporting and contradictory evidence, then add it through TEMPO and reassess。/ 人工审查支持与反例证据，再通过 TEMPO 加入并重新评估。</li>
+            <li>Only a passing assessment and interactive human warrant can allow <code>tempo mvp start</code>。/ 仅评估合格且人类交互式签发 warrant 后才能启动。</li>
+          </ol>
+        </details>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const assignments = {
+        "P-001": { first: "video", video: "A", unguided: "B" },
+        "P-002": { first: "unguided", video: "B", unguided: "A" },
+        "P-003": { first: "unguided", video: "A", unguided: "B" },
+        "P-004": { first: "video", video: "B", unguided: "A" },
+        "P-005": { first: "video", video: "A", unguided: "B" }
+      };
+      const answers = ["A", "B", "C", "D"];
+      const videoSegments = {
+        A: { start: 0, end: 17.581043 },
+        B: { start: 17.581043, end: 36.296916 }
+      };
+      const proofVideoPath = "../../../.understand-video/experiments/graph-video-spike/proof.mp4";
+      const questionBank = {
+        A: [
+          {
+            en: "Which project metadata field binds the graph to an exact analyzed source snapshot?",
+            zh: "哪个项目元数据字段会将图谱绑定到精确的已分析源码快照？",
+            options: {
+              A: { en: "`analyzedAt`", zh: "分析时间字段" },
+              B: { en: "`gitCommitHash`", zh: "Git 提交哈希" },
+              C: { en: "`version`", zh: "版本号" },
+              D: { en: "`frameworks`", zh: "框架列表" }
+            }
+          },
+          {
+            en: "Which list correctly names the four structural collections on the root KnowledgeGraph?",
+            zh: "哪个列表正确列出了根 KnowledgeGraph 上的四个结构集合？",
+            options: {
+              A: { en: "`nodes`, `edges`, `layers`, `tour`", zh: "节点、边、层、导览" },
+              B: { en: "`files`, `imports`, `screens`, `lessons`", zh: "文件、导入、页面、课程" },
+              C: { en: "`project`, `packages`, `routes`, `receipts`", zh: "项目、包、路由、回执" },
+              D: { en: "`types`, `schemas`, `prompts`, `videos`", zh: "类型、模式、提示词、视频" }
+            }
+          },
+          {
+            en: "What groups related graph nodes into architecture areas?",
+            zh: "什么结构会把相关图谱节点归入不同的架构区域？",
+            options: {
+              A: { en: "Edge weights", zh: "边权重" },
+              B: { en: "Project frameworks", zh: "项目框架" },
+              C: { en: "Layers", zh: "层（Layers）" },
+              D: { en: "File extensions", zh: "文件扩展名" }
+            }
+          },
+          {
+            en: "What supplies the graph's guided learning order?",
+            zh: "什么提供图谱的引导式学习顺序？",
+            options: {
+              A: { en: "Node complexity", zh: "节点复杂度" },
+              B: { en: "Git history", zh: "Git 历史" },
+              C: { en: "Search results", zh: "搜索结果" },
+              D: { en: "Tour steps", zh: "导览步骤" }
+            }
+          }
+        ],
+        B: [
+          {
+            en: "For a short explanation, how should the graph be prepared before planning?",
+            zh: "对于简短讲解，在规划前应如何准备图谱？",
+            options: {
+              A: { en: "Select a bounded slice relevant to the objective", zh: "选择与目标相关的有限切片" },
+              B: { en: "Send the entire graph without filtering", zh: "不经筛选就发送整个图谱" },
+              C: { en: "Remove every edge", zh: "移除所有边" },
+              D: { en: "Replace it with repository marketing text", zh: "用仓库营销文本替换它" }
+            }
+          },
+          {
+            en: "In the selected explanation path, what are the starting and ending concepts?",
+            zh: "在选定的讲解路径中，起点和终点概念分别是什么？",
+            options: {
+              A: { en: "Search index to deployment", zh: "搜索索引到部署" },
+              B: { en: "Data contract to visible exploration", zh: "数据契约到可见探索" },
+              C: { en: "Git branch to billing", zh: "Git 分支到账单" },
+              D: { en: "Test fixture to database migration", zh: "测试夹具到数据库迁移" }
+            }
+          },
+          {
+            en: "Which existing graph structure provides the ordering for that coherent path?",
+            zh: "哪个现有图谱结构为这条连贯路径提供顺序？",
+            options: {
+              A: { en: "Alphabetical filenames", zh: "按字母排序的文件名" },
+              B: { en: "Edge weights only", zh: "仅边权重" },
+              C: { en: "Guided tour order", zh: "引导导览顺序" },
+              D: { en: "Commit timestamps", zh: "提交时间戳" }
+            }
+          },
+          {
+            en: "Which set of architecture areas is selected in the bounded proof?",
+            zh: "有限证明中选中了哪一组架构区域？",
+            options: {
+              A: { en: "Billing, authentication, deployment, analytics", zh: "计费、认证、部署、分析" },
+              B: { en: "Database, queue, cache, CDN", zh: "数据库、队列、缓存、CDN" },
+              C: { en: "Issues, pull requests, releases, actions", zh: "议题、拉取请求、发布、操作" },
+              D: { en: "Shared types, runtime schema, analysis engine, dashboard presentation", zh: "共享类型、运行时模式、分析引擎、仪表盘展示" }
+            }
+          }
+        ]
+      };
+      const form = document.querySelector("#observation-form");
+      const participant = document.querySelector("#participant-id");
+      const observer = document.querySelector("#observer-ref");
+      const noDeviations = document.querySelector("#no-deviations");
+      const deviations = document.querySelector("#deviations");
+      const capturedAt = document.querySelector("#captured-at");
+      const status = document.querySelector("#status");
+      const preview = document.querySelector("#json-preview");
+      const conditionFields = document.querySelector("#condition-fields");
+      const conditionVideo = document.querySelector("#condition-video");
+      const mediaTitle = document.querySelector("#media-title");
+      const mediaKicker = document.querySelector("#media-kicker");
+      const mediaDescription = document.querySelector("#media-description");
+      const videoError = document.querySelector("#video-error");
+      const localVideo = document.querySelector("#local-video");
+      const videoPanel = document.querySelector("#video-panel");
+      const unguidedPanel = document.querySelector("#unguided-panel");
+      let localVideoUrl = null;
+      let activeConditionIndex = 0;
+
+      function timestampNow() {
+        capturedAt.value = new Date().toISOString();
+      }
+
+      function assignment() {
+        return assignments[participant.value];
+      }
+
+      function conditionOrder() {
+        const a = assignment();
+        return a.first === "video" ? ["video", "unguided"] : ["unguided", "video"];
+      }
+
+      function renderVideo() {
+        const activeCondition = conditionOrder()[activeConditionIndex];
+        if (activeCondition !== "video") {
+          conditionVideo.pause();
+          videoPanel.hidden = true;
+          unguidedPanel.hidden = false;
+          mediaKicker.textContent = "Unguided exploration / 无引导探索";
+          mediaTitle.innerHTML = "Source-only condition<br>纯源码条件";
+          return;
+        }
+        const module = assignment().video;
+        const segment = videoSegments[module];
+        if (localVideoUrl) {
+          URL.revokeObjectURL(localVideoUrl);
+          localVideoUrl = null;
+          localVideo.value = "";
+        }
+        videoPanel.hidden = false;
+        unguidedPanel.hidden = true;
+        mediaKicker.textContent = "Video condition / 视频条件";
+        mediaTitle.innerHTML = `Module ${module} explainer<br>模块 ${module} 讲解视频`;
+        mediaDescription.innerHTML = `The selected participant uses Module ${module} for the video condition. Playback counts toward the condition timer.<br>当前参与者的视频条件使用模块 ${module}；播放时间计入条件总时长。`;
+        videoError.classList.remove("visible");
+        conditionVideo.src = `${proofVideoPath}#t=${segment.start},${segment.end}`;
+        conditionVideo.load();
+      }
+
+      function enforceVideoSegment({ restartAtEnd = false } = {}) {
+        if (localVideoUrl || conditionOrder()[activeConditionIndex] !== "video") return;
+        const segment = videoSegments[assignment().video];
+        if (conditionVideo.currentTime < segment.start) {
+          conditionVideo.currentTime = segment.start;
+        } else if (conditionVideo.currentTime >= segment.end) {
+          conditionVideo.pause();
+          conditionVideo.currentTime = restartAtEnd ? segment.start : segment.end;
+        }
+      }
+
+      function answerOption(condition, index, letter, copy) {
+        return `<label class="answer-option">
+          <input type="radio" name="${condition}-q${index}" value="${letter}">
+          <span class="option-letter">${letter}</span>
+          <span class="option-copy"><span class="option-en">${copy.en}</span><span class="option-zh">${copy.zh}</span></span>
+        </label>`;
+      }
+
+      function questionControl(condition, index, question) {
+        return `<section class="question-card">
+          <div class="question-index">Question ${index + 1} / 第 ${index + 1} 题</div>
+          <p class="question-en">${question.en}</p>
+          <p class="question-zh">${question.zh}</p>
+          <div class="option-grid">${answers.map(letter => answerOption(condition, index, letter, question.options[letter])).join("")}</div>
+        </section>`;
+      }
+
+      function renderAssignment() {
+        if (localVideoUrl) {
+          URL.revokeObjectURL(localVideoUrl);
+          localVideoUrl = null;
+          localVideo.value = "";
+        }
+        activeConditionIndex = 0;
+        const a = assignment();
+        document.querySelector("#assignment-summary").innerHTML =
+          `<b>${participant.value}</b> fixed assignment / 固定分配：<b>${a.first === "video" ? "Video condition / 视频条件" : "Unguided exploration / 无引导探索"}</b> first；` +
+          `video module / 视频模块 <b>${a.video}</b>，unguided module / 无引导模块 <b>${a.unguided}</b>。The committed <code>assignments.csv</code> controls this assignment; do not edit it. / 此分配由已提交的 <code>assignments.csv</code> 控制，不可手改。`;
+        const container = conditionFields;
+        const aOrder = conditionOrder();
+        container.innerHTML = aOrder.map((name, sequence) => {
+          const module = a[name];
+          const label = name === "video" ? "Video condition / 视频条件" : "Unguided exploration / 无引导探索";
+          const questions = questionBank[module];
+          const nextAction = sequence === 0
+            ? `<div class="actions"><button class="secondary" type="button" data-next-condition>Complete condition 1 & continue / 完成条件 1 并继续</button></div>`
+            : "";
+          return `<section class="condition" data-condition="${name}" data-sequence="${sequence}" aria-labelledby="${name}-title"${sequence === 0 ? "" : " hidden"}>
+            <h3 id="${name}-title">Condition ${sequence + 1} / 条件 ${sequence + 1}：${label} · Module / 模块 ${module}</h3>
+            <div class="condition-meta">The participant ID sets the order; do not swap conditions or modules. / 顺序由参与者编号决定；不可交换两个模块或条件。</div>
+            <label class="field" style="max-width:280px"><span>Total duration (seconds) / 总时长（秒）</span><input type="number" inputmode="decimal" min="0.1" max="360" step="0.1" data-duration="${name}" placeholder="e.g. / 例如 142.5" required></label>
+            <div class="question-list">${questions.map((question, index) => questionControl(name, index, question)).join("")}</div>
+            ${nextAction}
+          </section>`;
+        }).join("");
+        renderVideo();
+        refreshPreview();
+      }
+
+      function selectedAnswers(condition) {
+        return [0, 1, 2, 3].map(index => {
+          const selected = document.querySelector(`input[name="${condition}-q${index}"]:checked`);
+          return selected ? selected.value : "";
+        });
+      }
+
+      function numericDuration(condition) {
+        const raw = document.querySelector(`[data-duration="${condition}"]`).value;
+        return raw === "" ? null : Number(raw);
+      }
+
+      function validateCondition(conditionName) {
+        const errors = [];
+        const duration = numericDuration(conditionName);
+        const conditionAnswers = selectedAnswers(conditionName);
+        const label = conditionName === "video" ? "Video condition / 视频条件" : "Unguided condition / 无引导条件";
+        if (!(typeof duration === "number") || !Number.isFinite(duration) || duration <= 0 || duration > 360) {
+          errors.push(`${label}: duration must be more than 0 and no more than 360 seconds. / 时长必须大于 0 且不超过 360 秒。`);
+        }
+        if (conditionAnswers.length !== 4 || conditionAnswers.some(answer => !answers.includes(answer))) {
+          errors.push(`${label}: answer all four questions. / 必须回答全部四道题。`);
+        }
+        return errors;
+      }
+
+      function record() {
+        const a = assignment();
+        return {
+          experiment_id: "X-LEARNING-COMPARISON-001",
+          participant_id: participant.value,
+          is_real_observation: document.querySelector("#real-observation").checked,
+          consent_confirmed: document.querySelector("#consent-confirmed").checked,
+          unfamiliar_with_target_repository: document.querySelector("#unfamiliar").checked,
+          ai_assistance_used: !document.querySelector("#no-ai").checked,
+          source_snapshot_confirmed: document.querySelector("#source-snapshot").checked,
+          assignment: {
+            first_condition: a.first,
+            video_module: a.video,
+            unguided_module: a.unguided
+          },
+          conditions: {
+            video: { module: a.video, duration_seconds: numericDuration("video"), answers: selectedAnswers("video") },
+            unguided: { module: a.unguided, duration_seconds: numericDuration("unguided"), answers: selectedAnswers("unguided") }
+          },
+          captured_at: capturedAt.value,
+          observer_ref: observer.value.trim(),
+          protocol_deviations: noDeviations.checked ? [] : deviations.value.split("\n").map(item => item.trim()).filter(Boolean)
+        };
+      }
+
+      function validateRecord(value) {
+        const errors = [];
+        const warnings = [];
+        if (!value.is_real_observation) errors.push("必须明确声明这是一次真实人工观察。");
+        if (!value.consent_confirmed) errors.push("缺少匿名参与同意确认。");
+        if (!value.unfamiliar_with_target_repository) errors.push("未确认参与者不熟悉目标仓库。");
+        if (!value.source_snapshot_confirmed) errors.push("未确认固定源码快照。");
+        if (!noDeviations.checked && value.protocol_deviations.length === 0) errors.push("已声明存在协议偏差，请如实填写偏差内容。");
+        if (!/^human:[A-Za-z0-9][A-Za-z0-9._@+:/-]{1,127}$/.test(value.observer_ref)) errors.push("观察员标识必须是匿名 human: 标识，例如 human:observer-1。");
+        if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value.captured_at)) {
+          errors.push("请在观察结束时记录 UTC 时间。");
+        } else if (Date.parse(value.captured_at) > Date.now() + 5 * 60 * 1000) {
+          errors.push("UTC 时间不能比当前时间晚五分钟以上。");
+        }
+        for (const name of ["video", "unguided"]) {
+          const condition = value.conditions[name];
+          if (!(typeof condition.duration_seconds === "number") || !Number.isFinite(condition.duration_seconds) || condition.duration_seconds <= 0 || condition.duration_seconds > 360) {
+            errors.push(`${name === "video" ? "视频条件" : "无引导条件"}时长必须大于 0 且不超过 360 秒。`);
+          }
+          if (condition.answers.length !== 4 || condition.answers.some(answer => !answers.includes(answer))) {
+            errors.push(`${name === "video" ? "视频条件" : "无引导条件"}必须填写四个 A/B/C/D 答案。`);
+          }
+        }
+        if (value.ai_assistance_used) warnings.push("记录显示使用了 AI、搜索或外部材料；既有编译器会拒绝把它作为合格观察，但应如实保存。");
+        if (value.protocol_deviations.length > 0) warnings.push("记录包含协议偏差；既有编译器会拒绝把它作为合格观察，但应如实保存。");
+        return { errors, warnings };
+      }
+
+      function refreshPreview() {
+        const value = record();
+        preview.textContent = JSON.stringify(value, null, 2);
+      }
+
+      function present(result, successText) {
+        const text = [
+          result.errors.length ? `不能导出：${result.errors.join(" ")}` : successText,
+          result.warnings.length ? `注意：${result.warnings.join(" ")}` : ""
+        ].filter(Boolean).join(" ");
+        status.textContent = text;
+        status.className = `status ${result.errors.length ? "bad" : result.warnings.length ? "warn" : "good"}`;
+      }
+
+      function validRecord() {
+        const value = record();
+        const result = validateRecord(value);
+        refreshPreview();
+        return { value, result };
+      }
+
+      function filename(value) { return `${value.participant_id}.json`; }
+
+      function download(value) {
+        const blob = new Blob([JSON.stringify(value, null, 2) + "\n"], { type: "application/json" });
+        const anchor = document.createElement("a");
+        anchor.href = URL.createObjectURL(blob);
+        anchor.download = filename(value);
+        anchor.click();
+        setTimeout(() => URL.revokeObjectURL(anchor.href), 0);
+      }
+
+      async function saveToFolder(value) {
+        if (!("showDirectoryPicker" in window)) {
+          download(value);
+          return "此浏览器不支持目录选择，已改为下载 JSON；请将文件移动到 observations 目录。";
+        }
+        const directory = await window.showDirectoryPicker({ mode: "readwrite" });
+        let exists = true;
+        try { await directory.getFileHandle(filename(value)); } catch (error) { exists = false; }
+        if (exists && !window.confirm(`${filename(value)} 已存在。是否用这次观察记录覆盖它？`)) return "已取消，未覆盖已有文件。";
+        const handle = await directory.getFileHandle(filename(value), { create: true });
+        const writable = await handle.createWritable();
+        await writable.write(JSON.stringify(value, null, 2) + "\n");
+        await writable.close();
+        return `已保存 ${filename(value)}。确认你选择的是 .understand-video/experiments/learning-comparison/observations/。`;
+      }
+
+      participant.addEventListener("change", renderAssignment);
+      form.addEventListener("input", refreshPreview);
+      conditionFields.addEventListener("click", event => {
+        const next = event.target.closest("[data-next-condition]");
+        if (!next) return;
+        const currentName = conditionOrder()[activeConditionIndex];
+        const errors = validateCondition(currentName);
+        if (errors.length) {
+          present({ errors, warnings: [] }, "");
+          return;
+        }
+        activeConditionIndex = 1;
+        conditionFields.querySelectorAll("[data-sequence]").forEach(section => {
+          section.hidden = Number(section.dataset.sequence) !== activeConditionIndex;
+        });
+        renderVideo();
+        present({ errors: [], warnings: [] }, "Condition 2 unlocked. / 条件 2 已解锁。");
+        conditionFields.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      conditionVideo.addEventListener("error", () => videoError.classList.add("visible"));
+      conditionVideo.addEventListener("loadeddata", () => {
+        videoError.classList.remove("visible");
+        enforceVideoSegment();
+      });
+      conditionVideo.addEventListener("play", () => enforceVideoSegment({ restartAtEnd: true }));
+      conditionVideo.addEventListener("seeking", () => enforceVideoSegment());
+      conditionVideo.addEventListener("timeupdate", () => enforceVideoSegment());
+      localVideo.addEventListener("change", () => {
+        const file = localVideo.files && localVideo.files[0];
+        if (!file) return;
+        if (localVideoUrl) URL.revokeObjectURL(localVideoUrl);
+        localVideoUrl = URL.createObjectURL(file);
+        conditionVideo.src = localVideoUrl;
+        conditionVideo.load();
+        videoError.classList.remove("visible");
+        const module = assignment().video;
+        mediaDescription.textContent = `Local file ${file.name} selected for Module ${module}. Playback counts toward the condition timer.\n已为模块 ${module} 选择本地文件 ${file.name}；播放时间计入条件总时长。`;
+      });
+      noDeviations.addEventListener("change", () => {
+        deviations.disabled = noDeviations.checked;
+        if (noDeviations.checked) deviations.value = "";
+        refreshPreview();
+      });
+      document.querySelector("#timestamp-now").addEventListener("click", () => { timestampNow(); refreshPreview(); });
+      document.querySelector("#validate").addEventListener("click", () => {
+        const { result } = validRecord();
+        present(result, "记录结构通过本地预检。下一步可保存；编译器仍会再次强制验证。");
+      });
+      document.querySelector("#download-json").addEventListener("click", () => {
+        const { value, result } = validRecord();
+        if (result.errors.length) return present(result, "");
+        download(value);
+        present(result, `已下载 ${filename(value)}。`);
+      });
+      document.querySelector("#copy-json").addEventListener("click", async () => {
+        const { value, result } = validRecord();
+        if (result.errors.length) return present(result, "");
+        try {
+          await navigator.clipboard.writeText(JSON.stringify(value, null, 2));
+          present(result, "JSON 已复制到剪贴板。");
+        } catch (error) {
+          present({ errors: ["浏览器拒绝访问剪贴板；请使用下载 JSON。"], warnings: result.warnings }, "");
+        }
+      });
+      document.querySelector("#save-folder").addEventListener("click", async () => {
+        const { value, result } = validRecord();
+        if (result.errors.length) return present(result, "");
+        try {
+          const message = await saveToFolder(value);
+          present(result, message);
+        } catch (error) {
+          if (error && error.name === "AbortError") return present({ errors: [], warnings: [] }, "已取消目录选择，未写入任何文件。");
+          present({ errors: ["无法保存文件。请改用下载 JSON，或检查浏览器文件访问权限。"], warnings: result.warnings }, "");
+        }
+      });
+
+      timestampNow();
+      renderAssignment();
+    })();
+  </script>
+</body>
+</html>

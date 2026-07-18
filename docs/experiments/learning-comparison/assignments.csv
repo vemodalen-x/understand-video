@@ -1,0 +1,6 @@
+participant_id,first_condition,video_module,unguided_module
+P-001,video,A,B
+P-002,unguided,B,A
+P-003,unguided,A,B
+P-004,video,B,A
+P-005,video,A,B

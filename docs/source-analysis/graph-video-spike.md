@@ -29,4 +29,4 @@ The experiment therefore does not satisfy the strict Hackathon profile and
 does not validate the Rank-1 learner outcome.
 
 Generated media and the detailed verification artifact are kept under the
-ignored `.tempo/experiments/graph-video-spike/` directory.
+ignored `.understand-video/experiments/graph-video-spike/` directory.
