@@ -70,3 +70,25 @@ remain separate human actions.
 The judge path must work on Windows, macOS, and Linux with Node.js 22+ and
 FFmpeg/FFprobe. The prepared bundle should contain compiled JavaScript, fixture
 inputs, and `run.ps1`/`run.sh`, so judges do not need pnpm or a rebuild.
+
+## Live submission audit: 2026-07-19
+
+Verified through the authenticated Devpost connector:
+
+- the account is registered for OpenAI Build Week and submissions are open;
+- the `Understand Video` project exists, but it is not yet entered in the
+  hackathon;
+- the local project, judge bundle, README, MIT license, and 140.07-second video
+  pass their technical checks;
+- TEMPO is public; Understand Video is currently private and therefore must be
+  shared with `testing@devpost.com` and `build-week-event@openai.com`, or made
+  public by an explicit repository-owner decision;
+- the local MP4 must still be uploaded as a viewable public or unlisted YouTube
+  video and checked in a private/incognito window; and
+- the form still requires Submitter Type, Country of Residence, Developer
+  Tools category, repository URL, `/feedback` Session ID, developer-tool test
+  instructions, and the YouTube URL.
+
+No country, session ID, publication decision, or video URL may be inferred or
+fabricated. The active founder-MVP task explicitly keeps Devpost submission and
+automatic publication out of scope.

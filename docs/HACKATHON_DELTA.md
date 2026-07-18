@@ -10,7 +10,7 @@
 - Source-file allowlisting in the local viewer.
 - Graph freshness and working-tree drift detection.
 
-## New capabilities proposed for this submission period
+## New capabilities implemented during this submission period
 
 - A versioned video-story schema and declarative scene vocabulary.
 - Deterministic graph slicing and a source-grounded narration evidence pack.
@@ -25,6 +25,9 @@
 - Hash-bound manifests and machine-readable render receipts.
 - External TEMPO governance integration without vendoring the framework.
 
-At this planning checkpoint, these are proposed rather than implemented. No
-claim of completion should be made until the governed build and its executable
-receipts exist.
+These capabilities are now implemented in the merged Understand Video MVP.
+The 54-case acceptance suite, credential-free judge bundle, source-grounded
+TEMPO story test, final media verification report, and merged pull requests are
+the completion evidence. The accepted local demo is still non-authoritative:
+upload, publication, and Devpost submission require a separate human-controlled
+decision and the hackathon's external form fields.
