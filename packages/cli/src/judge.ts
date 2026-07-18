@@ -12,7 +12,7 @@ import {
 import type { PipelineContext, PipelineHandlers, StageResult } from "./orchestrator.js";
 
 const FIXTURE_REVISION = "1111111111111111111111111111111111111111";
-const TEMPO_BASELINE_COMMIT = "4afc6a3f5ceba0240f7fdd2eece96241253d6e60";
+const TEMPO_BASELINE_COMMIT = "4a73350f6eefff80b11d862a5ac65b7194530442";
 
 function writeUtf8(path: string, value: string): void {
   mkdirSync(dirname(path), { recursive: true });

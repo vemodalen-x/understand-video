@@ -6,7 +6,7 @@ import { renderFrame } from "../../core/src/renderer.js";
 const outputDirectory = resolve(
   ".understand-video",
   "runs",
-  "tempo-4afc6a3",
+  "tempo-4a73350",
   "checkpoints",
 );
 mkdirSync(outputDirectory, { recursive: true });

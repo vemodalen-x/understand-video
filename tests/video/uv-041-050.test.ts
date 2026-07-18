@@ -26,7 +26,7 @@ import {
   type PipelineHandlers,
 } from "../../packages/cli/src/orchestrator.js";
 
-const PINNED_COMMIT = "4afc6a3f5ceba0240f7fdd2eece96241253d6e60";
+const PINNED_COMMIT = "4a73350f6eefff80b11d862a5ac65b7194530442";
 const REPOSITORY = "https://github.com/vemodalen-x/TEMPO";
 const EXPECTED_START = {
   taskId: "T-20260718-UNDERSTAND-VIDEO-FOUNDER-MVP",
@@ -208,7 +208,7 @@ describe("Governance, receipt, and judge acceptance", () => {
     expect(() => validateGovernance(drifted.options)).toThrowError(
       expect.objectContaining({ code: "TEMPO_CHECKOUT_DRIFT" }),
     );
-    json(drifted.baselinePath, { repository: REPOSITORY, branch: "main", commit: "4afc6a3", vendored_files: [] });
+    json(drifted.baselinePath, { repository: REPOSITORY, branch: "main", commit: "4a73350", vendored_files: [] });
     expect(() => validateGovernance({ mode: "fixture", baselinePath: drifted.baselinePath })).toThrowError(
       expect.objectContaining({ code: "BASELINE_INVALID" }),
     );

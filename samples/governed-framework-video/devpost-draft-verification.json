@@ -4,7 +4,7 @@
   "publicationAuthorized": false,
   "target": {
     "repository": "https://github.com/vemodalen-x/TEMPO",
-    "revision": "4afc6a3f5ceba0240f7fdd2eece96241253d6e60"
+    "revision": "4a73350f6eefff80b11d862a5ac65b7194530442"
   },
   "upstream": {
     "repository": "https://github.com/Egonex-AI/Understand-Anything",
@@ -17,19 +17,19 @@
     "pitch": "-2Hz"
   },
   "artifacts": {
-    "claims": "sha256:5c81e6d5ff81e32ad8e14460b59d80c530e06412f9a43366c421c2cdf0ffd5c7",
-    "storyboard": "sha256:0f1d3e212e0c4ae4cc2d44d30f36972b22d3dfb0c967221691ad9d06ef762e3f",
-    "narration": "sha256:c8c0864628f14e3dfd861d0de1702aa74a2c8a51096294b9e582aef648a74a3f",
-    "captions": "sha256:2353987093e73a61a64b6646aac9b6746dcd85e56a162e5f8fe91e8513c67499",
-    "media": "sha256:90a5804c682866bf8bed2041b78d89e01f2fbc8c41ff1fdb141947c94173a893",
-    "graph": "sha256:39167ad858811f5b7109572bbf9ba8ed63f0ed9c31cbf82301c4cb0cc14fce99"
+    "claims": "sha256:d5ec4aa6871d493d8b1619821c11a7f6ca442024df7d43d67ce701bbca930894",
+    "storyboard": "sha256:64b81c2ee92b6019e33734d8a3534a4584ce80776932cbcc6059e372f1ece0a5",
+    "narration": "sha256:63c0f33154c29fecff6c264ae3052b1cb2ed905ce455e23259abe53d05d6d776",
+    "captions": "sha256:9b5f142f2974a6ab837875a8ca99d327d70d23ffca220d53c7e48aa281fb1c30",
+    "media": "sha256:b1edcf41ec5bf49d24b44220a7a5279bc9f58e1684b086d48f88acdde56eaa4e",
+    "graph": "sha256:7162b4e024a8b191494bb16bb8413f6ff86180503c981edf1785faae3e04b416"
   },
   "media": {
     "ok": true,
     "errors": [],
-    "durationMs": 136200,
+    "durationMs": 140066.667,
     "framesPerSecond": 30,
-    "frameCount": 4086,
+    "frameCount": 4202,
     "videoCodec": "h264",
     "audioCodec": "aac",
     "width": 1920,
@@ -38,20 +38,25 @@
   "audio": {
     "ok": true,
     "errors": [],
-    "integratedLufs": -16.36,
-    "truePeakDbtp": -1.35,
-    "loudnessRangeLu": 1.8,
-    "maximumInternalSilenceMs": 704,
+    "integratedLufs": -16.3,
+    "truePeakDbtp": -1.44,
+    "loudnessRangeLu": 2.2,
+    "maximumInternalSilenceMs": 626,
     "leadingSilenceMs": 0,
     "trailingSilenceMs": 0
   },
-  "captionCueCount": 31,
+  "productDemo": {
+    "command": "node submission/judge-bundle/understand-video-demo.mjs demo --offline",
+    "successSentinel": "UNDERSTAND_VIDEO_DEMO_PASSED",
+    "output": "sha256:2794f866157a67ca009056c5eeb49a048d1946ff3d122422027d6334850737bc"
+  },
+  "captionCueCount": 32,
   "zeroContentCaptionOverlapByLayoutContract": true,
   "graphSummary": {
-    "nodes": 188,
-    "edges": 566,
+    "nodes": 211,
+    "edges": 614,
     "layers": 8,
     "tour": 7,
-    "files": 97
+    "files": 116
   }
 }

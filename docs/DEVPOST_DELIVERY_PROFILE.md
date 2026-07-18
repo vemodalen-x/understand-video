@@ -45,10 +45,10 @@ remain separate human actions.
 
 ## Video hard gates
 
-- duration `< 180000 ms`, target 165 seconds;
+- duration `< 180000 ms`; the accepted local draft is 140.07 seconds;
 - show the product working, not only slides or the finished video;
 - pin and visibly name TEMPO commit
-  `4afc6a3f5ceba0240f7fdd2eece96241253d6e60`;
+  `4a73350f6eefff80b11d862a5ac65b7194530442`;
 - explain readiness versus authorization, model-as-advice, hash-bound warrant,
   start revalidation, ledger/receipts, and the audit-console fixture boundary;
 - state that the runtime currently does not call the OpenAI API unless a real
