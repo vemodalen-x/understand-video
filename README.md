@@ -64,6 +64,30 @@ The latest practiced TEMPO baseline is
 external dependency and validates its origin, clean checkout, revision, and
 governance lease before a production run.
 
+## How Codex and GPT-5.6 were used
+
+Codex with GPT-5.6 Sol was the build-time development partner for the MVP. It
+inspected the independent TEMPO and Understand-Anything repositories, helped
+turn the product brief into strict contracts, implemented and reviewed the
+TypeScript pipeline, exercised the TEMPO gates, wrote the acceptance suite,
+and iterated on the narration, renderer, audio checks, and caption-safe layout.
+
+The key human-controlled product decisions were to pin every explanation to an
+immutable source snapshot, treat model output as advice rather than authority,
+never execute target repository code, require a credential-free judge path,
+show a real product run in the demo, and keep publication outside the local
+technical receipt. Those decisions are visible in the merged TEMPO
+[stabilization](https://github.com/vemodalen-x/TEMPO/pull/4) and
+[lease-rotation](https://github.com/vemodalen-x/TEMPO/pull/5) pull requests and
+the Understand Video [MVP](https://github.com/vemodalen-x/understand-video/pull/3)
+and [working-demo](https://github.com/vemodalen-x/understand-video/pull/4) pull
+requests.
+
+The final renderer does not make an unrecorded OpenAI API call. GPT-5.6's role
+is accurately disclosed as build-time work through Codex; the generated video
+uses authored, source-checked narration and Microsoft Edge Speech. The offline
+judge bundle remains deterministic and credential-free.
+
 ## Install and verify
 
 Supported development platforms are Windows, macOS, and Linux with Node.js
