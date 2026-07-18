@@ -64,10 +64,10 @@ output automatically authorizes distribution, publication, or a new build.
 
 ## Required human decision
 
-External assessment `A-5D9CD4780724426B` (assessment hash
-`sha256:6632cfa3dfbb69781af1bca737226fa1d6ec32b13bd536628fa54004b8f6b0e1`)
+External assessment `A-1806DDA390B2496D` (assessment hash
+`sha256:3b72fb52bb8f0a2c2d050f5018e038f47273589eb8c96b1a14882a5aa0c86112`)
 scores the unsigned version 2 packet at 82.3. Its exact product-provenance copy
-is `plan/assessments/A-5D9CD4780724426B.json`. It exposes
+is `plan/assessments/A-1806DDA390B2496D.json`. It exposes
 `E-HUMAN-MEDIA-DEFECTS-001` as contradictory evidence,
 passes the Rank-1 technical threshold, and reports no floor failures. Its only
 blockers are the unsigned readiness policy and decision brief. A human must

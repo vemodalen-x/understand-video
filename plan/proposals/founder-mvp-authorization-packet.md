@@ -52,11 +52,11 @@ The independent TEMPO checkout at the pinned commit passes:
 These results validate the framework and explanation target. They do not sign
 this product decision or create implementation authority.
 
-External assessment `A-5D9CD4780724426B`, hash
-`sha256:6632cfa3dfbb69781af1bca737226fa1d6ec32b13bd536628fa54004b8f6b0e1`,
+External assessment `A-1806DDA390B2496D`, hash
+`sha256:3b72fb52bb8f0a2c2d050f5018e038f47273589eb8c96b1a14882a5aa0c86112`,
 scores 82.3, passes the Rank-1 threshold, has no floor failures, and exposes
 `E-HUMAN-MEDIA-DEFECTS-001` as contradictory evidence. Its exact copy is
-`plan/assessments/A-5D9CD4780724426B.json`.
+`plan/assessments/A-1806DDA390B2496D.json`.
 `READINESS_POLICY_UNSIGNED` and `DECISION_BRIEF_UNSIGNED` are the only remaining
 blockers.
 
