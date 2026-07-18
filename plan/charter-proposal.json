@@ -1,6 +1,6 @@
 {
   "mvp_id": "M-UNDERSTAND-VIDEO-001",
-  "version": 1,
+  "version": 2,
   "state": "draft",
   "opportunity_ref": "O-UNDERSTAND-VIDEO-001",
   "decision_question_ref": "O-UNDERSTAND-VIDEO-001#/decision_question",
@@ -15,7 +15,7 @@
       "step_id": "J-VIDEO-001",
       "order": 1,
       "actor": "Developer",
-      "action": "Selects a local Git repository with a valid Understand-Anything graph and the architecture or Hackathon profile.",
+      "action": "Selects a local Git repository, an Understand-Anything graph bound to the same exact revision, and the architecture or Hackathon profile.",
       "observable_result": "The CLI reports the exact source commit, graph hash, freshness state, planned files, external actions, and duration budget."
     },
     {
@@ -42,19 +42,20 @@
   ],
   "in_scope": [
     "packages/**",
-    "skills/**",
-    "agents/**",
     "tests/video/**",
     "samples/governed-framework-video/**",
     "submission/**",
     "docs/**",
     "README.md",
     "NOTICE",
+    "TEMPO_BASELINE.json",
     "UPSTREAM_BASELINE.json",
     "package.json",
     "pnpm-workspace.yaml",
     "pnpm-lock.yaml",
+    "tsconfig.base.json",
     ".gitignore",
+    ".gitattributes",
     ".github/**",
     "tasks/**"
   ],
@@ -156,16 +157,13 @@
     "Hackathon judges testing a Developer Tool"
   ],
   "supported_environment": [
-    "Windows PowerShell with Node.js 22+, pnpm 10+, Git, FFmpeg, and ffprobe",
-    "macOS or Linux shell with Node.js 22+, pnpm 10+, Git, FFmpeg, and ffprobe",
-    "Credential-free fixture test path"
+    "Development on Windows, macOS, or Linux with Node.js 22+, pnpm 10+, Git, FFmpeg, and ffprobe",
+    "Prepared judge bundle on Windows, macOS, or Linux with Node.js 22+, Git, FFmpeg, and ffprobe; no pnpm or source rebuild",
+    "Credential-free synthetic fixture test path plus a separate real TEMPO checkout and graph dogfood path"
   ],
   "implementation_risk_tier": "R2",
   "allowed_lanes": [
-    "video-core",
-    "media",
-    "verification",
-    "documentation"
+    "video-core"
   ],
   "demo_beats": [
     {
@@ -201,14 +199,13 @@
     "scheduled_at": "2026-07-21T10:00:00Z",
     "owner": "human:repository-owner",
     "required_participants": [
-      "human:repository-owner",
-      "human:engineering-reviewer"
+      "human:repository-owner"
     ],
-    "decision_question": "Should the verified vertical slice be submitted and should a five-developer learning comparison be run after Build Week?"
+    "decision_question": "Should the verified vertical slice be submitted and then distributed for a multi-developer learning comparison after Build Week?"
   },
   "rollback_or_disposal_plan": "Keep source and machine receipts, remove generated temporary frames and unauthorized external-provider outputs, and never publish the video or submit to Devpost without a separate human action.",
   "created_at": "2026-07-17T14:22:50Z",
-  "updated_at": "2026-07-17T14:22:50Z",
+  "updated_at": "2026-07-18T14:25:00Z",
   "signed_by": null,
   "signed_at": null
 }

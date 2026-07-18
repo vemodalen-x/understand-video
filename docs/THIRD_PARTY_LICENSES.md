@@ -3,10 +3,15 @@
 ## TEMPO
 
 TEMPO is an external governance dependency pinned at commit
-`40ad40f639fff09f433ced9ac22f1ad236b22a0b` and maintained at
+`4afc6a3f5ceba0240f7fdd2eece96241253d6e60` and maintained at
 `https://github.com/vemodalen-x/TEMPO`. No TEMPO source, schema, hook, test, or
 governance-history file is vendored here. TEMPO-generated product records may
 appear under `plan/` as provenance data.
+
+Copyright (c) 2026 The TEMPO Authors
+
+TEMPO is licensed under the MIT License. Any separately distributed source
+excerpt or substantial copy must retain its copyright and permission notice.
 
 ## Understand-Anything
 

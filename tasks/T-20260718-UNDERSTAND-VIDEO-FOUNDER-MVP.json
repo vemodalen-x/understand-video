@@ -1,0 +1,47 @@
+{
+  "task_id": "T-20260718-UNDERSTAND-VIDEO-FOUNDER-MVP",
+  "title": "Understand Video founder MVP",
+  "state": "proposed",
+  "risk": "R2",
+  "demo_tier": "D0",
+  "owner": "human:repository-owner",
+  "lane": "video-core",
+  "scope_in": [
+    ".understand-video/**",
+    "packages/**",
+    "tests/video/**",
+    "samples/governed-framework-video/**",
+    "submission/**",
+    "docs/**",
+    "README.md",
+    "NOTICE",
+    "TEMPO_BASELINE.json",
+    "UPSTREAM_BASELINE.json",
+    "package.json",
+    "pnpm-workspace.yaml",
+    "pnpm-lock.yaml",
+    "tsconfig.base.json",
+    ".gitignore",
+    ".gitattributes",
+    ".github/**",
+    "tasks/**"
+  ],
+  "scope_out": [
+    "automatic upload or publication",
+    "Devpost submission",
+    "claims of learner improvement",
+    "executing target repository code",
+    "copying the TEMPO framework into this repository",
+    "raw source transmission to speech providers"
+  ],
+  "opportunity_ref": "O-UNDERSTAND-VIDEO-001",
+  "charter_ref": "M-UNDERSTAND-VIDEO-001",
+  "hypothesis_refs": [
+    "H-FEASIBILITY-001"
+  ],
+  "budget": {
+    "amount": 25,
+    "currency": "USD"
+  },
+  "deadline": "2026-07-21T08:00:00Z"
+}

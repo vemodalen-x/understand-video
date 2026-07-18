@@ -1,0 +1,1 @@
+Understand Video pins the exact commit, checks every explanation against source, and turns an unfamiliar repository into a short, verifiable walkthrough.

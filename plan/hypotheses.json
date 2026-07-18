@@ -1,13 +1,13 @@
 {
   "hypothesis_set_id": "HS-UNDERSTAND-VIDEO-001",
-  "version": 1,
+  "version": 2,
   "opportunity_ref": "O-UNDERSTAND-VIDEO-001",
   "owner": "human:repository-owner",
   "review_at": "2026-07-20T12:00:00Z",
   "hypotheses": [
     {
       "hypothesis_id": "H-LEARNING-001",
-      "rank": 1,
+      "rank": 2,
       "type": "desirability",
       "statement": "A developer can obtain a correct high-level mental model of an unfamiliar repository faster from a concise, source-linked video than from unguided file-by-file exploration.",
       "why_it_matters": "If the video does not improve correct orientation, the media pipeline adds production complexity without user value.",
@@ -40,7 +40,7 @@
     },
     {
       "hypothesis_id": "H-FEASIBILITY-001",
-      "rank": 2,
+      "rank": 1,
       "type": "technical_feasibility",
       "statement": "A validated Understand-Anything graph contains enough grounded structure to produce one coherent narrated storyboard and deterministic proof video.",
       "why_it_matters": "Graph-to-video feasibility is a prerequisite for testing the learner-value hypothesis.",
@@ -63,12 +63,14 @@
       },
       "status": "supported",
       "evidence_refs": [
-        "E-EXPERIMENT-VIDEO-001"
+        "E-EXPERIMENT-VIDEO-001",
+        "E-HUMAN-MEDIA-REVIEW-001",
+        "E-HUMAN-MEDIA-DEFECTS-001"
       ],
       "confidence": {
         "score": 70,
         "scale": "0-100",
-        "rationale": "One internal local experiment produced a 56.592-second H.264/AAC proof with offline English narration, SRT/VTT, valid graph references, and a machine verification artifact."
+        "rationale": "One internal local experiment produced a 56.592-second H.264/AAC proof with offline English narration, SRT/VTT, valid graph references, and a machine verification artifact. A repository-owner review confirms that the proof was human-reviewable, while a separate contradictory record preserves severe electronic-voice and caption-overlap defects against delivery quality."
       },
       "owner": "human:repository-owner",
       "review_at": "2026-07-18T12:00:00Z"
@@ -108,5 +110,5 @@
     }
   ],
   "created_at": "2026-07-17T14:22:50Z",
-  "updated_at": "2026-07-17T14:22:50Z"
+  "updated_at": "2026-07-18T14:46:00Z"
 }

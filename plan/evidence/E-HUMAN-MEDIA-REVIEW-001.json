@@ -1,0 +1,53 @@
+{
+  "captured_at": "2026-07-18T14:15:00Z",
+  "claim_tested": "A validated graph produced one locally playable proof video that a human repository owner could review, while narration and caption-layout defects remained visible.",
+  "collector": "human:repository-owner",
+  "content_hash": "sha256:d93fa9554a6eab4412675175f929fea8dadc2bd581132f4698a1265bc521816d",
+  "directness": "direct",
+  "evidence_id": "E-HUMAN-MEDIA-REVIEW-001",
+  "freshness": {
+    "expires_at": "2026-08-17T14:15:00Z",
+    "policy": "source_specific"
+  },
+  "hypothesis_refs": [
+    "H-FEASIBILITY-001"
+  ],
+  "limitations": [
+    "The reviewed proof targets the earlier graph-video feasibility snapshot, not TEMPO commit 4afc6a3.",
+    "The repository owner reported severe electronic voice character and captions obscuring diagrams.",
+    "The observation supports existence and reviewability only; it does not show delivery quality, learner value, demand, or production readiness.",
+    "Grounding is supported by the bound local verification artifact and video hash, not by an external source audit.",
+    "One repository owner is not an independent learner sample."
+  ],
+  "measurements": [
+    {
+      "metric": "Grounded proof videos produced from a validated graph",
+      "unit": "proof videos",
+      "value": 1
+    },
+    {
+      "metric": "Human-reported severe electronic voice artifact",
+      "unit": "boolean",
+      "value": true
+    },
+    {
+      "metric": "Human-reported caption overlap with diagrams",
+      "unit": "boolean",
+      "value": true
+    }
+  ],
+  "provenance": {
+    "collection_method": "Repository-owner review of the hash-bound local proof video followed by direct feedback in the active Codex conversation.",
+    "is_fixture": false,
+    "kind": "external",
+    "untrusted_input": true
+  },
+  "sample_context": {
+    "description": "One human review of the existing local graph-to-video feasibility proof.",
+    "population": "Repository owner/developer; not an independent target learner.",
+    "sample_size": 1
+  },
+  "source_reference": "conversation://repository-owner/2026-07-18/audio-caption-review",
+  "source_type": "experiment_result",
+  "stance": "supports"
+}

@@ -1,72 +1,82 @@
 # Founder-MVP-first staging proposal
 
-Status: draft proposal only. It does not amend the active policy, decision
-brief, charter, task, warrant, or evidence threshold.
+Status: version 2 review packet prepared but unsigned. Matching draft policy,
+decision brief, hypothesis set, charter, and task records now express this
+proposal in the product provenance and the independent governance workspace.
+They remain non-authoritative until a human signs and TEMPO issues a current
+warrant.
 
 ## Why split the work
 
-The MVP currently has one developer. A one-person build is a reasonable way to
-test whether the product can be delivered within a small technical budget. It
-cannot establish whether other developers understand an unfamiliar repository
-better from video than from source exploration: the builder knows the product,
-has strong prior context, and is not an independent target user.
+The MVP currently has one developer. A one-person build can test whether the
+product can be delivered within a small technical budget. It cannot establish
+whether independent developers understand an unfamiliar repository better from
+video than from source exploration: the builder has privileged product and
+repository context.
 
-The correct revision is therefore **sequencing**, not replacing a five-person
-learning test with a one-person claim.
+The revision is therefore sequencing, not replacing a five-person learning
+test with a one-person user-value claim.
 
 | Stage | Who | Decision tested | Permitted evidence | Not established |
 | --- | --- | --- | --- | --- |
-| A — founder MVP | One named-but-not-public developer | Can a bounded, source-grounded explainer MVP be built and verified locally? | Technical benchmark and internal operational receipt | Learner value, demand, usability for others, market fit |
-| B — post-MVP distribution | Five external developers, anonymously observed | Does the completed explainer improve correct orientation and time? | `observed_user_behavior` from `X-LEARNING-COMPARISON-001` | Population-level proof or permission to publish |
+| A — founder MVP | One repository owner/developer | Can a bounded, source-grounded explainer be built and verified locally? | Technical benchmark, machine receipt, and explicit human media preview | Learner value, demand, independent usability, market fit |
+| B — post-MVP distribution | Multiple external developers, anonymously observed; the initial protocol targets five | Does the completed explainer improve correct orientation and time? | `observed_user_behavior` from `X-LEARNING-COMPARISON-001` | Population-level proof or permission to publish |
 
 ## Proposed Stage A contract
 
-This contract should be materialized only through a new human-signed policy,
-decision brief, charter, task, and short-lived warrant.
+This contract becomes active only through a new human-signed policy, decision
+brief, charter, task, and short-lived warrant.
 
 - **Decision:** whether to proceed from a one-person local founder build to
   external distribution testing.
 - **Owner:** `human:repository-owner`.
-- **Scope:** source snapshot, source-claim map, storyboard, approved voice
-  sample, caption-safe scenes, local draft render, deterministic verification,
-  and a local working-demo receipt.
-- **Budget:** explicitly declare money, wall-clock time, render count, network
-  services, and transmitted content before authorization.
-- **Success:** a locally playable, source-grounded demo with naturalness and
-  caption-layout human checkpoints plus machine media checks.
-- **Stop conditions:** out-of-scope write, source-grounding failure, unsafe
-  caption overlap, unapproved voice sample, missing receipt, budget/deadline
-  overrun, secret/credential exposure, or any deployment/upload request.
-- **Exclusions:** user-outcome claims, public release, upload, Devpost
-  submission, and changing the human verdict.
+- **Target:** explain TEMPO commit
+  `4afc6a3f5ceba0240f7fdd2eece96241253d6e60` in a local, source-grounded,
+  sub-three-minute video.
+- **Scope:** repository snapshot, claim map, storyboard, fixture and approved
+  narration adapters, caption-safe scenes, local render, deterministic
+  verification, offline judge bundle, documentation, and local demo receipt.
+- **Budget:** USD 25 maximum; no external speech or model call without a
+  narrower declared provider, transmitted-content class, and cost approval.
+- **Deadline:** 2026-07-21T08:00:00Z for the implementation warrant. Devpost's
+  live submission deadline is 2026-07-22T00:00:00Z.
+- **Success:** runnable offline demo, exact source references, duration below
+  180 seconds, naturalness checkpoint, zero caption/content overlap, and a
+  machine-readable receipt.
+- **Stop conditions:** out-of-scope write, stale or dirty target revision,
+  source-grounding failure, unsafe caption overlap, unapproved voice sample,
+  missing receipt, budget/deadline overrun, secret exposure, or an upload.
+- **Exclusions:** measured learning claims, public release, YouTube upload,
+  Devpost submission, and any agent-authored human verdict.
 
-Stage A evidence should use a different hypothesis from `H-LEARNING-001`, for
-example: “One developer can produce and verify a source-grounded explainer for
-a pinned repository within the declared founder-MVP budget.” A single passing
-receipt is technical/operational evidence only.
+The unsigned version 2 packet makes `H-FEASIBILITY-001` the sole Rank-1
+implementation hypothesis. `H-LEARNING-001` moves to the Stage B distribution
+decision without being declared satisfied.
 
 ## Proposed Stage B contract
 
 After Stage A is complete, use
 `docs/experiments/learning-comparison/observation-form.html` to collect five
-external, anonymous observations. The existing compiler must receive exactly
-five JSON records, preserve every non-win as contradictory evidence, and
-generate the direct `observed_user_behavior` evidence. No observation form,
-compiler output, or successful benchmark automatically authorizes publication
-or a new build.
+external, anonymous observations. The compiler must receive exactly five JSON
+records, preserve every non-win as contradictory evidence, and generate direct
+`observed_user_behavior` proposals. No successful build, form, or compiler
+output automatically authorizes distribution, publication, or a new build.
 
-## Required human decision before this changes execution
+## Required human decision
 
-The active policy currently marks `H-LEARNING-001` as Rank-1 and blocks an MVP
-while `X-LEARNING-COMPARISON-001` is the cheaper sufficient experiment. A human
-must explicitly choose one of these routes:
+External assessment `A-6539C42FED42417C` (assessment hash
+`sha256:df3e3371af0db2aef9ce592215f33855265eeac82046b385c15b5f828b9210ff`)
+scores the unsigned version 2 packet at 82.3. Its exact product-provenance copy
+is `plan/assessments/A-6539C42FED42417C.json`. It exposes
+`E-HUMAN-MEDIA-DEFECTS-001` as contradictory evidence,
+passes the Rank-1 technical threshold, and reports no floor failures. Its only
+blockers are the unsigned readiness policy and decision brief. A human must
+explicitly choose one route:
 
-1. Keep the existing policy: run the five observations before product build.
-2. Approve this staged policy: make the founder-MVP technical hypothesis Rank-1
-   for a narrowly bounded Stage A warrant, and move the learning comparison to
-   a required Stage B distribution decision.
+1. Reject or revise the version 2 packet; no build starts.
+2. Approve the staged policy and brief, sign the revised charter, reassess, and
+   issue a scoped/budgeted/deadline-bounded Stage A warrant interactively.
 
-For route 2, the human must update and sign the readiness policy and decision
-brief, generate a new charter, reassess, and issue a scoped/budgeted/deadline-
-bounded warrant interactively. An agent must not make or sign those changes on
-the human's behalf.
+The current request to resume development is strong decision context but is not
+itself a TEMPO warrant. An agent must not populate signatures or issue the
+warrant on the human's behalf.

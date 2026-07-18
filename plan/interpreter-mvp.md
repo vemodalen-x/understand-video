@@ -11,18 +11,19 @@ architectural claims linked to the pinned source revision.
 
 The repository-owner reports that five developer text-versus-video comparisons
 were completed and that the video was more reading-friendly. TEMPO records that
-as useful indirect evidence. Under the current active policy, product
-authorization still requires the five raw anonymous observations defined by
-`X-LEARNING-COMPARISON-001`, or a human-signed decision that explicitly
-acknowledges why the registered threshold was not met. The requested one-person
-founder-MVP-first alternative is a separate, non-authoritative staging proposal
-at `plan/proposals/founder-mvp-staging.md`; it does not relabel the founder's
-delivery self-check as learner evidence.
+as useful indirect evidence, not direct observed behavior. The unsigned version
+2 packet makes technical feasibility Rank 1 for the one-developer Stage A and
+defers direct multi-developer learning measurement to Stage B. External
+assessment `A-6539C42FED42417C` passes that technical threshold, exposes the
+media defects as contradictory evidence, but grants no
+authority until the human-owned records are signed and a warrant is issued. The
+founder's delivery self-check is never relabeled as learner evidence.
 
 ## MVP user path
 
 1. Select a local repository and pin its revision.
-2. Extract a source graph and architecture claims with file/line provenance.
+2. Validate a pre-generated Understand-Anything graph against that exact
+   revision, then select architecture claims with file/line provenance.
 3. Produce a storyboard with a claim-to-source map.
 4. Approve a short voice sample and representative caption-safe keyframes.
 5. Render a draft with natural narration and SRT/VTT sidecars.
@@ -61,26 +62,28 @@ delivery self-check as learner evidence.
 
 ## Implementation order after authorization
 
-1. Consume the pinned external TEMPO experiment contract through an adapter;
-   do not import or vendor the framework source.
-2. Add repository snapshot and claim-to-source models.
+1. Validate the external TEMPO baseline, third governance root, warrant, and
+   exact `mvp start` result through an adapter; do not import or vendor the
+   framework source.
+2. Add repository snapshot, pre-generated graph, and claim-to-source models.
 3. Add storyboard generation and layout-safe scene contracts.
 4. Integrate the approved narration provider behind a replaceable adapter.
 5. Add sidecar-caption generation and optional dedicated-band burn-in.
 6. Add the deterministic media verifier and receipt.
-7. Render the TEMPO explainer, then distribute it and run the five raw
-   comparisons; ingest every supporting and contradictory observation.
-8. Reassess readiness before any upload or Devpost submission.
+7. Render and verify the TEMPO explainer locally.
+8. After MVP completion and a separate human distribution decision, run the
+   multi-developer comparison and ingest every supporting and contradictory
+   observation.
+9. Reassess readiness before any upload or Devpost submission.
 
 ## Current blocks
 
-- The external TEMPO assessment reports an unsigned readiness policy and
-  decision brief.
-- `H-LEARNING-001` still lacks the registered direct observed measurements.
-- The proposed one-person founder-MVP route has not been signed into the active
-  policy, decision brief, charter, or warrant.
+- External assessment `A-6539C42FED42417C` reports only an unsigned readiness
+  policy and decision brief; its charter and warrant remain unsigned/missing.
+- `H-LEARNING-001` still lacks direct observed measurements, so Stage A cannot
+  claim learner value even if the technical MVP succeeds.
 - The external TEMPO start gate reports `WARRANT_MISSING`.
 - Upload and Devpost submission remain outside the proposed product scope.
 
-Until those blocks are resolved, permitted work is limited to planning,
-documentation, fixtures, and evidence records.
+Until the human-only authorization sequence completes, permitted work remains
+limited to planning, documentation, fixtures, and evidence records.

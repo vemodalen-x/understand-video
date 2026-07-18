@@ -1,0 +1,22 @@
+{
+  "schema_version": "understand-video-voice-provider/v1",
+  "provider_id": "microsoft-edge-speech",
+  "adapter": "edge-tts",
+  "adapter_version": "7.2.8",
+  "voice_id": "en-US-BrianMultilingualNeural",
+  "network_call": true,
+  "data_sent": [
+    "approved narration text",
+    "voice identifier",
+    "rate and pitch settings"
+  ],
+  "raw_source_sent": false,
+  "participant_data_sent": false,
+  "credentials_sent": false,
+  "estimated_cost": {
+    "amount": 0,
+    "currency": "USD"
+  },
+  "voice_sample_checkpoint": "development_quality_check_passed_publication_review_pending",
+  "publication_authorized": false
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "understand-video-draft-report/v1",
+  "authoritative": false,
+  "publicationAuthorized": false,
+  "target": {
+    "repository": "https://github.com/vemodalen-x/TEMPO",
+    "revision": "4afc6a3f5ceba0240f7fdd2eece96241253d6e60"
+  },
+  "upstream": {
+    "repository": "https://github.com/Egonex-AI/Understand-Anything",
+    "revision": "b9ac6be178b2fbc68ae45456cd9a902bdcac6dac"
+  },
+  "provider": {
+    "id": "microsoft-edge-speech",
+    "voice": "en-US-BrianMultilingualNeural",
+    "rate": "-2%",
+    "pitch": "-2Hz"
+  },
+  "artifacts": {
+    "claims": "sha256:5c81e6d5ff81e32ad8e14460b59d80c530e06412f9a43366c421c2cdf0ffd5c7",
+    "storyboard": "sha256:0f1d3e212e0c4ae4cc2d44d30f36972b22d3dfb0c967221691ad9d06ef762e3f",
+    "narration": "sha256:c8c0864628f14e3dfd861d0de1702aa74a2c8a51096294b9e582aef648a74a3f",
+    "captions": "sha256:2353987093e73a61a64b6646aac9b6746dcd85e56a162e5f8fe91e8513c67499",
+    "media": "sha256:90a5804c682866bf8bed2041b78d89e01f2fbc8c41ff1fdb141947c94173a893",
+    "graph": "sha256:39167ad858811f5b7109572bbf9ba8ed63f0ed9c31cbf82301c4cb0cc14fce99"
+  },
+  "media": {
+    "ok": true,
+    "errors": [],
+    "durationMs": 136200,
+    "framesPerSecond": 30,
+    "frameCount": 4086,
+    "videoCodec": "h264",
+    "audioCodec": "aac",
+    "width": 1920,
+    "height": 1080
+  },
+  "audio": {
+    "ok": true,
+    "errors": [],
+    "integratedLufs": -16.36,
+    "truePeakDbtp": -1.35,
+    "loudnessRangeLu": 1.8,
+    "maximumInternalSilenceMs": 704,
+    "leadingSilenceMs": 0,
+    "trailingSilenceMs": 0
+  },
+  "captionCueCount": 31,
+  "zeroContentCaptionOverlapByLayoutContract": true,
+  "graphSummary": {
+    "nodes": 188,
+    "edges": 566,
+    "layers": 8,
+    "tour": 7,
+    "files": 97
+  }
+}
