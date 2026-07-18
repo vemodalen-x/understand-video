@@ -7,6 +7,7 @@
   "owner": "human:repository-owner",
   "lane": "video-core",
   "scope_in": [
+    ".understand-video/**",
     "packages/**",
     "tests/video/**",
     "samples/governed-framework-video/**",

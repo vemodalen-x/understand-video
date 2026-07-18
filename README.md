@@ -4,10 +4,10 @@ Understand Video is a code-explanation product that turns a pinned repository
 snapshot into a source-grounded, narrated, caption-safe learning video. The
 first demo target is [`vemodalen-x/TEMPO`](https://github.com/vemodalen-x/TEMPO).
 
-This repository contains only Understand Video product material: product
-plans, source analysis, experiment fixtures, the bilingual observation UI, and
-future translator implementation. It does **not** vendor TEMPO's CLI, schemas,
-enforcement hooks, tests, governance records, or submission package.
+This repository contains the Understand Video product: its source-grounded
+translation pipeline, media renderer, tests, fixtures, bilingual observation
+UI, and Devpost submission bundle. It does **not** vendor TEMPO's CLI, schemas,
+enforcement hooks, tests, or governance records.
 
 ## Repository boundary
 
@@ -52,16 +52,17 @@ workspace layout.
 
 ## Status
 
-The checked-in work remains planning, documentation, fixtures, and evidence.
-It does not claim that the translator MVP is implemented, deployed, uploaded,
-or submitted. Product implementation starts only after the external TEMPO
-workspace reports a current, scoped human warrant for this repository.
+The founder MVP implementation is checked in on the active development branch.
+It consumes a pinned, independent TEMPO checkout and refuses to produce an
+authoritative receipt unless the snapshot, graph, claims, captions, audio,
+layout, media, and governance checks all pass. The Devpost project remains a
+draft until its public video URL, `/feedback` session ID, country, and final
+submission fields are supplied.
 
 The latest practiced TEMPO baseline is
-`4afc6a3f5ceba0240f7fdd2eece96241253d6e60`. Its full verification, judge
-demo, audit projection validator, and Edge desktop/compact browser checks pass.
-That verification proves the framework behavior; it does not authorize this
-product build.
+`4afc6a3f5ceba0240f7fdd2eece96241253d6e60`. The product treats it as an
+external dependency and validates its origin, clean checkout, revision, and
+governance lease before a production run.
 
 The learning-comparison compiler can be exercised independently on fixtures:
 

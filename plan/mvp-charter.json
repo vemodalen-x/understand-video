@@ -96,6 +96,7 @@
   ],
   "implementation_risk_tier": "R2",
   "in_scope": [
+    ".understand-video/**",
     "packages/**",
     "tests/video/**",
     "samples/governed-framework-video/**",
