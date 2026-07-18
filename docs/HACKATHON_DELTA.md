@@ -23,7 +23,7 @@
 - A deterministic visual renderer and media muxer.
 - Independent A/V, duration, subtitle, grounding, and provenance verification.
 - Hash-bound manifests and machine-readable render receipts.
-- TEMPO governance integration and an explicit Hackathon profile.
+- External TEMPO governance integration without vendoring the framework.
 
 At this planning checkpoint, these are proposed rather than implemented. No
 claim of completion should be made until the governed build and its executable

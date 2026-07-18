@@ -1,10 +1,12 @@
-# Third-party licenses
+# Third-party licenses and boundaries
 
 ## TEMPO
 
-This repository began from TEMPO at commit
-`40ad40f639fff09f433ced9ac22f1ad236b22a0b` and retains its MIT license and
-notices. TEMPO is maintained at `https://github.com/vemodalen-x/TEMPO`.
+TEMPO is an external governance dependency pinned at commit
+`40ad40f639fff09f433ced9ac22f1ad236b22a0b` and maintained at
+`https://github.com/vemodalen-x/TEMPO`. No TEMPO source, schema, hook, test, or
+governance-history file is vendored here. TEMPO-generated product records may
+appear under `plan/` as provenance data.
 
 ## Understand-Anything
 
@@ -20,5 +22,4 @@ be retained in all copies or substantial portions. This project is independent
 and does not claim Egonex affiliation or trademark rights.
 
 No Understand-Anything source files have been copied or modified during the
-planning phase. This record must be updated if implementation later reuses
-source.
+planning phase. Update this record if implementation later reuses source.

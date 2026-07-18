@@ -1,13 +1,17 @@
-This project is based on the MIT-licensed TEMPO governance framework:
+Understand Video is governed with the independently maintained TEMPO framework:
 https://github.com/vemodalen-x/TEMPO
 
-It integrates with the graph output of the MIT-licensed Understand-Anything
-project:
+No TEMPO framework source files are vendored in this repository. The pinned
+governance baseline is recorded in TEMPO_BASELINE.json.
+
+Understand Video integrates with the graph contract of the MIT-licensed
+Understand-Anything project:
 https://github.com/Egonex-AI/Understand-Anything
 
 Understand-Anything copyright (c) 2026 Yuxiang Lin and
 Infinite Universe, Inc.
 
 This project is independent. It is not affiliated with, endorsed by, or
-sponsored by Egonex, Yuxiang Lin, Infinite Universe, Inc., OpenAI, or Devpost.
-Open-source licenses do not grant trademark rights.
+sponsored by Egonex, Yuxiang Lin, Infinite Universe, Inc., OpenAI, Devpost, or
+the independently maintained projects it references. Open-source licenses do
+not grant trademark rights.

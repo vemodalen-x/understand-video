@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/vemodalen-x/TEMPO",
+  "branch": "main",
+  "commit": "40ad40f639fff09f433ced9ac22f1ad236b22a0b",
+  "relationship": "external_governance_dependency",
+  "vendored_files": [],
+  "local_workspace_required": false,
+  "integration_rule": "Run governance checks in a separate TEMPO checkout; never copy the TEMPO kernel into this repository."
+}
