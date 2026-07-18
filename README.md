@@ -45,7 +45,7 @@ workspace layout.
 - Unsigned founder authorization packet, external assessment snapshot, and
   proposed machine task:
   [`plan/proposals/founder-mvp-authorization-packet.md`](plan/proposals/founder-mvp-authorization-packet.md),
-  [`plan/assessments/A-1806DDA390B2496D.json`](plan/assessments/A-1806DDA390B2496D.json), and
+  [`plan/assessments/A-6539C42FED42417C.json`](plan/assessments/A-6539C42FED42417C.json), and
   [`tasks/T-20260718-understand-video-founder-mvp.json`](tasks/T-20260718-understand-video-founder-mvp.json)
 - Understand-Anything source pin: [`UPSTREAM_BASELINE.json`](UPSTREAM_BASELINE.json)
 - Prior-work boundary: [`docs/HACKATHON_DELTA.md`](docs/HACKATHON_DELTA.md)

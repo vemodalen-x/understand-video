@@ -14,7 +14,7 @@ were completed and that the video was more reading-friendly. TEMPO records that
 as useful indirect evidence, not direct observed behavior. The unsigned version
 2 packet makes technical feasibility Rank 1 for the one-developer Stage A and
 defers direct multi-developer learning measurement to Stage B. External
-assessment `A-1806DDA390B2496D` passes that technical threshold, exposes the
+assessment `A-6539C42FED42417C` passes that technical threshold, exposes the
 media defects as contradictory evidence, but grants no
 authority until the human-owned records are signed and a warrant is issued. The
 founder's delivery self-check is never relabeled as learner evidence.
@@ -78,7 +78,7 @@ founder's delivery self-check is never relabeled as learner evidence.
 
 ## Current blocks
 
-- External assessment `A-1806DDA390B2496D` reports only an unsigned readiness
+- External assessment `A-6539C42FED42417C` reports only an unsigned readiness
   policy and decision brief; its charter and warrant remain unsigned/missing.
 - `H-LEARNING-001` still lacks direct observed measurements, so Stage A cannot
   claim learner value even if the technical MVP succeeds.
