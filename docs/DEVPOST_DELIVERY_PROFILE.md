@@ -17,7 +17,9 @@ Fetched through the Devpost Hackathons connector on 2026-07-18 between
 ## Required submission artifacts
 
 1. A working project built with Codex and GPT-5.6.
-2. One category. Understand Video targets **Developer Tools**.
+2. One category. The TEMPO competition entry uses **Work & Productivity**.
+   Understand Video itself fits Developer Tools but is supporting evidence, not
+   a second entry.
 3. A project description written and reviewed in the submitter's own voice.
 4. A public YouTube demo video strictly below three minutes.
 5. Demo audio explaining what was built and how both Codex and GPT-5.6 were
@@ -32,7 +34,8 @@ Fetched through the Devpost Hackathons connector on 2026-07-18 between
    judge path that does not require rebuilding from source.
 
 Upload, repository sharing, `/feedback` submission, and the final Devpost form
-remain separate human actions.
+were handled as separate human-controlled actions after the local product
+receipt passed.
 
 ## Judging alignment
 
@@ -75,20 +78,19 @@ inputs, and `run.ps1`/`run.sh`, so judges do not need pnpm or a rebuild.
 
 Verified through the authenticated Devpost connector:
 
-- the account is registered for OpenAI Build Week and submissions are open;
-- the `Understand Video` project exists, but it is not yet entered in the
-  hackathon;
-- the local project, judge bundle, README, MIT license, and 140.07-second video
-  pass their technical checks;
-- TEMPO is public; Understand Video is currently private and therefore must be
-  shared with `testing@devpost.com` and `build-week-event@openai.com`, or made
-  public by an explicit repository-owner decision;
-- the local MP4 must still be uploaded as a viewable public or unlisted YouTube
-  video and checked in a private/incognito window; and
-- the form still requires Submitter Type, Country of Residence, Developer
-  Tools category, repository URL, `/feedback` Session ID, developer-tool test
-  instructions, and the YouTube URL.
+- TEMPO, not Understand Video, is the competition entry in **Work &
+  Productivity**;
+- the TEMPO entry is submitted at
+  <https://devpost.com/software/understand-video> (the URL keeps its legacy
+  slug while the project name and primary repository are TEMPO);
+- both repositories are public and MIT licensed;
+- the 140.07-second YouTube video is accessible at
+  <https://youtu.be/3eIxgVo9z4I>;
+- the owner-confirmed `/feedback` value, individual submitter type, Singapore
+  residence, repository URL, and judge instructions are present in the final
+  submission; and
+- the local judge bundle, type-check, acceptance suite, and clean-clone rebuild
+  pass. See [`RELEASE_STATUS.md`](RELEASE_STATUS.md).
 
-No country, session ID, publication decision, or video URL may be inferred or
-fabricated. The active founder-MVP task explicitly keeps Devpost submission and
-automatic publication out of scope.
+The earlier task and planning records remain historical authorization evidence.
+They are not edited to imitate a later publication receipt.

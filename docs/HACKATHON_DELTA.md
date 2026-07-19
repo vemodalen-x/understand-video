@@ -28,6 +28,7 @@
 These capabilities are now implemented in the merged Understand Video MVP.
 The 54-case acceptance suite, credential-free judge bundle, source-grounded
 TEMPO story test, final media verification report, and merged pull requests are
-the completion evidence. The accepted local demo is still non-authoritative:
-upload, publication, and Devpost submission require a separate human-controlled
-decision and the hackathon's external form fields.
+the completion evidence. The accepted local demo remains a non-authoritative
+technical receipt. The later public upload and TEMPO Devpost submission were
+separate human-controlled actions; their URLs are recorded in
+[`RELEASE_STATUS.md`](RELEASE_STATUS.md).

@@ -4,10 +4,14 @@ Understand Video is a code-explanation product that turns a pinned repository
 snapshot into a source-grounded, narrated, caption-safe learning video. The
 first demo target is [`vemodalen-x/TEMPO`](https://github.com/vemodalen-x/TEMPO).
 
+The public [TEMPO judge video](https://youtu.be/3eIxgVo9z4I) was produced by
+this repository. TEMPO is the OpenAI Build Week competition entry; Understand
+Video is the independent downstream product and implementation evidence.
+
 This repository contains the Understand Video product: its source-grounded
 translation pipeline, media renderer, tests, fixtures, bilingual observation
-UI, and Devpost submission bundle. It does **not** vendor TEMPO's CLI, schemas,
-enforcement hooks, tests, or governance records.
+UI, judge bundle, and delivery evidence. It does **not** vendor TEMPO's CLI,
+schemas, enforcement hooks, tests, or governance records.
 
 ## Repository boundary
 
@@ -42,27 +46,33 @@ workspace layout.
   [`docs/experiments/learning-comparison/`](docs/experiments/learning-comparison/)
 - One-person founder-MVP staging proposal:
   [`plan/proposals/founder-mvp-staging.md`](plan/proposals/founder-mvp-staging.md)
-- Unsigned founder authorization packet, external assessment snapshot, and
-  proposed machine task:
+- Historical founder authorization packet, external assessment snapshot, and
+  task record preserved as provenance:
   [`plan/proposals/founder-mvp-authorization-packet.md`](plan/proposals/founder-mvp-authorization-packet.md),
   [`plan/assessments/A-6539C42FED42417C.json`](plan/assessments/A-6539C42FED42417C.json), and
   [`tasks/T-20260718-UNDERSTAND-VIDEO-FOUNDER-MVP.json`](tasks/T-20260718-UNDERSTAND-VIDEO-FOUNDER-MVP.json)
 - Understand-Anything source pin: [`UPSTREAM_BASELINE.json`](UPSTREAM_BASELINE.json)
 - Prior-work boundary: [`docs/HACKATHON_DELTA.md`](docs/HACKATHON_DELTA.md)
 
-## Status
+## Release status
 
-The founder MVP implementation is checked in on the active development branch.
-It consumes a pinned, independent TEMPO checkout and refuses to produce an
-authoritative receipt unless the snapshot, graph, claims, captions, audio,
-layout, media, and governance checks all pass. The Devpost project remains a
-draft until its public video URL, `/feedback` session ID, country, and final
-submission fields are supplied.
+The founder MVP vertical slice is merged on public `main`. A clean clone of
+`4b1d5267ace67d99043305e9b1e610a71bff0ff7` passes installation, TypeScript
+type-checking, the 54-case acceptance run (53 pass, 1 optional external-input
+skip), judge-bundle rebuild, and the credential-free offline demo. Exact
+commands and results are recorded in
+[`docs/RELEASE_STATUS.md`](docs/RELEASE_STATUS.md).
 
-The latest practiced TEMPO baseline is
-`4a73350f6eefff80b11d862a5ac65b7194530442`. The product treats it as an
-external dependency and validates its origin, clean checkout, revision, and
-governance lease before a production run.
+The published explanation and video intentionally pin TEMPO commit
+`4a73350f6eefff80b11d862a5ac65b7194530442`. Historical planning records refer
+to an earlier `4afc6a3` governance snapshot and remain unchanged as provenance;
+they are not current release pointers. TEMPO's later public `0edefe3` hardening
+is documented by the TEMPO repository and is not misrepresented as having been
+re-rendered by this release.
+
+The product validates the pinned repository origin, clean checkout, revision,
+and governance lease before a production run. Local technical receipts remain
+non-authoritative; publication and the human verdict stay separate actions.
 
 ## How Codex and GPT-5.6 were used
 
@@ -150,3 +160,10 @@ powershell -NoProfile -ExecutionPolicy Bypass -File `
 See [`NOTICE`](NOTICE) and
 [`docs/THIRD_PARTY_LICENSES.md`](docs/THIRD_PARTY_LICENSES.md) for lineage and
 license boundaries.
+
+Public delivery links:
+
+- TEMPO competition repository: <https://github.com/vemodalen-x/TEMPO>
+- Understand Video supporting repository: <https://github.com/vemodalen-x/understand-video>
+- YouTube demo: <https://youtu.be/3eIxgVo9z4I>
+- Devpost entry: <https://devpost.com/software/understand-video>
