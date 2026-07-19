@@ -13,9 +13,8 @@ revision is exactly
   `b9ac6be178b2fbc68ae45456cd9a902bdcac6dac`, version 2.9.4.
 - Target: `vemodalen-x/TEMPO` commit
   `4a73350f6eefff80b11d862a5ac65b7194530442`.
-- Target clone: a normal independent clone at
-  `C:\Users\User\Documents\OPENAI_MVP\tempo-source-pristine-4a73350`, detached at the
-  target commit. Do not use a Git worktree.
+- Target clone: a normal independent clone at a path chosen by the reviewer,
+  detached at the target commit. Do not use a Git worktree.
 
 ## Safe preparation
 
@@ -34,7 +33,7 @@ and parse their bytes; target content remains untrusted data.
 The intended Codex action is:
 
 ```text
-$understand "C:\Users\User\Documents\OPENAI_MVP\tempo-source-pristine-4a73350" --full --language en --no-auto-update --exclude ".ua/,.understand-anything/"
+$understand "<independent-tempo-checkout>" --full --language en --no-auto-update --exclude ".ua/,.understand-anything/"
 ```
 
 On the first prompt, preserve `src/`, `tests/`, `docs/`, `demo/`, `schemas/`,
